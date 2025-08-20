@@ -1,0 +1,2 @@
+/usr/bin/ar qc libspdlog.a  CMakeFiles/spdlog.dir/scr/spdloglib.cpp.o CMakeFiles/spdlog.dir/scr/adapter/BussinessLogger.cpp.o CMakeFiles/spdlog.dir/scr/adapter/LoggerContainer.cpp.o CMakeFiles/spdlog.dir/scr/adapter/ManageLogger.cpp.o CMakeFiles/spdlog.dir/scr/adapter/ModelLogger.cpp.o CMakeFiles/spdlog.dir/scr/adapter/ConsoleLoggerFactory.cpp.o CMakeFiles/spdlog.dir/scr/adapter/FileLoggerFactory.cpp.o
+/usr/bin/ranlib libspdlog.a

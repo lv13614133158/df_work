@@ -1,0 +1,8 @@
+动态库：$CXX -fpic -shared idpsReadInfo.cpp -L. -lcommon_base  -o libidpsReadInfo.so
+
+静态库：
+$CXX -c idpsReadInfo.cpp
+aarch64-poky-linux-ar rcs libidpsReadInfo.a idpsReadInfo.o
+
+测试程序：
+ $CC dftc_read_info_c_api.c -L. -lidpsReadInfo  -lcommon_base -lnvapi -lstdc++ -o dftc_read_info_c_api.bin

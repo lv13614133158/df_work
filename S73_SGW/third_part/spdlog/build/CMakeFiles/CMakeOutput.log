@@ -1,0 +1,644 @@
+The system is: Linux - 5.4.0-109-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc 
+Build flags: -O2;-DMT2735;--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/3.10.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++ 
+Build flags: -O2;-DMT2735;--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/3.10.2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b11a8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b11a8.dir/build.make CMakeFiles/cmTC_b11a8.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_b11a8.dir/testCCompiler.c.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -o CMakeFiles/cmTC_b11a8.dir/testCCompiler.c.o   -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp/testCCompiler.c
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_b11a8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b11a8.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_b11a8.dir/testCCompiler.c.o  -o cmTC_b11a8 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_45331/fast"
+/usr/bin/make -f CMakeFiles/cmTC_45331.dir/build.make CMakeFiles/cmTC_45331.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -o CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_45331
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45331.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot -v CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o  -o cmTC_45331 
+Using built-in specs.
+COLLECT_GCC=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc
+COLLECT_LTO_WRAPPER=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper
+Target: aarch64-poky-linux
+Configured with: ../../../../../../work-shared/gcc-8.2.0-r0/gcc-8.2.0/configure --build=x86_64-linux --host=x86_64-linux --target=aarch64-poky-linux --prefix=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr --exec_prefix=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr --bindir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/bin/aarch64-poky-linux --sbindir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/bin/aarch64-poky-linux --libexecdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/libexec/aarch64-poky-linux --datadir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share --sysconfdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/etc --sharedstatedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/com --localstatedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/var --libdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/lib/aarch64-poky-linux --includedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/include --oldincludedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/include --infodir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share/info --mandir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share/man --disable-silent-rules --disable-dependency-tracking --with-libtool-sysroot=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native --enable-clocale=generic --with-gnu-ld --enable-shared --enable-languages=c,c++ --enable-threads=posix --disable-multilib --enable-c99 --enable-long-long --enable-symvers=gnu --enable-libstdcxx-pch --program-prefix=aarch64-poky-linux- --without-local-prefix --enable-lto --disable-libssp --enable-libitm --disable-bootstrap --disable-libmudflap --with-system-zlib --with-linker-hash-style=sysv --enable-linker-build-id --with-ppl=no --with-cloog=no --enable-checking=release --enable-cheaders=c_global --without-isl --with-gxx-include-dir=/not/exist/usr/include/c++/8.2.0 --with-sysroot=/not/exist --with-build-sysroot=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot --without-long-double-128 libgcc_cv_powerpc_float128=no --enable-poison-system-directories --with-system-zlib --disable-nls --enable-initfini-array --enable-__cxa_atexit
+Thread model: posix
+gcc version 8.2.0 (GCC) 
+COMPILER_PATH=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/
+LIBRARY_PATH=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/
+COLLECT_GCC_OPTIONS='--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot' '-O2' '-D' 'MT2735' '-O2' '-D' 'MT2735' '-v' '-o' 'cmTC_45331' '-mlittle-endian' '-mabi=lp64'
+ /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/collect2 -plugin /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/liblto_plugin.so -plugin-opt=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccK4VdUp.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot --build-id --eh-frame-hdr --hash-style=sysv -dynamic-linker /lib64/ld-linux-aarch64.so.1 -X -EL -maarch64linux -o cmTC_45331 /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crt1.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crti.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtbegin.o -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64 CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtend.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crtn.o
+COLLECT_GCC_OPTIONS='--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot' '-O2' '-D' 'MT2735' '-O2' '-D' 'MT2735' '-v' '-o' 'cmTC_45331' '-mlittle-endian' '-mabi=lp64'
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_45331/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_45331.dir/build.make CMakeFiles/cmTC_45331.dir/build]
+  ignore line: [make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”]
+  ignore line: [/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Building C object CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -o CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Linking C executable cmTC_45331]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45331.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot -v CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o  -o cmTC_45331 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper]
+  ignore line: [Target: aarch64-poky-linux]
+  ignore line: [Configured with: ../../../../../../work-shared/gcc-8.2.0-r0/gcc-8.2.0/configure --build=x86_64-linux --host=x86_64-linux --target=aarch64-poky-linux --prefix=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr --exec_prefix=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr --bindir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/bin/aarch64-poky-linux --sbindir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/bin/aarch64-poky-linux --libexecdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/libexec/aarch64-poky-linux --datadir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share --sysconfdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/etc --sharedstatedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/com --localstatedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/var --libdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/lib/aarch64-poky-linux --includedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/include --oldincludedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/include --infodir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share/info --mandir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share/man --disable-silent-rules --disable-dependency-tracking --with-libtool-sysroot=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native --enable-clocale=generic --with-gnu-ld --enable-shared --enable-languages=c,c++ --enable-threads=posix --disable-multilib --enable-c99 --enable-long-long --enable-symvers=gnu --enable-libstdcxx-pch --program-prefix=aarch64-poky-linux- --without-local-prefix --enable-lto --disable-libssp --enable-libitm --disable-bootstrap --disable-libmudflap --with-system-zlib --with-linker-hash-style=sysv --enable-linker-build-id --with-ppl=no --with-cloog=no --enable-checking=release --enable-cheaders=c_global --without-isl --with-gxx-include-dir=/not/exist/usr/include/c++/8.2.0 --with-sysroot=/not/exist --with-build-sysroot=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot --without-long-double-128 libgcc_cv_powerpc_float128=no --enable-poison-system-directories --with-system-zlib --disable-nls --enable-initfini-array --enable-__cxa_atexit]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/]
+  ignore line: [LIBRARY_PATH=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/]
+  ignore line: [COLLECT_GCC_OPTIONS='--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot' '-O2' '-D' 'MT2735' '-O2' '-D' 'MT2735' '-v' '-o' 'cmTC_45331' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/collect2 -plugin /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/liblto_plugin.so -plugin-opt=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccK4VdUp.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot --build-id --eh-frame-hdr --hash-style=sysv -dynamic-linker /lib64/ld-linux-aarch64.so.1 -X -EL -maarch64linux -o cmTC_45331 /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crt1.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crti.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtbegin.o -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64 CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtend.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crtn.o]
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccK4VdUp.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=sysv] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-aarch64.so.1] ==> ignore
+    arg [-X] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-maarch64linux] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_45331] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crt1.o] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crti.o] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtbegin.o] ==> ignore
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0]
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc]
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64]
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0]
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64]
+    arg [CMakeFiles/cmTC_45331.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtend.o] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crtn.o] ==> ignore
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0]
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/aarch64-poky-linux/gcc]
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64]
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0]
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0;/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/aarch64-poky-linux/gcc;/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64;/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0;/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5b438/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5b438.dir/build.make CMakeFiles/cmTC_5b438.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_5b438.dir/feature_tests.c.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -std=c11 -o CMakeFiles/cmTC_5b438.dir/feature_tests.c.o   -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/feature_tests.c
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_5b438
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5b438.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_5b438.dir/feature_tests.c.o  -o cmTC_5b438 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c50b6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c50b6.dir/build.make CMakeFiles/cmTC_c50b6.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_c50b6.dir/feature_tests.c.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -std=c99 -o CMakeFiles/cmTC_c50b6.dir/feature_tests.c.o   -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/feature_tests.c
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_c50b6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c50b6.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_c50b6.dir/feature_tests.c.o  -o cmTC_c50b6 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1c44c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1c44c.dir/build.make CMakeFiles/cmTC_1c44c.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building C object CMakeFiles/cmTC_1c44c.dir/feature_tests.c.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -std=c90 -o CMakeFiles/cmTC_1c44c.dir/feature_tests.c.o   -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/feature_tests.c
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking C executable cmTC_1c44c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c44c.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_1c44c.dir/feature_tests.c.o  -o cmTC_1c44c 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3b9bf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3b9bf.dir/build.make CMakeFiles/cmTC_3b9bf.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_3b9bf.dir/testCXXCompiler.cxx.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++    -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -o CMakeFiles/cmTC_3b9bf.dir/testCXXCompiler.cxx.o -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_3b9bf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3b9bf.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++  -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_3b9bf.dir/testCXXCompiler.cxx.o  -o cmTC_3b9bf 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1c5ac/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1c5ac.dir/build.make CMakeFiles/cmTC_1c5ac.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++    -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -o CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_1c5ac
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c5ac.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++  -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot -v CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_1c5ac 
+Using built-in specs.
+COLLECT_GCC=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++
+COLLECT_LTO_WRAPPER=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper
+Target: aarch64-poky-linux
+Configured with: ../../../../../../work-shared/gcc-8.2.0-r0/gcc-8.2.0/configure --build=x86_64-linux --host=x86_64-linux --target=aarch64-poky-linux --prefix=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr --exec_prefix=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr --bindir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/bin/aarch64-poky-linux --sbindir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/bin/aarch64-poky-linux --libexecdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/libexec/aarch64-poky-linux --datadir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share --sysconfdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/etc --sharedstatedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/com --localstatedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/var --libdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/lib/aarch64-poky-linux --includedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/include --oldincludedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/include --infodir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share/info --mandir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share/man --disable-silent-rules --disable-dependency-tracking --with-libtool-sysroot=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native --enable-clocale=generic --with-gnu-ld --enable-shared --enable-languages=c,c++ --enable-threads=posix --disable-multilib --enable-c99 --enable-long-long --enable-symvers=gnu --enable-libstdcxx-pch --program-prefix=aarch64-poky-linux- --without-local-prefix --enable-lto --disable-libssp --enable-libitm --disable-bootstrap --disable-libmudflap --with-system-zlib --with-linker-hash-style=sysv --enable-linker-build-id --with-ppl=no --with-cloog=no --enable-checking=release --enable-cheaders=c_global --without-isl --with-gxx-include-dir=/not/exist/usr/include/c++/8.2.0 --with-sysroot=/not/exist --with-build-sysroot=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot --without-long-double-128 libgcc_cv_powerpc_float128=no --enable-poison-system-directories --with-system-zlib --disable-nls --enable-initfini-array --enable-__cxa_atexit
+Thread model: posix
+gcc version 8.2.0 (GCC) 
+COMPILER_PATH=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/
+LIBRARY_PATH=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/
+COLLECT_GCC_OPTIONS='--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot' '-O2' '-D' 'MT2735' '-O2' '-D' 'MT2735' '-v' '-o' 'cmTC_1c5ac' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
+ /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/collect2 -plugin /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/liblto_plugin.so -plugin-opt=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccMDQpOT.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot --build-id --eh-frame-hdr --hash-style=sysv -dynamic-linker /lib64/ld-linux-aarch64.so.1 -X -EL -maarch64linux -o cmTC_1c5ac /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crt1.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crti.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtbegin.o -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64 CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtend.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crtn.o
+COLLECT_GCC_OPTIONS='--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot' '-O2' '-D' 'MT2735' '-O2' '-D' 'MT2735' '-v' '-o' 'cmTC_1c5ac' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_1c5ac/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_1c5ac.dir/build.make CMakeFiles/cmTC_1c5ac.dir/build]
+  ignore line: [make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”]
+  ignore line: [/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Building CXX object CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++    -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -o CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [Linking CXX executable cmTC_1c5ac]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c5ac.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)]
+  ignore line: [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++  -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot -v CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_1c5ac ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper]
+  ignore line: [Target: aarch64-poky-linux]
+  ignore line: [Configured with: ../../../../../../work-shared/gcc-8.2.0-r0/gcc-8.2.0/configure --build=x86_64-linux --host=x86_64-linux --target=aarch64-poky-linux --prefix=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr --exec_prefix=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr --bindir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/bin/aarch64-poky-linux --sbindir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/bin/aarch64-poky-linux --libexecdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/libexec/aarch64-poky-linux --datadir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share --sysconfdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/etc --sharedstatedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/com --localstatedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/var --libdir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/lib/aarch64-poky-linux --includedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/include --oldincludedir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/include --infodir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share/info --mandir=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native/usr/share/man --disable-silent-rules --disable-dependency-tracking --with-libtool-sysroot=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot-native --enable-clocale=generic --with-gnu-ld --enable-shared --enable-languages=c,c++ --enable-threads=posix --disable-multilib --enable-c99 --enable-long-long --enable-symvers=gnu --enable-libstdcxx-pch --program-prefix=aarch64-poky-linux- --without-local-prefix --enable-lto --disable-libssp --enable-libitm --disable-bootstrap --disable-libmudflap --with-system-zlib --with-linker-hash-style=sysv --enable-linker-build-id --with-ppl=no --with-cloog=no --enable-checking=release --enable-cheaders=c_global --without-isl --with-gxx-include-dir=/not/exist/usr/include/c++/8.2.0 --with-sysroot=/not/exist --with-build-sysroot=/fibocom/zhangzhang/SYSTEM_DEV/fibocom-mtk/baseline/mtk2735/ap/build/tmp/work/x86_64-linux/gcc-cross-aarch64/8.2.0-r0/recipe-sysroot --without-long-double-128 libgcc_cv_powerpc_float128=no --enable-poison-system-directories --with-system-zlib --disable-nls --enable-initfini-array --enable-__cxa_atexit]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 8.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/]
+  ignore line: [LIBRARY_PATH=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/:/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/]
+  ignore line: [COLLECT_GCC_OPTIONS='--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot' '-O2' '-D' 'MT2735' '-O2' '-D' 'MT2735' '-v' '-o' 'cmTC_1c5ac' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/collect2 -plugin /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/liblto_plugin.so -plugin-opt=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccMDQpOT.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot --build-id --eh-frame-hdr --hash-style=sysv -dynamic-linker /lib64/ld-linux-aarch64.so.1 -X -EL -maarch64linux -o cmTC_1c5ac /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crt1.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crti.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtbegin.o -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0 -L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64 CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtend.o /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crtn.o]
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../libexec/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccMDQpOT.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=sysv] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-aarch64.so.1] ==> ignore
+    arg [-X] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-maarch64linux] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_1c5ac] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crt1.o] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crti.o] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtbegin.o] ==> ignore
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0]
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc]
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64]
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0]
+    arg [-L/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64] ==> dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64]
+    arg [CMakeFiles/cmTC_1c5ac.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0/crtend.o] ==> ignore
+    arg [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/crtn.o] ==> ignore
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0]
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/../../lib/aarch64-poky-linux/gcc] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/aarch64-poky-linux/gcc]
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64]
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0]
+  collapse library dir [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64] ==> [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit dirs: [/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/aarch64-poky-linux/gcc/aarch64-poky-linux/8.2.0;/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/aarch64-poky-linux/gcc;/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/lib64;/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64/aarch64-poky-linux/8.2.0;/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot/usr/lib64]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++1z] compiler features compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e855b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e855b.dir/build.make CMakeFiles/cmTC_e855b.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_e855b.dir/feature_tests.cxx.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++    -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -std=c++1z -o CMakeFiles/cmTC_e855b.dir/feature_tests.cxx.o -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/feature_tests.cxx
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_e855b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e855b.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++  -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_e855b.dir/feature_tests.cxx.o  -o cmTC_e855b 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_17d77/fast"
+/usr/bin/make -f CMakeFiles/cmTC_17d77.dir/build.make CMakeFiles/cmTC_17d77.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_17d77.dir/feature_tests.cxx.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++    -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -std=c++14 -o CMakeFiles/cmTC_17d77.dir/feature_tests.cxx.o -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/feature_tests.cxx
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_17d77
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17d77.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++  -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_17d77.dir/feature_tests.cxx.o  -o cmTC_17d77 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_963f4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_963f4.dir/build.make CMakeFiles/cmTC_963f4.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_963f4.dir/feature_tests.cxx.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++    -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -std=c++11 -o CMakeFiles/cmTC_963f4.dir/feature_tests.cxx.o -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/feature_tests.cxx
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_963f4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_963f4.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++  -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_963f4.dir/feature_tests.cxx.o  -o cmTC_963f4 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f4d9c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f4d9c.dir/build.make CMakeFiles/cmTC_f4d9c.dir/build
+make[1]: 进入目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Building CXX object CMakeFiles/cmTC_f4d9c.dir/feature_tests.cxx.o
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++    -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot    -std=c++98 -o CMakeFiles/cmTC_f4d9c.dir/feature_tests.cxx.o -c /home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/feature_tests.cxx
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+Linking CXX executable cmTC_f4d9c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f4d9c.dir/link.txt --verbose=1
+/usr/bin/cmake: /home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/toolchain/usr/bin/aarch64-poky-linux/aarch64-poky-linux-g++  -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot   -O2 -DMT2735 --sysroot=/home/toolchain/WHDF5G-MKT/fibo-crosstool/gcc-cross-aarch64-8.2.0/sysroot  CMakeFiles/cmTC_f4d9c.dir/feature_tests.cxx.o  -o cmTC_f4d9c 
+make[1]: 离开目录“/home/li_jk/ljkCode/01-Master_IDS/V1.2.7/MASTER_IDS/third_part/spdlog/build/CMakeFiles/CMakeTmp”
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:0cxx_alias_templates
+    Feature record: CXX_FEATURE:0cxx_alignas
+    Feature record: CXX_FEATURE:0cxx_alignof
+    Feature record: CXX_FEATURE:0cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:0cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:0cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:0cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:0cxx_default_function_template_args
+    Feature record: CXX_FEATURE:0cxx_defaulted_functions
+    Feature record: CXX_FEATURE:0cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:0cxx_delegating_constructors
+    Feature record: CXX_FEATURE:0cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:0cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:0cxx_explicit_conversions
+    Feature record: CXX_FEATURE:0cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:0cxx_extern_templates
+    Feature record: CXX_FEATURE:0cxx_final
+    Feature record: CXX_FEATURE:0cxx_func_identifier
+    Feature record: CXX_FEATURE:0cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:0cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:0cxx_inline_namespaces
+    Feature record: CXX_FEATURE:0cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:0cxx_local_type_template_args
+    Feature record: CXX_FEATURE:0cxx_long_long_type
+    Feature record: CXX_FEATURE:0cxx_noexcept
+    Feature record: CXX_FEATURE:0cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:0cxx_nullptr
+    Feature record: CXX_FEATURE:0cxx_override
+    Feature record: CXX_FEATURE:0cxx_range_for
+    Feature record: CXX_FEATURE:0cxx_raw_string_literals
+    Feature record: CXX_FEATURE:0cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:0cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:0cxx_rvalue_references
+    Feature record: CXX_FEATURE:0cxx_sizeof_member
+    Feature record: CXX_FEATURE:0cxx_static_assert
+    Feature record: CXX_FEATURE:0cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_trailing_return_types
+    Feature record: CXX_FEATURE:0cxx_unicode_literals
+    Feature record: CXX_FEATURE:0cxx_uniform_initialization
+    Feature record: CXX_FEATURE:0cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:0cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:0cxx_variadic_macros
+    Feature record: CXX_FEATURE:0cxx_variadic_templates
