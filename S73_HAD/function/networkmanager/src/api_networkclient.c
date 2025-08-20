@@ -12,7 +12,7 @@
 #include "ConfigConstData.h"
 #include "DispatchManager.h"
 #include "data/ConfigConstData.h"
-#include "mysqlite.h"
+
 #include "ThreadPool.h"
 #include "curlWrapper.h"
 #include <curl/curl.h>
@@ -233,7 +233,7 @@ void stop(void){
  * 成功，返回false表明当前网络忙，稍后再试。
  */
 void startReRequestFromDB(void){
-    threadpool_add(producerPtr,produceAllRequestFromDb,(void *)NULL);      
+   // threadpool_add(producerPtr,produceAllRequestFromDb,(void *)NULL);      
 }
 /*
  * function:registernet

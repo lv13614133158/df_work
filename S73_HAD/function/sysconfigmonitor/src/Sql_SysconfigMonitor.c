@@ -9,7 +9,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "Sql_SysconfigMonitor.h"
-#if MODULE_CONFIGMONITOR
+#if 0
 /**
  * @name:   const val
  * @Author: qihoo360

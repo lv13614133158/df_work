@@ -118,7 +118,6 @@ aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/clock 							SOURCE
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/crypto 						SOURCE_COMMON_CRYPTO)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/timer 							SOURCE_COMMON_TIMER)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/util 							SOURCE_COMMON_UTIL)
-#aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/sqlite		 					SOURCE_COMMON_SQLITE)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/networkmanager/src 	    				SOURCE_NETWORKMANAGER)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/networkmanager/src/aes 					SOURCE_NETWORKMANAGER_AES)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/networkmanager/src/data 					SOURCE_NETWORKMANAGER_DATA)
@@ -148,7 +147,6 @@ add_executable(IDPS
 		${SOURCE_COMMON_CRYPTO}
 		${SOURCE_COMMON_TIMER}
 		${SOURCE_COMMON_UTIL}
-	#	${SOURCE_COMMON_SQLITE}
 		${SOURCE_NETWORKMANAGER}
 		${SOURCE_NETWORKMANAGER_AES}
 		${SOURCE_NETWORKMANAGER_DATA}
