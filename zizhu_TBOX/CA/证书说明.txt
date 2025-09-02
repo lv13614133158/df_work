@@ -1,0 +1,44 @@
+certs 目录下放工程使用的证书
+
+1、证书要求：
+标准：RFC5280 X.509 V3 数字证书标准 
+编码方式：PEM编码，常见 .pem
+证书的签名方式：sha256 with RSA2048
+证书承载的公钥：RSA2048
+
+
+2、客户端证书、私钥
+私钥：car.360.net.key
+证书：car.360.net.crt
+
+3、证书链
+证书链 ：    ca.chain.crt
+
+根证书 ：    root.crt
+中间证书 ：   cross.crt
+发行者证书 ：  issuer.crt
+
+4、使用方式
+单向认证：
+仅证书链，
+指定 证书路径+名称
+（1） 单个证书时，root.crt认证成功，
+（2） 证书链时，当证书链里必须有root.crt或者cross.crt，issuer.crt才认证成功，证书链为上面三个证书拼接，
+（3） 证书拼接顺序无所谓都可以，但是在为win和lin打开是显示第一个证书信息
+
+
+
+双向认证：
+客户端证书私钥+证书链
+
+
+5、证书代码位置
+（1）https
+function/networkmanager/src/data/curlWrapper.c
+CURLOPT_CAINFO 指定证书 路径+名称
+//curl_easy_setopt(curlget, CURLOPT_CAPATH,"/mnt/sdcard/idps/CA/root.crt"); 
+curl_easy_setopt(curlget, CURLOPT_CAINFO,"/mnt/sdcard/idps/CA/root.crt"); 
+
+（2）wws
+function/websocket/src/websocketclient.c
+info.client_ssl_ca_filepath = "/mnt/sdcard/idps/CA/root.crt";//如果服务器有CA证书则需要这行代码

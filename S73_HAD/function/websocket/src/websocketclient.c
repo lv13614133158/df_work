@@ -195,7 +195,14 @@ static void wbsClient_localWebsocketSend(long long lseqnumber, char *data, bool 
 				if (item_longitude != NULL) {
 					cJSON_SetIntValue(item_longitude, 0); 
 				}
+				if(item_body->valuestring != NULL)
+				{
+					free(item_body->valuestring);
+					item_body->valuestring = NULL;
+				}
 				item_body->valuestring = cJSON_PrintUnformatted(item_new_body);
+				cJSON_Delete(item_new_body); 
+				bodyString=NULL;
 			}
 		}
 		
