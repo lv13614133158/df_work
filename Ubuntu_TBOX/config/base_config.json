@@ -1,9 +1,9 @@
 {
  "commonModule":{
-                "dataBaseDir":"/oemdata/idps/cache",
+                "dataBaseDir":"../idps/cache",
                 "databaseName":"idps.db",
-                "dataspdlog":"/dfdata/log/app/",
-                "certsPath":"/oemdata/idps/conf/CA/"
+                "dataspdlog":"../log/",
+                "certsPath":"/home/nvidia/df/df_work/CA/s73a2/"
         },
         "networkManager":{
                 "heartBeat":60,
@@ -11,7 +11,7 @@
                 "readDbLoop":60,
                 "manageKeyStore":1,
                 "server":"https://vsocidps-uat.dfiov.com.cn",
-                "snPath":"/oemdata/idps/cache",
+                "snPath":"../idps/cache",
                 "imeiNumber":"idpslinux",
                 "channelId":"T00001",
                 "equipmentType":"t-box",
@@ -27,7 +27,7 @@
                 "sslshutdown":1,
                 "intervalheart":60,
                 "intervalsql":10,
-                "rpcconfigpath":"/oemapp/etc/idps/config/policy_config.json",
+                "rpcconfigpath":"../config/policy_config.json",
                 "intervalkey":2
         },
         "version":{

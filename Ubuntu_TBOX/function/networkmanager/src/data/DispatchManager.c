@@ -1,7 +1,7 @@
 
 #include "DispatchManager.h"
 #include "Tool.h"
-#include "mysqlite.h"
+//#include "mysqlite.h"
 #include "data/dataToProtobufUtils.h"
 #include "ThreadPool.h"
 #include "ConfigConstData.h"
@@ -9,7 +9,7 @@
 #include "AesManager.h"
 #include "FileWrapper.h"
 #include "httpResponseData.h"
-#include "mysqlite.h"
+//#include "mysqlite.h"
 #include "base64.h"
 #include "CJsonUtils.h"
 #include <stdlib.h>
@@ -61,22 +61,22 @@ free(encyptRequestWrapperdata); \
  ** \时 间    2020年7月3日
  ******************************************************************************/
 void Restart_UpdateTable(void){
-    int columnCount = -1;
-    char sql[128] = {0};
-    long long id       =   0;
-    sqlite3_stmt *stmt = NULL;
-    if ((stmt = query("SELECT * FROM base_upload_queue WHERE status IS NULL OR status == 1")) == NULL){
-       // sqliteUnLock();
-        return;
-    }
-    while(next(stmt))
-    {
-        id = getLong(stmt,getColumnIndex(stmt,"id"));
-        memset(sql,0,128);
-        sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, id);
-        sqlitenolockpro(sql); 
-    }
-    finalize(stmt);
+    // int columnCount = -1;
+    // char sql[128] = {0};
+    // long long id       =   0;
+    // sqlite3_stmt *stmt = NULL;
+    // if ((stmt = query("SELECT * FROM base_upload_queue WHERE status IS NULL OR status == 1")) == NULL){
+    //    // sqliteUnLock();
+    //     return;
+    // }
+    // while(next(stmt))
+    // {
+    //     id = getLong(stmt,getColumnIndex(stmt,"id"));
+    //     memset(sql,0,128);
+    //     sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, id);
+    //     sqlitenolockpro(sql); 
+    // }
+    // finalize(stmt);
 }
 /**
  ******************************************************************************
@@ -87,109 +87,109 @@ void Restart_UpdateTable(void){
  ** \时 间    2020年7月3日
  ******************************************************************************/
 void produceAllRequestFromDb(void *nullarg,void *curl){
-	int columnCount = -1;
-    char sql[128] = {0};
-    sqlite3_stmt *stmt = NULL;
-    if ((stmt = query("SELECT * FROM base_upload_queue WHERE status IS NULL OR status != 1")) == NULL){
-        sqliteUnLock();
-        return;
-    }
-    while(next(stmt))
-    {
-        requestWrapper_t *data = (requestWrapper_t *)malloc(sizeof(requestWrapper_t));
-        if(data == NULL) 
-            goto exit;
-        memset(data,0,sizeof(requestWrapper_t));
-        data->id = getLong(stmt,getColumnIndex(stmt,"id"));
-        data->index = getInt(stmt,getColumnIndex(stmt,"priority"));
-        const char* url = getString(stmt,getColumnIndex(stmt,"url"));
-        if(url == NULL){
-            free(data);
-            continue;
-        }
-        if((data->url = malloc(strlen(url)+1)) == NULL) {
-            free(data);
-            goto exit;
-        }
-        memset(data->url,0,strlen(url)+1);
-        sprintf(data->url,"%s",url);
-        if (getInt(stmt,getColumnIndex(stmt,"with_attachment")) <= 0) {
-            const char* datasql = getString(stmt,getColumnIndex(stmt,"data"));
-            int dataLen = getInt(stmt,getColumnIndex(stmt,"data_len"));
-            size_t data_length;
-            char* decode64_data = (char*)base64_decode((unsigned char*)datasql, dataLen, &data_length);
-            if((data->data = malloc(data_length+2)) == NULL)
-            {
-                free(data->url);
-                free(decode64_data);
-                free(data);
-                goto exit;
-            }
-            memset(data->data,0,data_length+2);
-	        memcpy(data->data,decode64_data,data_length);
-	        data->datalen = data_length;
-            free(decode64_data);
-            data->eventWrapper=NULL;
-            data->withAttachment=false;
-        }else{
-            const char* event_policy_id = getString(stmt,getColumnIndex(stmt,"event_policy_id"));
-            const char* event_data = getString(stmt,getColumnIndex(stmt,"event_data"));
-            const char* event_path = getString(stmt,getColumnIndex(stmt,"event_path"));
-            const char* event_ticket_id = getString(stmt,getColumnIndex(stmt,"event_ticket_data"));
-            data->withAttachment=true;
-            if((data->eventWrapper = (eventWrapper_t*)malloc(sizeof(eventWrapper_t))) == NULL){
-                free(data->url);
-                free(data);
-                goto exit;
-            }
-            memset(data->eventWrapper,0,sizeof(eventWrapper_t));
-            if((data->eventWrapper->policy_id = (char*)malloc(strlen(event_policy_id))) == NULL){
-                free(data->eventWrapper);
-                free(data->url);
-                free(data);
-                goto exit;
-            }
-            sprintf(data->eventWrapper->policy_id,"%s",event_policy_id);
-            if((data->eventWrapper->data = (char*)malloc(strlen(event_data))) == NULL){
-                free(data->eventWrapper->policy_id);
-                free(data->eventWrapper);
-                free(data->url);
-                free(data);
-                goto exit;
-            }
-            sprintf(data->eventWrapper->data,"%s",event_data);
-            if((data->eventWrapper->path = (char*)malloc(strlen(event_path))) == NULL){
-                free(data->eventWrapper->data);
-                free(data->eventWrapper->policy_id);
-                free(data->eventWrapper);
-                free(data->url);
-                free(data);
-                goto exit;
-            }
-            sprintf(data->eventWrapper->path,"%s",event_path);
-            if((data->eventWrapper->ticket_id = (char*)malloc(strlen((event_ticket_id ? event_ticket_id : "")))) == NULL){
-                free(data->eventWrapper->path);
-                free(data->eventWrapper->data);
-                free(data->eventWrapper->policy_id);
-                free(data->eventWrapper);
-                free(data->url);
-                free(data);
-                goto exit;
-            }
-            sprintf(data->eventWrapper->ticket_id,"%s",(event_ticket_id ? event_ticket_id : ""));
-        }
-        data->headers=NULL;
-       if(true == threadpool_add(producerPtr,consumeRequest,(void *)data)){
-           memset(sql,0,128);
-           sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 1, data->id);
-           sqlitenolockpro(sql);
-        }
-        else{//insert fail
-            freerequestWrapper_t(data);
-        }
-    }
-exit:
-    finalize(stmt);
+// 	int columnCount = -1;
+//     char sql[128] = {0};
+//     sqlite3_stmt *stmt = NULL;
+//     if ((stmt = query("SELECT * FROM base_upload_queue WHERE status IS NULL OR status != 1")) == NULL){
+//         sqliteUnLock();
+//         return;
+//     }
+//     while(next(stmt))
+//     {
+//         requestWrapper_t *data = (requestWrapper_t *)malloc(sizeof(requestWrapper_t));
+//         if(data == NULL) 
+//             goto exit;
+//         memset(data,0,sizeof(requestWrapper_t));
+//         data->id = getLong(stmt,getColumnIndex(stmt,"id"));
+//         data->index = getInt(stmt,getColumnIndex(stmt,"priority"));
+//         const char* url = getString(stmt,getColumnIndex(stmt,"url"));
+//         if(url == NULL){
+//             free(data);
+//             continue;
+//         }
+//         if((data->url = malloc(strlen(url)+1)) == NULL) {
+//             free(data);
+//             goto exit;
+//         }
+//         memset(data->url,0,strlen(url)+1);
+//         sprintf(data->url,"%s",url);
+//         if (getInt(stmt,getColumnIndex(stmt,"with_attachment")) <= 0) {
+//             const char* datasql = getString(stmt,getColumnIndex(stmt,"data"));
+//             int dataLen = getInt(stmt,getColumnIndex(stmt,"data_len"));
+//             size_t data_length;
+//             char* decode64_data = (char*)base64_decode((unsigned char*)datasql, dataLen, &data_length);
+//             if((data->data = malloc(data_length+2)) == NULL)
+//             {
+//                 free(data->url);
+//                 free(decode64_data);
+//                 free(data);
+//                 goto exit;
+//             }
+//             memset(data->data,0,data_length+2);
+// 	        memcpy(data->data,decode64_data,data_length);
+// 	        data->datalen = data_length;
+//             free(decode64_data);
+//             data->eventWrapper=NULL;
+//             data->withAttachment=false;
+//         }else{
+//             const char* event_policy_id = getString(stmt,getColumnIndex(stmt,"event_policy_id"));
+//             const char* event_data = getString(stmt,getColumnIndex(stmt,"event_data"));
+//             const char* event_path = getString(stmt,getColumnIndex(stmt,"event_path"));
+//             const char* event_ticket_id = getString(stmt,getColumnIndex(stmt,"event_ticket_data"));
+//             data->withAttachment=true;
+//             if((data->eventWrapper = (eventWrapper_t*)malloc(sizeof(eventWrapper_t))) == NULL){
+//                 free(data->url);
+//                 free(data);
+//                 goto exit;
+//             }
+//             memset(data->eventWrapper,0,sizeof(eventWrapper_t));
+//             if((data->eventWrapper->policy_id = (char*)malloc(strlen(event_policy_id))) == NULL){
+//                 free(data->eventWrapper);
+//                 free(data->url);
+//                 free(data);
+//                 goto exit;
+//             }
+//             sprintf(data->eventWrapper->policy_id,"%s",event_policy_id);
+//             if((data->eventWrapper->data = (char*)malloc(strlen(event_data))) == NULL){
+//                 free(data->eventWrapper->policy_id);
+//                 free(data->eventWrapper);
+//                 free(data->url);
+//                 free(data);
+//                 goto exit;
+//             }
+//             sprintf(data->eventWrapper->data,"%s",event_data);
+//             if((data->eventWrapper->path = (char*)malloc(strlen(event_path))) == NULL){
+//                 free(data->eventWrapper->data);
+//                 free(data->eventWrapper->policy_id);
+//                 free(data->eventWrapper);
+//                 free(data->url);
+//                 free(data);
+//                 goto exit;
+//             }
+//             sprintf(data->eventWrapper->path,"%s",event_path);
+//             if((data->eventWrapper->ticket_id = (char*)malloc(strlen((event_ticket_id ? event_ticket_id : "")))) == NULL){
+//                 free(data->eventWrapper->path);
+//                 free(data->eventWrapper->data);
+//                 free(data->eventWrapper->policy_id);
+//                 free(data->eventWrapper);
+//                 free(data->url);
+//                 free(data);
+//                 goto exit;
+//             }
+//             sprintf(data->eventWrapper->ticket_id,"%s",(event_ticket_id ? event_ticket_id : ""));
+//         }
+//         data->headers=NULL;
+//        if(true == threadpool_add(producerPtr,consumeRequest,(void *)data)){
+//            memset(sql,0,128);
+//            sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 1, data->id);
+//            sqlitenolockpro(sql);
+//         }
+//         else{//insert fail
+//             freerequestWrapper_t(data);
+//         }
+//     }
+// exit:
+//     finalize(stmt);
 }
 /**
  * date:20200119 17:18
@@ -242,7 +242,7 @@ void produceEventDataRequestAfterUploadAttachment(const char *policy_id, const c
     if(false == threadpool_add(producerPtr,consumeRequest,(void *)data)){
         char sql[128] = {0};
         sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, data->id);
-        update(sql);
+        //update(sql);
         freerequestWrapper_t(data);
     }
 }
@@ -305,7 +305,7 @@ void produceGatherDataRequest(const char *url, const char *body, int priority,vo
     if(threadpool_add(producerPtr,consumeRequest,(void *)data) == false){//
         char sql[128] = {0};
         sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, data->id);
-        update(sql);
+        //update(sql);
         freerequestWrapper_t(data);
     }
 }
@@ -363,7 +363,7 @@ void produceEventDataRequest(const char *policy_id, const char *datacontent, con
     if(false == threadpool_add(producerPtr,consumeRequest,(void *)data)){
         char sql[128] = {0};
         sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, data->id);
-        update(sql);
+        //update(sql);
         freerequestWrapper_t(data);
     }
 }
@@ -450,7 +450,7 @@ void produceEventDataRequestWithAttachment(const char *policy_id, const char *da
          
         char sql[128] = {0};
         sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, data->id);
-        update(sql);
+        //update(sql);
         
         freerequestWrapper_t(data);
     } 
@@ -511,7 +511,7 @@ void produceHeartbeatRequest(const char *url,void* _curl){
     if(false == threadpool_add(producerPtr,consumeRequest,(void *)data)){
         memset(sql,0,128);
         sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, data->id);
-        update(sql);
+        //update(sql);
         freerequestWrapper_t(data);
     }
 }
@@ -534,13 +534,13 @@ void consumeToUploadFile(requestWrapper_t *datacontent,void* _curl){
     if(httpResponseData->networkError){//上传网络错误
         char sql[256] = {0};
         snprintf(sql,127, "UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, datacontent->id);
-        update(sql);
+        //update(sql);
         freeRequestMemory(httpResponseData);
         return;
     }
     char sql[128] = {0};
     sprintf(sql,"DELETE FROM base_upload_queue WHERE id = %lld", datacontent->id);
-    del(sql); 
+    //del(sql); 
     if( httpResponseData->status_code == 0) {//上传文件成功
         //char* attachment_id = getinfofromCJsonstr(httpResponseData->responseData,"file_id");   
         char attachment_id[128] = {0};
@@ -584,11 +584,11 @@ void consumeRequest(void *pdata,void *curl)
         if(httpResponseData){
             if(httpResponseData->status_code == 0){//删除数据库
 	    	    sprintf(sql,"DELETE FROM base_upload_queue WHERE id = %lld", data->id);
-                del(sql);
+                //del(sql);
             }
             else{//更新request的状态，后续定时到后再取出放到队列重新发起网络请求
                 sprintf(sql,"UPDATE base_upload_queue SET status = %d WHERE id = %lld", 0, data->id);
-                update(sql);
+                //update(sql);
             }
             freeResponseDataByDecyptMemory(httpResponseData);
         }

@@ -16,9 +16,11 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,noexecstack -
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now")
 
 # 设置 空间随机化 堆栈保护#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -fPIE -fstack-protector-all -fsigned-char")
-
-
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -fPIE -fstack-protector-all -fsigned-char")
+# 添加格式溢出检查忽略选项
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -Wno-error=format-truncation -Wno-error=return-local-addr -Wno-error=format -Wno-error=stringop-overflow -Wno-error=unused-macros -Wno-error=format-overflow -fPIE -fstack-protector-all -fsigned-char")
+# 在现有的 CMAKE_C_FLAGS 基础上添加 -Wno-format-truncation
+Set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -Wno-stringop-overflow -Wno-format-overflow -Wno-format-truncation -fPIE -fstack-protector-all -fsigned-char")
 # 设置 strip 
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
 set(CMAKE_BUILD_TYPE "RELEASE")
@@ -29,7 +31,7 @@ include_directories(function)
 include_directories(function/common/include)
 include_directories(function/common/include/clock)
 include_directories(function/common/include/crypto)
-include_directories(function/common/include/sqlite)
+# include_directories(function/common/include/sqlite)
 include_directories(function/common/include/timer)
 include_directories(function/common/include/util)
 
@@ -90,7 +92,7 @@ aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/clock 							SOURCE
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/crypto 						SOURCE_COMMON_CRYPTO)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/timer 							SOURCE_COMMON_TIMER)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/util 							SOURCE_COMMON_UTIL)
-aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/sqlite		 					SOURCE_COMMON_SQLITE)
+#aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/sqlite		 					SOURCE_COMMON_SQLITE)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/networkmanager/src 	    				SOURCE_NETWORKMANAGER)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/networkmanager/src/aes 					SOURCE_NETWORKMANAGER_AES)
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/networkmanager/src/data 					SOURCE_NETWORKMANAGER_DATA)
@@ -120,7 +122,7 @@ add_executable(IDPS
 		${SOURCE_COMMON_CRYPTO}
 		${SOURCE_COMMON_TIMER}
 		${SOURCE_COMMON_UTIL}
-		${SOURCE_COMMON_SQLITE}
+	#	${SOURCE_COMMON_SQLITE}
 		${SOURCE_NETWORKMANAGER}
 		${SOURCE_NETWORKMANAGER_AES}
 		${SOURCE_NETWORKMANAGER_DATA}

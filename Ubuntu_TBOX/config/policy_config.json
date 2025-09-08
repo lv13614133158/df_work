@@ -35,7 +35,7 @@
 							"event_level":	3,
 							"md5":	"",
 							"watch_event":	774,
-							"watch_path":	"/home/nvidia/git/df/Ubuntu_TBOX/output/bin"
+							"watch_path":	"/home/nvidia/git/df_work/shell"
 						}]
 				},
 				"desc":	"文件监控探针",

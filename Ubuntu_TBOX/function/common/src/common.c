@@ -6,7 +6,7 @@
  * @LastEditors: Please set LastEditors
  * @LastEditTime: 2021-08-02 21:41:27
  */ 
-#include "mysqlite.h"
+//#include "mysqlite.h"
 #include "common.h"
  /**
   * @name:   clockset clockobj
@@ -67,26 +67,26 @@ timerStruct  timerObj = {
   * @param 
   * @return: 
   */
- sqliteMedthod sqliteMedthodobj = {
-   initDataBase,
-   createTable, 
-   add,
-   del,
-   update,
-   query,
-   finalize,
-   getColumnCount,
-   getColumnIndex,
-   getCount,
-   getInt,
-   getString,
-   getLong,
-   next,
-   reset,
-   sqlitenolockpro, 
-   sqliteLock,
-   sqliteUnLock,
-   queryNoLock,
-   finalizeNoLock,
- };
+//  sqliteMedthod sqliteMedthodobj = {
+//    initDataBase,
+//    createTable, 
+//    add,
+//    del,
+//    update,
+//    query,
+//    finalize,
+//    getColumnCount,
+//    getColumnIndex,
+//    getCount,
+//    getInt,
+//    getString,
+//    getLong,
+//    next,
+//    reset,
+//    sqlitenolockpro, 
+//    sqliteLock,
+//    sqliteUnLock,
+//    queryNoLock,
+//    finalizeNoLock,
+//  };
  

@@ -1,0 +1,3 @@
+/home/nvidia/df/df_work/idps_log/spdlog/build/CMakeFiles/spdlog.dir
+/home/nvidia/df/df_work/idps_log/spdlog/build/CMakeFiles/edit_cache.dir
+/home/nvidia/df/df_work/idps_log/spdlog/build/CMakeFiles/rebuild_cache.dir

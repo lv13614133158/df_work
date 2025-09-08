@@ -11,6 +11,10 @@ extern "C" {
 #include <sys/time.h>
 #include <dirent.h>
 
+#define _IDPS_CA "root_cert.pem"
+#define _IDPS_CRT "device_cert.pem"
+#define _IDPS_KEY "device_key.pem"
+
 // ... existing code ...
 // 配置文件目录位置设置
 #define POS_4  1

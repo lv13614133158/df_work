@@ -15,7 +15,7 @@ extern "C" {
 #include "util.h"
 #include "common.h"
 #include "idps_main.h"
-#include "mysqlite.h"
+//#include "mysqlite.h"
 
 #if MODULE_CONFIGMONITOR
 /**

@@ -11,7 +11,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-#include "mysqlite.h"
+//#include "mysqlite.h"
 #include "CommonTimer.h"
 #include "clocker.h"
 #include "MyCrypto.h"
@@ -86,29 +86,29 @@ extern hmac hmacobj;
  * @param 
  * @return: 
  */
-typedef struct _sqliteMedthod{
-    void (*initDataBase)(const char *);  
-    bool (*createTable)(const char*);
-    bool (*add)(const char*);
-    bool (*del)(const char*);
-    bool (*update)(const char*);
-    sqlite3_stmt *(*query)(const char*);
-    void (*finalize)(sqlite3_stmt*);
-    int (*getColumnCount)(sqlite3_stmt*);
-    int (*getColumnIndex)(sqlite3_stmt*,const char*);
-    int (*getCount)(sqlite3_stmt*);
-    int (*getInt)(sqlite3_stmt*,int);
-    const char* (*getString)(sqlite3_stmt*,int);
-    long long (*getLong)(sqlite3_stmt*,int);
-    bool (*next)(sqlite3_stmt*);
-    bool (*reset)(sqlite3_stmt*);
-    bool (*sqlitenolockpro)(const char *);
-    bool (*sqliteLock)();
-    void (*sqliteUnLock)();
-    sqlite3_stmt *(*queryNoLock)(const char *);
-    void (*finalizeNoLock)(sqlite3_stmt *);
-}sqliteMedthod;
-extern sqliteMedthod sqliteMedthodobj;
+// typedef struct _sqliteMedthod{
+//     void (*initDataBase)(const char *);  
+//     bool (*createTable)(const char*);
+//     bool (*add)(const char*);
+//     bool (*del)(const char*);
+//     bool (*update)(const char*);
+//     sqlite3_stmt *(*query)(const char*);
+//     void (*finalize)(sqlite3_stmt*);
+//     int (*getColumnCount)(sqlite3_stmt*);
+//     int (*getColumnIndex)(sqlite3_stmt*,const char*);
+//     int (*getCount)(sqlite3_stmt*);
+//     int (*getInt)(sqlite3_stmt*,int);
+//     const char* (*getString)(sqlite3_stmt*,int);
+//     long long (*getLong)(sqlite3_stmt*,int);
+//     bool (*next)(sqlite3_stmt*);
+//     bool (*reset)(sqlite3_stmt*);
+//     bool (*sqlitenolockpro)(const char *);
+//     bool (*sqliteLock)();
+//     void (*sqliteUnLock)();
+//     sqlite3_stmt *(*queryNoLock)(const char *);
+//     void (*finalizeNoLock)(sqlite3_stmt *);
+// }sqliteMedthod;
+// extern sqliteMedthod sqliteMedthodobj;
 #ifdef __cplusplus
 }  /* end of the 'extern "C"' block */
 #endif

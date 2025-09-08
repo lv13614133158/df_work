@@ -1,3 +1,0 @@
-/home/nvidia/git/df/Ubuntu_TBOX/third_part/spdlog/build/CMakeFiles/spdlog.dir
-/home/nvidia/git/df/Ubuntu_TBOX/third_part/spdlog/build/CMakeFiles/edit_cache.dir
-/home/nvidia/git/df/Ubuntu_TBOX/third_part/spdlog/build/CMakeFiles/rebuild_cache.dir

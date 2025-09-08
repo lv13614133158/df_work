@@ -20,7 +20,7 @@
  ** \作  者  
  ******************************************************************************/
 char mqttpath[128] = {0};
-static char caPath[128] = {0}, caInfo[128] = {0};
+static char caPath[128] = {0}, caInfo[128] = {0}, keyPath[128] = {0}, crtPath[128] = {0};
 static pthread_mutex_t gHandleProtect     = PTHREAD_MUTEX_INITIALIZER;
 static pthread_mutex_t gHandleProtectfile = PTHREAD_MUTEX_INITIALIZER;
 /**
@@ -72,11 +72,20 @@ static size_t headerFunctionCallback(void *contents, size_t size, size_t nmemb, 
 static void setCurlCApath(char *mqttpath)
 {
     memset(caPath, 0, strlen(caPath));
+    memset(keyPath, 0, strlen(keyPath));
+    memset(crtPath, 0, strlen(crtPath));
     memset(caInfo, 0, strlen(caInfo));
     memcpy(caPath, mqttpath, strlen(mqttpath));
+    memcpy(keyPath, mqttpath, strlen(mqttpath));
+    memcpy(crtPath, mqttpath, strlen(mqttpath));
     memcpy(caInfo, mqttpath, strlen(mqttpath));
-    strcat(caPath, "ca.pem");
-    strcat(caInfo, "ca.pem");
+    strcat(caPath, _IDPS_CA);
+    strcat(crtPath, _IDPS_CRT);
+    strcat(keyPath, _IDPS_KEY);
+    printf("%s\n", caPath);
+    printf("%s\n", crtPath);
+    printf("%s\n", keyPath);
+    strcat(caInfo, "rootcertclient.cer");
 }
 
 static void setCurlComopt(CURL *curlget)
@@ -97,67 +106,15 @@ static void setCurlComopt(CURL *curlget)
     int root_cert_len = 0;
     struct curl_blob blob;
 
-    if (get_pki_root_cert())
-    {
-        root_cert_len = strlen(get_pki_root_cert());
-        root_cert_buff = malloc(root_cert_len);
-        if (root_cert_buff)
-        {
-            memcpy(root_cert_buff, get_pki_root_cert(), root_cert_len);
-        }
-    }
+    curl_easy_setopt(curlget, CURLOPT_SSLCERTTYPE, "PEM");
 
-    if (get_pki_client_cert())
-    {
-        client_cert_len = strlen(get_pki_client_cert());
-        client_cert_buff = malloc(client_cert_len);
-        if (client_cert_buff)
-        {
-            memcpy(client_cert_buff, get_pki_client_cert(), client_cert_len);
-        }
-    }
+    curl_easy_setopt(curlget, CURLOPT_SSLCERT, crtPath);
 
-    if (get_pki_client_private_key())
-    {
-        client_private_key_len = strlen(get_pki_client_private_key());
-        client_private_key_buff = malloc(client_private_key_len);
-        if (client_private_key_buff)
-        {
-            memcpy(client_private_key_buff, get_pki_client_private_key(), client_private_key_len);
-        }
-    }
+    curl_easy_setopt(curlget, CURLOPT_SSLKEYTYPE, "PEM");
 
-    if (root_cert_buff)
-    {
-        blob.data = root_cert_buff;
-        blob.len = root_cert_len;
-        blob.flags = CURL_BLOB_COPY;
-        curl_easy_setopt(curlget, CURLOPT_CAINFO_BLOB, &blob);
-        free(root_cert_buff);
-        root_cert_buff = NULL;
-    }
-
-    if (client_cert_buff)
-    {
-        curl_easy_setopt(curlget, CURLOPT_SSLCERTTYPE, "PEM");
-        blob.data = client_cert_buff;
-        blob.len = client_cert_len;
-        blob.flags = CURL_BLOB_COPY;
-        curl_easy_setopt(curlget, CURLOPT_SSLCERT_BLOB, &blob);
-        free(client_cert_buff);
-        client_cert_buff = NULL;
-    }
-
-    if (client_private_key_buff)
-    {
-        curl_easy_setopt(curlget, CURLOPT_SSLKEYTYPE, "PEM");
-        blob.data = client_private_key_buff;
-        blob.len = client_private_key_len;
-        blob.flags = CURL_BLOB_COPY;
-        curl_easy_setopt(curlget, CURLOPT_SSLKEY_BLOB, &blob);
-        free(client_private_key_buff);
-        client_private_key_buff = NULL;
-    }
+    curl_easy_setopt(curlget, CURLOPT_SSLKEY, keyPath);
+ 
+    curl_easy_setopt(curlget, CURLOPT_CAINFO, caPath);
 }
 
 static void setGetRequestopt(CURL *curlget)

@@ -12,7 +12,7 @@
 #include "ConfigConstData.h"
 #include "DispatchManager.h"
 #include "data/ConfigConstData.h"
-#include "mysqlite.h"
+//#include "mysqlite.h"
 #include "ThreadPool.h"
 #include "curlWrapper.h"
 #include <curl/curl.h>

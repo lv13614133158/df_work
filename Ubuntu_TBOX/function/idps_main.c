@@ -87,20 +87,7 @@ static int GetImei(char *udid, configData configObj)
 	return 0;
 }
 
-static int InitSql(configData configObj)
-{
-	// 密钥目录
-    char databasepath[256] = {0};
-    cryptoobj.setWorkDirectory(configObj.commonModuleObj.dataBaseDir);  
-    memcpy(databasepath, configObj.commonModuleObj.dataBaseDir, strlen(configObj.commonModuleObj.dataBaseDir));
 
-	// 数据库的目录
-    strcat(databasepath, "/");
-    strcat(databasepath, configObj.commonModuleObj.databaseName);
-    sqliteMedthodobj.initDataBase(databasepath);  
-
-	return 0;
-}
 
 static int InitLog(configData configObj)
 {
@@ -181,7 +168,9 @@ static void *net_connect_task(void *arg)
 
 				/*get certificate*/
 				initCert();
-
+				printf("[%s] %s %s\n", __FUNCTION__, "get_pki_root_cert",get_pki_root_cert());
+				printf("[%s] %s %s\n", __FUNCTION__, "get_pki_client_cert",get_pki_client_cert());
+				printf("[%s] %s %s\n", __FUNCTION__, "get_pki_client_private_key",get_pki_client_private_key());
 				/*clear key*/
 				setSessionKeyToEmpty();
 				net_connect_step = NET_CONNECT_STEP__GET_KEY_ING;

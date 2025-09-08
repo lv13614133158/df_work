@@ -506,108 +506,40 @@ static int ConnectClient(void)
 
 int wbsClient_init(void)
 {
-	int ssl_chose = wbsGetSsl();
+	int ssl_chose = wbsGetSsl();	
+	char caPath[128] = {0};
+	char crtPath[128] = {0};
+	char keyPath[128] = {0};
+
+	strncpy(caPath, wbsGetPath(),128);
+	strcat(caPath,_IDPS_CA);
+	strncpy(crtPath, wbsGetPath(),128);
+	strcat(crtPath,_IDPS_CRT);
+	strncpy(keyPath, wbsGetPath(),128);
+	strcat(keyPath,_IDPS_KEY);
+
 	struct lws_context_creation_info info;
 	int logs = LLL_USER | LLL_ERR | LLL_WARN | LLL_NOTICE;//LLL_INFO | LLL_DEBUG
-	char *client_cert_buff = NULL;
-	int client_cert_len = 0;
-	char *client_private_key_buff = NULL;
-	int client_private_key_len = 0;
-	char *root_cert_buff = NULL;
-	int root_cert_len = 0;
-
-	/*init certificate buff*/
-	if (get_pki_root_cert())
-	{
-		root_cert_len = strlen(get_pki_root_cert());
-		root_cert_buff = malloc(root_cert_len);
-		if (root_cert_buff)
-		{
-			memcpy(root_cert_buff, get_pki_root_cert(), root_cert_len);
-		}
-	}
-
-	if (get_pki_client_cert())
-	{
-		client_cert_len = strlen(get_pki_client_cert());
-		client_cert_buff = malloc(client_cert_len);
-		if (client_cert_buff)
-		{
-			memcpy(client_cert_buff, get_pki_client_cert(), client_cert_len);
-		}
-	}
-
-	if (get_pki_client_private_key())
-	{
-		client_private_key_len = strlen(get_pki_client_private_key());
-		client_private_key_buff = malloc(client_private_key_len);
-		if (client_private_key_buff)
-		{
-			memcpy(client_private_key_buff, get_pki_client_private_key(), client_private_key_len);
-		}
-	}
 	lws_set_log_level(logs, NULL);
 	memset(&info, 0, sizeof info);
 	info.options   = LWS_SERVER_OPTION_DO_SSL_GLOBAL_INIT;
 	info.port      = CONTEXT_PORT_NO_LISTEN; /* we do not run any server */
 	info.protocols = protocols;
+	//info.client_ssl_ca_filepath = caPath;//如果服务器有CA证书则需要这行代码
 
-	
+	info.client_ssl_ca_filepath = caPath;
+	info.client_ssl_cert_filepath = crtPath;
+	info.client_ssl_private_key_filepath = keyPath;
 
-	/*Method 1. load the certificate in memory*/
-	if (root_cert_buff)
-	{
-		info.client_ssl_ca_filepath = NULL;  // 不使用文件方式，改为内存块方式
-		info.client_ssl_ca_mem = root_cert_buff;  // 将CA证书作为内存块传入
-		info.client_ssl_ca_mem_len = root_cert_len; // 内存块大小
- 	}
-
-	if (client_cert_buff)
-	{
-		info.client_ssl_cert_filepath = NULL;  // 不使用文件方式，改为内存块方式
-		info.client_ssl_cert_mem = client_cert_buff;  // 将客户端证书作为内存块传入
-		info.client_ssl_cert_mem_len = client_cert_len; // 内存块大小
- 	}
-
-	if (client_private_key_buff)
-	{
-		info.client_ssl_private_key_filepath = NULL;  // 不使用文件方式，改为内存块方式
-		info.client_ssl_key_mem = client_private_key_buff;	// 将客户端私钥作为内存块传入
-		info.client_ssl_key_mem_len = client_private_key_len; // 内存块大小
- 	}
-	
-#if 0
-	info.client_ssl_ca_filepath = get_pki_root_cert();//如果服务器有CA证书则需要这行代码
-	info.client_ssl_cert_filepath = get_pki_client_cert();
-	info.client_ssl_private_key_filepath = get_pki_client_private_key();
-#endif
 	if(ssl_chose == 1)
-
-	ssl_connection |= LCCSCF_USE_SSL;
+		ssl_connection |= LCCSCF_USE_SSL | LCCSCF_ALLOW_SELFSIGNED | LCCSCF_SKIP_SERVER_CERT_HOSTNAME_CHECK | LCCSCF_ALLOW_INSECURE | LCCSCF_ALLOW_EXPIRED;
 	info.fd_limit_per_thread = (unsigned int)(1 + 1 + 1);//1 + clients + 1
-	context = lws_create_context(&info);
-
-
-	if (root_cert_buff)
-	{
-		free(root_cert_buff);
-		root_cert_buff = NULL;
-	}
-	if (client_cert_buff)
-	{
-		free(client_cert_buff);
-		client_cert_buff = NULL;
-	}
-	if (client_private_key_buff)
-	{
-		free(client_private_key_buff);
-		client_private_key_buff = NULL;
-	}
+	//printf("==================> ssl_connection: %d\n", ssl_connection);
+	context = lws_create_context(&info);  
 	if (!context) {
 		log_e("idps_websocket", "lws init failed\n");
 		return -1;
 	}
-
 	return 0;
 }
 
