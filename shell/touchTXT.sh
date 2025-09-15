@@ -14,11 +14,12 @@ cleanup() {
 trap cleanup SIGINT
 
 while true; do
-   
+        sleep 300
+        echo "当前时间: $(date)"
 #   for ((i=0; i<10; i++)); do
          touch ./1.txt
-         usleep 5000
          rm -f ./1.txt
+         touch ./1.txt
 #   done
 
 

@@ -10,7 +10,7 @@ if [ $# -ne 1 ]; then
 fi
 
 file_path="$1"
-output_file="idps_test.log"
+output_file="output.log"
 
 
 # 清空输出文件
