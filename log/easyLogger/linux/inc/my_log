@@ -1,0 +1,30 @@
+[[1;32mI/elog     [2025-09-19 10:48:04 pid:10372 tid:10372] EasyLogger V2.2.99 is initialize success.[0m
+[[1;32mI/main     [2025-09-19 10:48:04 pid:10372 tid:10372] Hello EasyLogger![0m
+[[1;36mD/main     [2025-09-19 10:48:04 pid:10372 tid:10372] This is debug message[0m
+[[1;33mW/main     [2025-09-19 10:48:04 pid:10372 tid:10372] This is warning message[0m
+[[1;31mE/main     [2025-09-19 10:48:04 pid:10372 tid:10372] This is error message[0m
+[[1;35mA/main     [2025-09-19 10:48:04 pid:10372 tid:10372] This is assert message[0m
+[[1;32mI/elog     [2025-09-19 10:48:40 pid:10479 tid:10479] EasyLogger V2.2.99 is initialize success.[0m
+[[1;32mI/main     [2025-09-19 10:48:40 pid:10479 tid:10479] Hello EasyLogger![0m
+[[1;33mW/main     [2025-09-19 10:48:40 pid:10479 tid:10479] This is warning message[0m
+[[1;31mE/main     [2025-09-19 10:48:40 pid:10479 tid:10479] This is error message[0m
+[[1;35mA/main     [2025-09-19 10:48:40 pid:10479 tid:10479] This is assert message[0m
+[[1;36mD/main     [2025-09-19 10:48:40 pid:10479 tid:10479] This is debug message[0m
+[36;22mI/elog     [2025-09-19 10:49:23 pid:10569 tid:10569] EasyLogger V2.2.99 is initialize success.[0m
+[36;22mI/main     [2025-09-19 10:49:23 pid:10569 tid:10569] Hello EasyLogger![0m
+[33;22mW/main     [2025-09-19 10:49:23 pid:10569 tid:10569] This is warning message[0m
+[31;22mE/main     [2025-09-19 10:49:23 pid:10569 tid:10569] This is error message[0m
+[35;22mA/main     [2025-09-19 10:49:23 pid:10569 tid:10569] This is assert message[0m
+[32;22mD/main     [2025-09-19 10:49:23 pid:10569 tid:10569] This is debug message[0m
+[36;22mI/elog     [2025-09-19 10:57:39 pid:10697 tid:10697] EasyLogger V2.2.99 is initialize success.[0m
+[36;22mI/main     [2025-09-19 10:57:39 pid:10697 tid:10697] Hello EasyLogger![0m
+[33;22mW/main     [2025-09-19 10:57:39 pid:10697 tid:10697] This is warning message[0m
+[31;22mE/main     [2025-09-19 10:57:39 pid:10697 tid:10697] This is error message[0m
+[32;22mD/main     [2025-09-19 10:57:39 pid:10697 tid:10697] This is debug message[0m
+[35;22mA/main     [2025-09-19 10:57:39 pid:10697 tid:10697] This is assert message[0m
+[36;22mI/elog     [2025-09-19 10:57:49 pid:10787 tid:10787] EasyLogger V2.2.99 is initialize success.[0m
+[36;22mI/main     [2025-09-19 10:57:49 pid:10787 tid:10787] Hello EasyLogger![0m
+[33;22mW/main     [2025-09-19 10:57:49 pid:10787 tid:10787] This is warning message[0m
+[31;22mE/main     [2025-09-19 10:57:49 pid:10787 tid:10787] This is error message[0m
+[35;22mA/main     [2025-09-19 10:57:49 pid:10787 tid:10787] This is assert message[0m
+[32;22mD/main     [2025-09-19 10:57:49 pid:10787 tid:10787] This is debug message[0m

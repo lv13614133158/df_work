@@ -1,0 +1,35 @@
+{'time':'2025-09-19 11:17:10','level':'INFO','file':'./main.c','line':26,'message':'这是一个信息日志 '}
+{'time':'2025-09-19 11:17:10','level':'NOTICE','file':'./main.c','line':27,'message':'这是一个通知日志'}
+{'time':'2025-09-19 11:17:10','level':'WARN','file':'./main.c','line':28,'message':'这是一个警告日志'}
+{'time':'2025-09-19 11:17:10','level':'ERROR','file':'./main.c','line':29,'message':'这是一个错误日志'}
+{'time':'2025-09-19 11:17:10','level':'FATAL','file':'./main.c','line':30,'message':'这是一个致命错误日志'}
+{'time':'2025-09-19 11:17:11','level':'INFO','file':'./main.c','line':26,'message':'这是一个信息日志 '}
+{'time':'2025-09-19 11:17:11','level':'NOTICE','file':'./main.c','line':27,'message':'这是一个通知日志'}
+{'time':'2025-09-19 11:17:11','level':'WARN','file':'./main.c','line':28,'message':'这是一个警告日志'}
+{'time':'2025-09-19 11:17:11','level':'ERROR','file':'./main.c','line':29,'message':'这是一个错误日志'}
+{'time':'2025-09-19 11:17:11','level':'FATAL','file':'./main.c','line':30,'message':'这是一个致命错误日志'}
+{'time':'2025-09-19 11:17:16','level':'INFO','file':'./main.c','line':26,'message':'这是一个信息日志 '}
+{'time':'2025-09-19 11:17:16','level':'NOTICE','file':'./main.c','line':27,'message':'这是一个通知日志'}
+{'time':'2025-09-19 11:17:16','level':'WARN','file':'./main.c','line':28,'message':'这是一个警告日志'}
+{'time':'2025-09-19 11:17:16','level':'ERROR','file':'./main.c','line':29,'message':'这是一个错误日志'}
+{'time':'2025-09-19 11:17:16','level':'FATAL','file':'./main.c','line':30,'message':'这是一个致命错误日志'}
+{'time':'2025-09-19 11:17:16','level':'INFO','file':'./main.c','line':26,'message':'这是一个信息日志 '}
+{'time':'2025-09-19 11:17:16','level':'NOTICE','file':'./main.c','line':27,'message':'这是一个通知日志'}
+{'time':'2025-09-19 11:17:16','level':'WARN','file':'./main.c','line':28,'message':'这是一个警告日志'}
+{'time':'2025-09-19 11:17:16','level':'ERROR','file':'./main.c','line':29,'message':'这是一个错误日志'}
+{'time':'2025-09-19 11:17:16','level':'FATAL','file':'./main.c','line':30,'message':'这是一个致命错误日志'}
+{'time':'2025-09-19 11:17:17','level':'INFO','file':'./main.c','line':26,'message':'这是一个信息日志 '}
+{'time':'2025-09-19 11:17:17','level':'NOTICE','file':'./main.c','line':27,'message':'这是一个通知日志'}
+{'time':'2025-09-19 11:17:17','level':'WARN','file':'./main.c','line':28,'message':'这是一个警告日志'}
+{'time':'2025-09-19 11:17:17','level':'ERROR','file':'./main.c','line':29,'message':'这是一个错误日志'}
+{'time':'2025-09-19 11:17:17','level':'FATAL','file':'./main.c','line':30,'message':'这是一个致命错误日志'}
+{'time':'2025-09-19 11:17:18','level':'INFO','file':'./main.c','line':26,'message':'这是一个信息日志 '}
+{'time':'2025-09-19 11:17:18','level':'NOTICE','file':'./main.c','line':27,'message':'这是一个通知日志'}
+{'time':'2025-09-19 11:17:18','level':'WARN','file':'./main.c','line':28,'message':'这是一个警告日志'}
+{'time':'2025-09-19 11:17:18','level':'ERROR','file':'./main.c','line':29,'message':'这是一个错误日志'}
+{'time':'2025-09-19 11:17:18','level':'FATAL','file':'./main.c','line':30,'message':'这是一个致命错误日志'}
+{'time':'2025-09-19 11:17:18','level':'INFO','file':'./main.c','line':26,'message':'这是一个信息日志 '}
+{'time':'2025-09-19 11:17:18','level':'NOTICE','file':'./main.c','line':27,'message':'这是一个通知日志'}
+{'time':'2025-09-19 11:17:18','level':'WARN','file':'./main.c','line':28,'message':'这是一个警告日志'}
+{'time':'2025-09-19 11:17:18','level':'ERROR','file':'./main.c','line':29,'message':'这是一个错误日志'}
+{'time':'2025-09-19 11:17:18','level':'FATAL','file':'./main.c','line':30,'message':'这是一个致命错误日志'}

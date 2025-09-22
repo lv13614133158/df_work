@@ -13,7 +13,7 @@ extern "C" {
 
 // ... existing code ...
 // 配置文件目录位置设置
-#define POS_3  1
+#define POS_4  1
 #ifdef POS_1
 	#define ROOT_PATH  "./"
 #elif POS_2

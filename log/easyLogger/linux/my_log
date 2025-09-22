@@ -1,0 +1,6 @@
+[36;22mI/elog     [2025-09-19 10:41:18 pid:9978 tid:9978] EasyLogger V2.2.99 is initialize success.[0m
+[36;22mI/main     [2025-09-19 10:41:18 pid:9978 tid:9978] Hello EasyLogger![0m
+[32;22mD/main     [2025-09-19 10:41:18 pid:9978 tid:9978] This is debug message[0m
+[33;22mW/main     [2025-09-19 10:41:18 pid:9978 tid:9978] This is warning message[0m
+[31;22mE/main     [2025-09-19 10:41:18 pid:9978 tid:9978] This is error message[0m
+[35;22mA/main     [2025-09-19 10:41:18 pid:9978 tid:9978] This is assert message[0m

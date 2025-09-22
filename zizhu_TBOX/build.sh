@@ -5,7 +5,7 @@ echo $path
 # cd /mnt/work/tool/tbox_self
 # # 设定环境，
 # source ag35-crosstool-env-init-tbox_self
-#export STAGING_DIR=/home/nvidia/git/ql-ag35-1806e-gcc-8.4.0-glibc-v1-toolchain/arm-openwrt-linux-gnueabi
+export STAGING_DIR=/home/nvidia/df/S73/ql-ag35-1806e-gcc-8.4.0-glibc-v1-toolchain/arm-openwrt-linux-gnueabi
 # 指定路径，make extsdk
 #make extsdk -C /home/toolchain/WHDF/ 
 #make extsdk 

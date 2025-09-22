@@ -1,22 +1,13 @@
 #!/usr/bin/env bash
 
 # 检查是否提供了进程名参数
-# if [ $# -eq 0 ]; then
-#     echo "Usage: $0 <process_name> [output_file]"
-#     echo "Example: $0 IDPS /tmp/memory_stats.csv"
-#     exit 1
-# fi
 if [ $# -eq 1 ]; then
     PROCESS_NAME=$1
 else
     PROCESS_NAME="IDPS"
 fi
-# 获取传入的进程名参数
 
-
-
-OUTPUT_FILE="${PROCESS_NAME}_memory_stats.csv"
-
+OUTPUT_FILE="${PROCESS_NAME}_monito.csv"
 
 # 设置每个文件最大行数（4万条数据）
 MAX_LINES_PER_FILE=40000
@@ -93,20 +84,22 @@ write_header "$CURRENT_FILE"
 
 # 获取系统CPU和内存使用情况
 get_system_stats() {
-    # 获取CPU使用情况 - 兼容不同top输出格式
-    cpu_line=$(top -bn1 | grep -E "Cpu\(s\):|CPU:" | head -1)
+    # 使用一次top命令获取CPU信息，避免重复调用
+    top_output=$(top -bn1)
+    cpu_line=$(echo "$top_output" | grep -E "Cpu\(s\):|CPU:" | head -1)
     
-  
+    # 判断top输出格式并相应解析
+    if echo "$cpu_line" | grep -q "Cpu(s):"; then
         # 标准Linux格式: Cpu(s): 10.0% us,  5.0% sy,  0.0% ni, 85.0% id,  0.0% wa,  0.0% hi,  0.0% si,  0.0% st
-        # usr_cpu=$(echo "$cpu_line" | awk -F',' '{print $1}' | awk '{print $2}' | sed 's/%.*//')
-        # sys_cpu=$(echo "$cpu_line" | awk -F',' '{print $2}' | awk '{print $1}' | sed 's/%.*//')
-        # idle_cpu=$(echo "$cpu_line" | awk -F',' '{print $4}' | awk '{print $1}' | sed 's/%.*//')
-
+        usr_cpu=$(echo "$cpu_line" | awk -F',' '{print $1}' | awk '{print $2}' | sed 's/%.*//')
+        sys_cpu=$(echo "$cpu_line" | awk -F',' '{print $2}' | awk '{print $1}' | sed 's/%.*//')
+        idle_cpu=$(echo "$cpu_line" | awk -F',' '{print $4}' | awk '{print $1}' | sed 's/%.*//')
+    else
         # OpenWrt格式: CPU:   0% usr  18% sys   0% nic  81% idle   0% io   0% irq   0% sirq
         usr_cpu=$(echo "$cpu_line" | awk '{print $2}' | sed 's/%.*//')
         sys_cpu=$(echo "$cpu_line" | awk '{print $4}' | sed 's/%.*//')
         idle_cpu=$(echo "$cpu_line" | awk '{print $8}' | sed 's/%.*//')
-
+    fi
     
     # 验证并确保获取到的是数字
     echo "$usr_cpu" | grep -qE '^[0-9]+\.?[0-9]*$' || usr_cpu="0"
@@ -125,17 +118,18 @@ get_system_stats() {
 
 # 获取进程CPU和内存使用情况
 get_process_stats() {
-    PROCESS_pid=$(ps -A | grep "$PROCESS_NAME" | grep -v grep | grep -v bash | awk '{print $1}' | head -1)
+    # 重用之前获取的top输出，避免重复调用top命令
+    PROCESS_pid=$(ps -A | grep "$PROCESS_NAME" | grep -v grep|grep -v sh | grep -v bash | awk '{print $1}' | head -1)
         
     if [ -n "$PROCESS_pid" ]; then
         # 判断top输出格式并相应解析
-        cpu_line=$(top -bn1 | grep -E "Cpu\(s\):|CPU:" | head -1)
         if echo "$cpu_line" | grep -q "Cpu(s):"; then
             # 标准Linux格式
-            IDS_cpu=$(top -bn1 | grep $PROCESS_pid | awk '{print $9}' | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+            IDS_cpu=$(echo "$top_output" | grep " $PROCESS_pid " | awk '{print $9}' | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
         else 
             # OpenWrt格式
-             IDS_cpu=$(top -bn1 | grep $PROCESS_pid | grep -v grep | awk '{print $7}' | sed 's/%//' | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+            IDS_cpu=$(echo "$top_output" | grep " $PROCESS_pid " | awk '{print $7}' | sed 's/%//' | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+        
         fi
 
         IDS_mem_RSS=$(grep VmRSS /proc/$PROCESS_pid/status 2>/dev/null | awk '{print $2}' | grep -E '^[0-9]+$' || echo "0")
@@ -148,57 +142,80 @@ get_process_stats() {
 
 # 打印统计数据
 print_stats() {
-
         if [ $count_stats -gt 0 ]; then
-            avg_usr_cpu=$(echo "scale=2; $sum_usr_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "*.**")
-            avg_sys_cpu=$(echo "scale=2; $sum_sys_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "*.**")
-            avg_idle_cpu=$(echo "scale=2; $sum_idle_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "*.**")
-            avg_used_mem=$(echo "scale=2; $sum_used_mem / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "*.**")
-            avg_free_mem=$(echo "scale=2; $sum_free_mem / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "*.**")
+            avg_usr_cpu=$(echo "scale=2; $sum_usr_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
+            avg_sys_cpu=$(echo "scale=2; $sum_sys_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
+            avg_idle_cpu=$(echo "scale=2; $sum_idle_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
+            avg_used_mem=$(echo "scale=2; $sum_used_mem / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
+            avg_free_mem=$(echo "scale=2; $sum_free_mem / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
         else
             # 当还没有统计数据时，使用当前值作为平均值
             avg_usr_cpu=${usr_cpu:-"0.00"}
             avg_sys_cpu=${sys_cpu:-"0.00"}
             avg_idle_cpu=${idle_cpu:-"0.00"}
-            avg_used_mem=${used_mem:-"0"}
-            avg_free_mem=${free_mem:-"0"}
+            avg_used_mem=${used_mem:-"0.00"}
+            avg_free_mem=${free_mem:-"0.00"}
         fi
         
         # 只有当有进程统计数据时才计算平均值
         if [ -n "$PROCESS_pid" ]; then
-            avg_IDS_cpu=$(echo "scale=2; $sum_IDS_cpu / $count_IDS_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "*.**")
-            avg_IDS_mem_RSS=$(echo "scale=0; $sum_IDS_mem_RSS / $count_IDS_stats" | bc 2>/dev/null | awk '{printf "%.0f", $0}' || echo "*.**")
+            if [ "$count_IDS_stats" -gt 0 ]; then
+                avg_IDS_cpu=$(echo "$sum_IDS_cpu $count_IDS_stats" | awk '{printf "%.2f", $1/$2}' 2>/dev/null || echo "0.00")
+                avg_IDS_mem_RSS=$(echo "scale=0; $sum_IDS_mem_RSS / $count_IDS_stats" | bc 2>/dev/null | awk '{printf "%.0f", $0}' || echo "0.00")
+                    # 验证计算结果是否为有效数字
+                if ! echo "$avg_IDS_cpu" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
+                    avg_IDS_cpu="0"
+                fi
+                if [ "$(echo "$avg_IDS_cpu" | awk '{print ($1 > 100 || $1 < 0)}')" = "1" ]; then
+                    usr_cpu="0"
+                fi
+                if ! echo "$avg_IDS_mem_RSS" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
+                    avg_IDS_mem_RSS="0"
+                fi
+            else
+                avg_IDS_cpu="0"
+                avg_IDS_mem_RSS="0"
+            fi
             last_avg_IDS_cpu="$avg_IDS_cpu"
             last_avg_IDS_mem_RSS="$avg_IDS_mem_RSS"
         else
+
             avg_IDS_cpu="$last_avg_IDS_cpu"
             avg_IDS_mem_RSS="$last_avg_IDS_mem_RSS"
         fi
-  
-    # 处理最大值和最小值显示
-    if [ $count_IDS_stats -gt 0 ]; then
-        display_max_IDS_cpu="${max_IDS_cpu}%"
-        display_min_IDS_cpu="${min_IDS_cpu}%"
-        display_max_IDS_mem_RSS="${max_IDS_mem_RSS}K"
-        display_min_IDS_mem_RSS="${min_IDS_mem_RSS}K"
-    else
-        display_max_IDS_cpu=""
-        display_min_IDS_cpu=""
-        display_max_IDS_mem_RSS=""
-        display_min_IDS_mem_RSS=""
-    fi
-    
-    # 格式化输出，减小间距
-    printf "%-6s  %-6s  %-6s  %-8s  %-8s  %-8s  %-8s  %-6s\n" \
-        "avg" "${avg_usr_cpu}%" "${avg_sys_cpu}%" "${avg_idle_cpu}%" \
-        "${avg_used_mem}" "${avg_free_mem}" "${avg_IDS_cpu}" "${avg_IDS_mem_RSS}K"
-    printf "%-6s  %-6s  %-6s  %-8s  %-8s  %-8s  %-8s  %-6s\n" \
-        "max" "${max_usr_cpu}%" "${max_sys_cpu}%" "${max_idle_cpu}%" \
-        "${max_used_mem}" "${max_free_mem}" "${display_max_IDS_cpu}" "${display_max_IDS_mem_RSS}"
-    printf "%-6s  %-6s  %-6s  %-8s  %-8s  %-8s  %-8s  %-6s\n" \
-        "min" "${min_usr_cpu}%" "${min_sys_cpu}%" "${min_idle_cpu}%" \
-        "${min_used_mem}" "${min_free_mem}" "${display_min_IDS_cpu}" "${display_min_IDS_mem_RSS}"
-    echo "------------------------------------------------------------"
+
+        # 处理最大值和最小值显示
+        if [ -n "$PROCESS_pid" ]; then
+            display_max_IDS_cpu="${max_IDS_cpu}%"
+            display_min_IDS_cpu="${min_IDS_cpu}%"
+            display_max_IDS_mem_RSS="${max_IDS_mem_RSS}K"
+            display_min_IDS_mem_RSS="${min_IDS_mem_RSS}K"
+        else
+            display_max_IDS_cpu=""
+            display_min_IDS_cpu=""
+            display_max_IDS_mem_RSS=""
+            display_min_IDS_mem_RSS=""
+        fi
+        
+        # 清屏并显示统计信息
+        clear
+        echo "Monitoring process: $PROCESS_NAME (PID: ${PROCESS_pid:-N/A})"
+        echo "Data saved to: $OUTPUT_FILE"
+        echo "Timestamp: $(date "+%Y-%m-%d %H:%M:%S")"
+        echo "------------------------------------------------------------------------"
+        printf "%-6s  %-10s  %-10s  %-10s  %-12s  %-12s  %-12s  %-12s\n" \
+            "Type" "usr_cpu" "sys_cpu" "idle_cpu" "used_mem" "free_mem" "IDS_cpu" "IDS_mem_RSS"
+        printf "%-6s  %-10s  %-10s  %-10s  %-12s  %-12s  %-12s  %-12s\n" \
+            "avg" "${avg_usr_cpu}%" "${avg_sys_cpu}%" "${avg_idle_cpu}%" \
+            "${avg_used_mem}" "${avg_free_mem}" "${avg_IDS_cpu}%" "${avg_IDS_mem_RSS}K"
+        printf "%-6s  %-10s  %-10s  %-10s  %-12s  %-12s  %-12s  %-12s\n" \
+            "max" "${max_usr_cpu}%" "${max_sys_cpu}%" "${max_idle_cpu}%" \
+            "${max_used_mem}" "${max_free_mem}" "${display_max_IDS_cpu}" "${display_max_IDS_mem_RSS}"
+        printf "%-6s  %-10s  %-10s  %-10s  %-12s  %-12s  %-12s  %-12s\n" \
+            "min" "${min_usr_cpu}%" "${min_sys_cpu}%" "${min_idle_cpu}%" \
+            "${min_used_mem}" "${min_free_mem}" "${display_min_IDS_cpu}" "${display_min_IDS_mem_RSS}"
+        echo "------------------------------------------------------------------------"
+        echo "Records collected: $count_stats"
 }
 
 fun() {
@@ -214,88 +231,75 @@ fun() {
     # 更新统计数据
     count_stats=$((count_stats + 1))
     
-    # 更新CPU统计值（添加更多检查）
-    if [ -n "$usr_cpu" ] && [ "$usr_cpu" != "" ] && [ "$usr_cpu" != " " ]; then
-        # 验证是否为有效数字
-        if echo "$usr_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
-            # 使用awk进行数值比较，避免bc语法错误
-            if [ "$(echo "$usr_cpu $max_usr_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
-                max_usr_cpu=$usr_cpu
-            fi
-            
-            if [ "$(echo "$usr_cpu $min_usr_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
-                min_usr_cpu=$usr_cpu
-            fi
-            
-            sum_usr_cpu=$(echo "$sum_usr_cpu $usr_cpu" | awk '{print $1 + $2}')
+    # 更新CPU统计值
+    if [ -n "$usr_cpu" ] && echo "$usr_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
+        # 使用awk进行数值比较
+        if [ "$(echo "$usr_cpu $max_usr_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
+            max_usr_cpu=$usr_cpu
         fi
+        
+        if [ "$(echo "$usr_cpu $min_usr_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
+            min_usr_cpu=$usr_cpu
+        fi
+        
+        sum_usr_cpu=$(echo "$sum_usr_cpu $usr_cpu" | awk '{print $1 + $2}')
     fi
     
-    if [ -n "$sys_cpu" ] && [ "$sys_cpu" != "" ] && [ "$sys_cpu" != " " ]; then
-        # 验证是否为有效数字
-        if echo "$sys_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
-            if [ "$(echo "$sys_cpu $max_sys_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
-                max_sys_cpu=$sys_cpu
-            fi
-            
-            if [ "$(echo "$sys_cpu $min_sys_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
-                min_sys_cpu=$sys_cpu
-            fi
-            
-            sum_sys_cpu=$(echo "$sum_sys_cpu $sys_cpu" | awk '{print $1 + $2}')
+    if [ -n "$sys_cpu" ] && echo "$sys_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
+        if [ "$(echo "$sys_cpu $max_sys_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
+            max_sys_cpu=$sys_cpu
         fi
+        
+        if [ "$(echo "$sys_cpu $min_sys_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
+            min_sys_cpu=$sys_cpu
+        fi
+        
+        sum_sys_cpu=$(echo "$sum_sys_cpu $sys_cpu" | awk '{print $1 + $2}')
     fi
     
-    if [ -n "$idle_cpu" ] && [ "$idle_cpu" != "" ] && [ "$idle_cpu" != " " ]; then
-        # 验证是否为有效数字
-        if echo "$idle_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
-            if [ "$(echo "$idle_cpu $max_idle_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
-                max_idle_cpu=$idle_cpu
-            fi
-            
-            if [ "$(echo "$idle_cpu $min_idle_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
-                min_idle_cpu=$idle_cpu
-            fi
-            
-            sum_idle_cpu=$(echo "$sum_idle_cpu $idle_cpu" | awk '{print $1 + $2}')
+    if [ -n "$idle_cpu" ] && echo "$idle_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
+        if [ "$(echo "$idle_cpu $max_idle_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
+            max_idle_cpu=$idle_cpu
         fi
+        
+        if [ "$(echo "$idle_cpu $min_idle_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
+            min_idle_cpu=$idle_cpu
+        fi
+        
+        sum_idle_cpu=$(echo "$sum_idle_cpu $idle_cpu" | awk '{print $1 + $2}')
     fi
     
     # 更新内存统计值
-    if [ -n "$used_mem" ] && [ "$used_mem" != "" ] && [ "$used_mem" != " " ]; then
-        # 验证是否为有效数字
-        if echo "$used_mem" | grep -qE '^[0-9]+$'; then
-            if [ "$used_mem" -gt "$max_used_mem" ] 2>/dev/null; then 
-                max_used_mem=$used_mem
-            fi
-            
-            if [ "$used_mem" -lt "$min_used_mem" ] 2>/dev/null; then 
-                min_used_mem=$used_mem
-            fi
-            
-            sum_used_mem=$((sum_used_mem + used_mem))
+    if [ -n "$used_mem" ] && echo "$used_mem" | grep -qE '^[0-9]+$'; then
+        if [ "$used_mem" -gt "$max_used_mem" ] 2>/dev/null; then 
+            max_used_mem=$used_mem
         fi
+        
+        if [ "$used_mem" -lt "$min_used_mem" ] 2>/dev/null; then 
+            min_used_mem=$used_mem
+        fi
+        
+        sum_used_mem=$((sum_used_mem + used_mem))
     fi
     
-    if [ -n "$free_mem" ] && [ "$free_mem" != "" ] && [ "$free_mem" != " " ]; then
-        # 验证是否为有效数字
-        if echo "$free_mem" | grep -qE '^[0-9]+$'; then
-            if [ "$free_mem" -gt "$max_free_mem" ] 2>/dev/null; then 
-                max_free_mem=$free_mem
-            fi
-            
-            if [ "$free_mem" -lt "$min_free_mem" ] 2>/dev/null; then 
-                min_free_mem=$free_mem
-            fi
-            
-            sum_free_mem=$((sum_free_mem + free_mem))
+    if [ -n "$free_mem" ] && echo "$free_mem" | grep -qE '^[0-9]+$'; then
+        if [ "$free_mem" -gt "$max_free_mem" ] 2>/dev/null; then 
+            max_free_mem=$free_mem
         fi
+        
+        if [ "$free_mem" -lt "$min_free_mem" ] 2>/dev/null; then 
+            min_free_mem=$free_mem
+        fi
+        
+        sum_free_mem=$((sum_free_mem + free_mem))
     fi
     
     # 只有当进程存在时才更新进程统计值
     if [ -n "$PROCESS_pid" ] && [ "$PROCESS_pid" != "" ]; then
         count_IDS_stats=$((count_IDS_stats + 1))
-        
+       
+        echo "$sum_IDS_cpu" | grep -qE '^[0-9]+\.?[0-9]*$' || sum_IDS_cpu="0"
+    
         # 如果进程CPU信息为空，设置为0
         if [ -z "$IDS_cpu" ] || [ "$IDS_cpu" = "" ]; then
             IDS_cpu="0"
@@ -308,7 +312,9 @@ fun() {
         
         # 更新进程CPU统计值
         if echo "$IDS_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
-            # 使用数值比较而不是字符串比较
+
+
+
             if (( $(echo "$IDS_cpu > $max_IDS_cpu" | bc -l 2>/dev/null || echo "0") )); then
                 max_IDS_cpu=$IDS_cpu
             fi
@@ -316,7 +322,7 @@ fun() {
             if (( $(echo "$IDS_cpu < $min_IDS_cpu" | bc -l 2>/dev/null || echo "1") )); then
                 min_IDS_cpu=$IDS_cpu
             fi
-            
+
             sum_IDS_cpu=$(echo "$sum_IDS_cpu $IDS_cpu" | awk '{print $1 + $2}')
         fi
         
@@ -334,21 +340,6 @@ fun() {
         fi
     fi
 
-    # 设置显示值，如果进程不存在则显示 ---
-    if [ -n "$PROCESS_pid" ] && [ "$PROCESS_pid" != "" ]; then
-        display_IDS_cpu="${IDS_cpu}%"
-        display_IDS_mem_RSS="${IDS_mem_RSS}K"
-    else
-        display_IDS_cpu="---"
-        display_IDS_mem_RSS="---"
-    fi
-    
-    printf  " %-20s\n" "${current_time}"
-    printf "%-7s %-6s  %-6s  %-8s  %-8s  %-8s  %-8s  %-6s  \n" \
-        "   " "usr" "sys" "idle" "used" "free" "IDS_cpu" "IDS_mem_RSS"
-    printf "%-7s %-6s  %-6s  %-8s  %-8s  %-8s  %-8s  %-6s  \n" \
-        "   " "${usr_cpu}%" "${sys_cpu}%" "${idle_cpu}%" "${used_mem}" "${free_mem}" "${display_IDS_cpu}" "${display_IDS_mem_RSS}"
-    
     # 写入文件时，如果进程不存在则写入空值
     file_IDS_cpu=${IDS_cpu:-""}
     file_IDS_mem_RSS=${IDS_mem_RSS:-""}
@@ -375,14 +366,16 @@ fun() {
 echo "Start monitoring process $PROCESS_NAME, results saved to $OUTPUT_FILE"
 
 # 捕获Ctrl+C信号以打印最终统计
-trap 'echo ""; echo "Final stats:"; clear; fun; print_stats; exit 0' INT
+trap 'echo ""; echo "Final stats:"; print_stats; exit 0' INT
 
 # 循环采集，每秒一次
 count=1
 while true
 do
     fun
-    print_stats
+    if [ $count -eq 1 ] || [ $((count % 5)) -eq 0 ]; then
+        print_stats
+    fi
     sleep 1
     count=$((count + 1))
     

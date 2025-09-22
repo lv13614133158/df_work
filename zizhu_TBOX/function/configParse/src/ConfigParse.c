@@ -785,7 +785,7 @@ void gnss_callback(struct SdkGnssInfo gnss)
 	memset(spdlog, 0 ,sizeof(spdlog));
 	snprintf(spdlog, sizeof(spdlog),
 				"location update:latitude(%f),longitude(%f),altitude(%f)", gnss.latitude, gnss.longitude, gnss.altitude);
-	log_d("gnss_callback", spdlog);
+	//log_d("gnss_callback", spdlog);
     wbsClient_setPosition(gnss.latitude, gnss.longitude);
 }
 
@@ -819,48 +819,48 @@ int initTboxInfo()
 	int ret = 0;
 	pthread_t pthread_get_gps = 0;
 	
-	// while (1)
-	// {
-	// 	memset(&tbox_mcu_info, 0, sizeof(tbox_mcu_info));
-	// 	//tbox_info_get_mcu_info(&tbox_mcu_info, tbox_info_get_gps_callback_fun);
-	// 	if(tbox_get_info(&tbox_mcu_info))
-	// 	{
-	// 		sleep(5);
-	// 		continue;
-	// 	}
+	while (1)
+	{
+		memset(&tbox_mcu_info, 0, sizeof(tbox_mcu_info));
+		//tbox_info_get_mcu_info(&tbox_mcu_info, tbox_info_get_gps_callback_fun);
+		if(tbox_get_info(&tbox_mcu_info))
+		{
+			sleep(5);
+			continue;
+		}
 
-	// 	memset(spdlog, 0 ,sizeof(spdlog));
-	// 	snprintf(spdlog, sizeof(spdlog),
-	// 			"vin:%s, sn:%s, supplierInfo:%s, softwareVersion:%s\n",
-	// 			tbox_mcu_info.VIN, tbox_mcu_info.ID, tbox_mcu_info.MANUFACTURER, tbox_mcu_info.SYS_VERSION);
+		memset(spdlog, 0 ,sizeof(spdlog));
+		snprintf(spdlog, sizeof(spdlog),
+				"vin:%s, sn:%s, supplierInfo:%s, softwareVersion:%s\n",
+				tbox_mcu_info.VIN, tbox_mcu_info.ID, tbox_mcu_info.MANUFACTURER, tbox_mcu_info.SYS_VERSION);
 		
 
-	// 	if (isString(tbox_mcu_info.VIN) && isString(tbox_mcu_info.ID))
-	// 	{
-	// 		log_d("ConfigParse", spdlog);
-	// 		if (strlen(tbox_mcu_info.VIN) == 0 || strlen(tbox_mcu_info.ID) == 0)
-	// 		{
-	// 			log_i("ConfigParse", "device_num or diag_vin len is 0");
-	// 		}
-	// 		else
-	// 		{
+		if (isString(tbox_mcu_info.VIN) && isString(tbox_mcu_info.ID))
+		{
+			log_d("ConfigParse", spdlog);
+			if (strlen(tbox_mcu_info.VIN) == 0 || strlen(tbox_mcu_info.ID) == 0)
+			{
+				log_i("ConfigParse", "device_num or diag_vin len is 0");
+			}
+			else
+			{
 				
-	// 			if (isAllZero(tbox_mcu_info.VIN) || isAllZero(tbox_mcu_info.ID))
-	// 			{
-	// 				log_i("ConfigParse", "device_num or diag_vin is all zero");
-	// 			}
-	// 			else
-	// 			{
-	// 				break;
-	// 			}
-	// 		}
-	// 	}
+				if (isAllZero(tbox_mcu_info.VIN) || isAllZero(tbox_mcu_info.ID))
+				{
+					log_i("ConfigParse", "device_num or diag_vin is all zero");
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
 
-	// 	sleep(5);
-	// }
+		sleep(5);
+	}
 		/*get TBOX info from local configuration files*/
-	strncpy(tbox_mcu_info.VIN, "LQH913L2240000001", sizeof(tbox_mcu_info.VIN) - 1);
-	strncpy(tbox_mcu_info.ID, "LQH02505280001", sizeof(tbox_mcu_info.ID) - 1);
+	//strncpy(tbox_mcu_info.VIN, "LQH913L2240000001", sizeof(tbox_mcu_info.VIN) - 1);
+	//strncpy(tbox_mcu_info.ID, "LQH02505280001", sizeof(tbox_mcu_info.ID) - 1);
 	
 	pthread_create(&pthread_get_gps, NULL, get_gps_task, NULL);
 

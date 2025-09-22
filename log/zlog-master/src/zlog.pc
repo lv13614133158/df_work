@@ -1,0 +1,13 @@
+
+prefix=/home/nvidia/df/df_work/log/zlog-master/build/install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: zlog
+Description: The zlog C logger framework
+URL: http://hardysimpson.github.io/zlog/
+Version: 1.2.18
+Libs: -L${libdir} -lzlog
+Cflags: -I${includedir}
+
