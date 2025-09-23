@@ -1,0 +1,3 @@
+#gcc tls_main.c -I./include/ -L. -lpcap -o tls.out
+#gcc arp_main.c -I./include/ -L. -lpcap  -o arp.out
+gcc main.c -I./include/ -L. -lpcap  -o a.out
