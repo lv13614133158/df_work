@@ -27,7 +27,7 @@ extern "C" {
 	#define ROOT_PATH_RW  "/oemdata/idps"
 #elif POS_4
 	#define ROOT_PATH_OR  "../conf"
-	#define ROOT_PATH_RW  "../conf"
+	#define ROOT_PATH_RW  "../idps"
 #else
 	#define ROOT_PATH  "/mnt/sdcard/idps"
 #endif
@@ -147,6 +147,15 @@ typedef struct tboxInfo{
 }tboxInfo_t;
 extern tboxInfo_t tboxInfo_obj;
 
+struct Cache_date
+{
+	char vin[18];
+	char sn[20];
+	char vehicle_model[20];
+
+};
+
+
 typedef struct tbox_gps_info{
 	double latitude;
 	double longitude;
@@ -166,7 +175,7 @@ int recordVesion(char* version);
 char *getProcessWhileList(void);
 int   setProcessWhileList(char *white_process);
 int conf_rw_path_init();
-int initTboxInfo();
+int initTboxInfo(configData* configObj);
 int initCert(void);
 char* getTCUID();
 char* getVIN();
@@ -176,6 +185,7 @@ unsigned char *get_pki_client_cert(void);
 unsigned char *get_pki_client_private_key(void);
 unsigned char *get_pki_root_cert(void);
 char* getManufacturer();
+int get_Cache_data(struct Cache_date * date,char *fpath);
 
 int networkFunctionEnabled(void);
 void initFlagNetworkConnection(void);

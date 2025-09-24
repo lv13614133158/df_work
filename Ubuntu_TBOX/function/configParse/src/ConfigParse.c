@@ -809,7 +809,7 @@ static void *get_gps_task(void *arg)
     return NULL;
 }
 
-int initTboxInfo()
+int initTboxInfo(configData* configObj)
 {
 	char spdlog[512] = {0};
 	tboxInfo_t tbox_info_local = {0};	//从本地获取的信息
@@ -818,12 +818,15 @@ int initTboxInfo()
 	char buf[512]={0};
 	int ret = 0;
 	pthread_t pthread_get_gps = 0;
-
+	struct Cache_date file_data;
 
 	strncpy(tbox_mcu_info.VIN, "LQH913L2240000001", sizeof(tbox_mcu_info.VIN) - 1);
 	strncpy(tbox_mcu_info.ID, "LQH02505280001", sizeof(tbox_mcu_info.ID) - 1);
 	
 	pthread_create(&pthread_get_gps, NULL, get_gps_task, NULL);
+
+	
+	
 
 	if(readLocalJson(DEVICE_INFO_PATH, buf, sizeof(buf)) == -1){
 		ret=-1;
@@ -902,6 +905,12 @@ exit:
 	memset(spdlog, 0 ,sizeof(spdlog));
 	sprintf(spdlog, "ID:%s, VIN:%s, CAR:%s, SIMU:%s\n", tboxInfo_obj.ID, tboxInfo_obj.VIN, tboxInfo_obj.CAR, tboxInfo_obj.SYS_VERSION);
 	log_d("ConfigParse", spdlog);
+
+	strncpy(file_data.vin, "LQH913L2240000001", sizeof(file_data.vin));
+	strncpy(file_data.sn, "LQH02505280001", sizeof(file_data.sn));	
+	strncpy(file_data.vehicle_model,tbox_info_local.CAR,sizeof(file_data.vehicle_model));
+	get_Cache_data(&file_data,configObj->commonModuleObj.dataBaseDir);
+
 	return ret;
 }
 
@@ -1126,5 +1135,70 @@ int conf_rw_path_init()
         result = system(system_buff);
     }
 
+    return 0;
+}
+
+
+
+int get_Cache_data(struct Cache_date * date,char *fpath)
+{
+	struct Cache_date file_data;
+	int fd;
+    if (fpath == NULL) {
+        log_e("ConfigParse", "get_Cache_config parameter error");
+        return -1;
+    }
+    
+    fd = open(fpath, O_RDWR);
+    if (fd < 0) {
+		//没有这个文件创建文件
+		fd = open(fpath, O_CREAT | O_RDWR, 0664);
+		if (fd < 0) {
+            log_e("ConfigParse", "Failed to create cache file");
+            return -1;
+        }
+		ssize_t written = write(fd, date, sizeof(struct Cache_date));
+        if (written != sizeof(struct Cache_date)) {
+            log_e("ConfigParse", "Failed to write cache data");
+            close(fd);
+            return -1;
+        }
+        fsync(fd);
+
+    }else{
+		close(fd);
+		
+		fd = open(fpath,O_RDWR);
+		if (fd < 0) {
+            log_e("ConfigParse", "Failed to create cache file");
+            return -1;
+        }
+		struct Cache_date file_data;
+        ssize_t read_bytes = read(fd, &file_data, sizeof(struct Cache_date));
+        if (read_bytes == sizeof(struct Cache_date)) {
+            // 成功读取数据，进行对比
+            if (memcmp(date, &file_data, sizeof(struct Cache_date)) != 0) {
+				//删除固定文件夹下的文件
+				char command[64];
+				snprintf(command, sizeof(command), "rm -rf %s", fpath);
+				int result = system(command);
+				if (result != 0) {
+					return -1;
+				} else {
+					ssize_t written = write(fd, date, sizeof(struct Cache_date));
+					if (written != sizeof(struct Cache_date)) {
+						log_e("ConfigParse", "Failed to write cache data");
+						close(fd);
+						return -1;
+					}
+					fsync(fd);
+				}
+            }
+		}
+	}
+
+
+    close(fd);
+    
     return 0;
 }
