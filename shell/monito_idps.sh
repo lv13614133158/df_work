@@ -133,6 +133,19 @@ get_process_stats() {
         fi
 
         IDS_mem_RSS=$(grep VmRSS /proc/$PROCESS_pid/status 2>/dev/null | awk '{print $2}' | grep -E '^[0-9]+$' || echo "0")
+        
+        # 确保进程CPU使用率在有效范围内
+        if echo "$IDS_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
+            # 限制进程CPU使用率在0-100之间
+            if [ "$(echo "$IDS_cpu > 100" | bc -l 2>/dev/null || echo "0")" = "1" ]; then
+                IDS_cpu="100"
+            fi
+            if [ "$(echo "$IDS_cpu < 0" | bc -l 2>/dev/null || echo "1")" = "1" ]; then
+                IDS_cpu="0"
+            fi
+        else
+            IDS_cpu="0"
+        fi
     else
         PROCESS_pid=""
         IDS_cpu=""
@@ -162,24 +175,27 @@ print_stats() {
             if [ "$count_IDS_stats" -gt 0 ]; then
                 avg_IDS_cpu=$(echo "$sum_IDS_cpu $count_IDS_stats" | awk '{printf "%.2f", $1/$2}' 2>/dev/null || echo "0.00")
                 avg_IDS_mem_RSS=$(echo "scale=0; $sum_IDS_mem_RSS / $count_IDS_stats" | bc 2>/dev/null | awk '{printf "%.0f", $0}' || echo "0.00")
-                    # 验证计算结果是否为有效数字
+                
+                # 验证计算结果是否为有效数字
                 if ! echo "$avg_IDS_cpu" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
-                    avg_IDS_cpu="0"
+                    avg_IDS_cpu="0.00"
                 fi
-                if [ "$(echo "$avg_IDS_cpu" | awk '{print ($1 > 100 || $1 < 0)}')" = "1" ]; then
-                    usr_cpu="0"
-                fi
+                
+                # 确保avg_IDS_cpu在合理范围内(0-100)
+                avg_IDS_cpu_value=$(echo "$avg_IDS_cpu" | awk '{print ($1 > 100) ? 100 : ($1 < 0 ? 0 : $1)}')
+                # 格式化为两位小数
+                avg_IDS_cpu=$(printf "%.2f" "$avg_IDS_cpu_value")
+                
                 if ! echo "$avg_IDS_mem_RSS" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
                     avg_IDS_mem_RSS="0"
                 fi
             else
-                avg_IDS_cpu="0"
+                avg_IDS_cpu="0.00"
                 avg_IDS_mem_RSS="0"
             fi
             last_avg_IDS_cpu="$avg_IDS_cpu"
             last_avg_IDS_mem_RSS="$avg_IDS_mem_RSS"
         else
-
             avg_IDS_cpu="$last_avg_IDS_cpu"
             avg_IDS_mem_RSS="$last_avg_IDS_mem_RSS"
         fi
@@ -312,14 +328,20 @@ fun() {
         
         # 更新进程CPU统计值
         if echo "$IDS_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
+            # 确保进程CPU使用率在0-100之间
+            if [ "$(echo "$IDS_cpu > 100" | bc -l 2>/dev/null || echo "0")" = "1" ]; then
+                IDS_cpu="100"
+            fi
+            if [ "$(echo "$IDS_cpu < 0" | bc -l 2>/dev/null || echo "1")" = "1" ]; then
+                IDS_cpu="0"
+            fi
 
-
-
-            if (( $(echo "$IDS_cpu > $max_IDS_cpu" | bc -l 2>/dev/null || echo "0") )); then
+            # 使用字符串比较而不是算术比较
+            if [ "$(echo "$IDS_cpu > $max_IDS_cpu" | bc -l 2>/dev/null || echo "0")" = "1" ]; then
                 max_IDS_cpu=$IDS_cpu
             fi
             
-            if (( $(echo "$IDS_cpu < $min_IDS_cpu" | bc -l 2>/dev/null || echo "1") )); then
+            if [ "$(echo "$IDS_cpu < $min_IDS_cpu" | bc -l 2>/dev/null || echo "1")" = "1" ]; then
                 min_IDS_cpu=$IDS_cpu
             fi
 

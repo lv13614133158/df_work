@@ -1,0 +1,3 @@
+/home/nvidia/df/df_work/Ubuntu_TBOX/build/CMakeFiles/IDPS.dir
+/home/nvidia/df/df_work/Ubuntu_TBOX/build/CMakeFiles/edit_cache.dir
+/home/nvidia/df/df_work/Ubuntu_TBOX/build/CMakeFiles/rebuild_cache.dir

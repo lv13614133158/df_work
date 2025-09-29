@@ -113,6 +113,7 @@ void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u
         if (ip_header->ip_p == IPPROTO_TCP) {
             // 解析TCP头部
             struct tcphdr *tcp_header = (struct tcphdr*)(packet + sizeof(struct ether_header) + ip_header->ip_hl*4);
+
             
             // 检查TCP端口是否为SSL/TLS常用的443端口
             if (ntohs(tcp_header->th_dport) == 443 || ntohs(tcp_header->th_sport) == 443) {
@@ -131,6 +132,15 @@ void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u
                         if (handshake_type == 0x02) {
                             uint16_t record_length = (payload[3] << 8) | payload[4];
                             
+                            if (ip_header->ip_v == 4)
+                            {
+                                printf("IPv4 \n");
+                            }else if (ip_header->ip_v == 6)
+                            {
+                                printf("IPv6 \n");
+                            }
+            
+
                             printf("Source: %s:%d\n", inet_ntoa(ip_header->ip_src), ntohs(tcp_header->th_sport));
                             printf("Destination: %s:%d\n", inet_ntoa(ip_header->ip_dst), ntohs(tcp_header->th_dport));
                             

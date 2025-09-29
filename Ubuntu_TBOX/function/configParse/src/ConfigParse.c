@@ -909,7 +909,11 @@ exit:
 	strncpy(file_data.vin, "LQH913L2240000001", sizeof(file_data.vin));
 	strncpy(file_data.sn, "LQH02505280001", sizeof(file_data.sn));	
 	strncpy(file_data.vehicle_model,tbox_info_local.CAR,sizeof(file_data.vehicle_model));
-	get_Cache_data(&file_data,configObj->commonModuleObj.dataBaseDir);
+
+	if(get_Cache_data(&file_data,configObj->commonModuleObj.dataBaseDir) == -1)
+	{
+		ret = -1;
+	}
 
 	return ret;
 }
@@ -1148,11 +1152,13 @@ int get_Cache_data(struct Cache_date * date,char *fpath)
         log_e("ConfigParse", "get_Cache_config parameter error");
         return -1;
     }
-    
-    fd = open(fpath, O_RDWR);
+    char  file_name[64];
+	snprintf(file_name, sizeof(file_name), "%s/cache", fpath);
+    fd = open(file_name, O_RDONLY);
     if (fd < 0) {
-		//没有这个文件创建文件
-		fd = open(fpath, O_CREAT | O_RDWR, 0664);
+;
+		mk_dir_exist(fpath);
+		fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
 		if (fd < 0) {
             log_e("ConfigParse", "Failed to create cache file");
             return -1;
@@ -1166,14 +1172,6 @@ int get_Cache_data(struct Cache_date * date,char *fpath)
         fsync(fd);
 
     }else{
-		close(fd);
-		
-		fd = open(fpath,O_RDWR);
-		if (fd < 0) {
-            log_e("ConfigParse", "Failed to create cache file");
-            return -1;
-        }
-		struct Cache_date file_data;
         ssize_t read_bytes = read(fd, &file_data, sizeof(struct Cache_date));
         if (read_bytes == sizeof(struct Cache_date)) {
             // 成功读取数据，进行对比
@@ -1183,8 +1181,16 @@ int get_Cache_data(struct Cache_date * date,char *fpath)
 				snprintf(command, sizeof(command), "rm -rf %s", fpath);
 				int result = system(command);
 				if (result != 0) {
+					close(fd);
 					return -1;
 				} else {
+					close(fd);
+					mk_dir_exist(fpath);
+					fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
+					if (fd < 0) {
+						log_e("ConfigParse", "Failed to create cache file");
+						return -1;
+					}
 					ssize_t written = write(fd, date, sizeof(struct Cache_date));
 					if (written != sizeof(struct Cache_date)) {
 						log_e("ConfigParse", "Failed to write cache data");
@@ -1196,8 +1202,6 @@ int get_Cache_data(struct Cache_date * date,char *fpath)
             }
 		}
 	}
-
-
     close(fd);
     
     return 0;
