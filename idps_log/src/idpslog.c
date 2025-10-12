@@ -10,17 +10,19 @@ char* replace_quotes(const char* input) {
     if (!input) return NULL;
     
     int len = strlen(input);
-    char* result = malloc(len + 1);
+    char* result = malloc(len + 3);
     if (!result) return NULL;
-    
-    for (int i = 0; i <= len; i++) {
+    result[0] = '"';
+
+    for (int i = 0; i < len; i++) {
         if (input[i] == '"') {
             result[i] = '\'';
         } else {
             result[i] = input[i];
         }
     }
-    
+    result[len + 1] = '"';
+    result[len + 2] = '\0';
     return result;
 }
 
@@ -133,7 +135,7 @@ void idpslog(int type,const char *tag,const char *msg)
             return;
         }
         insertLog(type,sql);
-        if(sql == NULL )
+        if(sql != NULL )
         {
             free(sql);
         }

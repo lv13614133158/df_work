@@ -8,8 +8,8 @@
 #include <netinet/tcp.h>
 
 #define TCP_TABLE_SIZE 1024
-#define REPLAY_THRESHOLD 5      // 提高阈值以减少误报
-#define TIME_WINDOW 10          // 时间窗口(秒)
+#define REPLAY_THRESHOLD 20      // 提高阈值以减少误报
+#define TIME_WINDOW 50          // 时间窗口(秒)
 
 // TCP连接信息结构
 typedef struct {
@@ -52,10 +52,10 @@ int is_tcp_replay_attack(struct ip *ip_header, struct tcphdr *tcp_header, time_t
     u_int16_t dst_port = ntohs(tcp_header->th_dport);
     u_int32_t seq_num = ntohl(tcp_header->th_seq);
     
-     printf("DEBUG: 收到TCP包 %u.%u.%u.%u:%d -> %u.%u.%u.%u:%d 序列号=%u\n",
-           src_ip & 0xFF, (src_ip >> 8) & 0xFF, (src_ip >> 16) & 0xFF, (src_ip >> 24) & 0xFF, src_port,
-           dst_ip & 0xFF, (dst_ip >> 8) & 0xFF, (dst_ip >> 16) & 0xFF, (dst_ip >> 24) & 0xFF, dst_port,
-           seq_num);
+    //  printf("DEBUG: 收到TCP包 %u.%u.%u.%u:%d -> %u.%u.%u.%u:%d 序列号=%u\n",
+    //        src_ip & 0xFF, (src_ip >> 8) & 0xFF, (src_ip >> 16) & 0xFF, (src_ip >> 24) & 0xFF, src_port,
+    //        dst_ip & 0xFF, (dst_ip >> 8) & 0xFF, (dst_ip >> 16) & 0xFF, (dst_ip >> 24) & 0xFF, dst_port,
+    //        seq_num);
     
     // 查找是否已存在相同的连接和序列号
     for (i = 0; i < tcp_table_size; i++) {
@@ -133,7 +133,20 @@ void process_tcp_packet(const u_char *packet, int packet_len) {
     if (!(tcp_flags & TH_SYN) ) {
         return;
     }
+    // 在 process_tcp_packet 函数中添加
+
+    // u_int16_t src_port = ntohs(tcp_header->th_sport);
+    // u_int16_t dst_port = ntohs(tcp_header->th_dport);
     
+    // if (src_port == 22 || dst_port == 22) {
+    // return ; // 排除SSH流量
+    // }
+    // u_int32_t expected_src = inet_addr("192.168.196.128");
+    // u_int32_t expected_dst = inet_addr("192.168.196.128");
+
+    // if (ip_header->ip_src.s_addr != expected_src || ip_header->ip_dst.s_addr != expected_dst) {
+    //     return;
+    // }
     // 检查是否为TCP重放攻击
     if (is_tcp_replay_attack(ip_header, tcp_header, current_time)) {
         char src_ip_str[16], dst_ip_str[16];
@@ -190,9 +203,9 @@ int main() {
         return 1;
     }
     
-    printf("默认网络设备: %s\n", dev);
+
     // 打开网络设备进行捕获
-    handle = pcap_open_live(dev, BUFSIZ, 1, 1000, errbuf);
+    handle = pcap_open_live("lo", BUFSIZ, 1, 1000, errbuf);
     if (handle == NULL) {
         fprintf(stderr, "无法打开设备 %s: %s\n", dev, errbuf);
         return 1;

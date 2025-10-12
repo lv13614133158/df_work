@@ -167,7 +167,7 @@ char wbsRpcProcess(char* _idata){
 		char* _outPutHmac = wbsClient_base64_sha1(_bodystring);
 		if((!_outPutHmac)||(!_inputHmac)||(strcmp(_outPutHmac,_inputHmac) != 0)) //校验失败
 		{
-			log_e("idps_websocket", "[rpc Hmac失败]");
+			idpslog(4,"idps_websocket", "[rpc Hmac失败]");
 		}
 		else
 		{               

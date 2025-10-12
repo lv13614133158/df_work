@@ -13,7 +13,7 @@ extern "C" {
 #endif
 #include <string.h>
 #include "spdloglib.h"
-
+#include <idpslog.h>
 /**
  * @name:   module choose
  * @Author: qihoo360

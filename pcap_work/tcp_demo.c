@@ -8,6 +8,15 @@
 #include <netinet/tcp.h>
 #include <arpa/inet.h>
 
+// TCP伪头部结构，用于计算TCP校验和
+struct pseudo_header {
+    u_int32_t source_address;
+    u_int32_t dest_address;
+    u_int8_t placeholder;
+    u_int8_t protocol;
+    u_int16_t tcp_length;
+};
+
 // 计算校验和
 unsigned short checksum(unsigned short *ptr, int nbytes) {
     register long sum = 0;
@@ -29,6 +38,25 @@ unsigned short checksum(unsigned short *ptr, int nbytes) {
     answer = (short)~sum;
     
     return(answer);
+}
+
+// 计算TCP校验和
+unsigned short tcp_checksum(unsigned short *ip_src, unsigned short *ip_dst, 
+                           unsigned short *tcp_segment, int tcp_len) {
+    struct pseudo_header psh;
+    char pseudogram[4096];
+    
+    psh.source_address = *(u_int32_t*)ip_src;
+    psh.dest_address = *(u_int32_t*)ip_dst;
+    psh.placeholder = 0;
+    psh.protocol = IPPROTO_TCP;
+    psh.tcp_length = htons(tcp_len);
+    
+    int psize = sizeof(struct pseudo_header) + tcp_len;
+    memcpy(pseudogram, (char*)&psh, sizeof(struct pseudo_header));
+    memcpy(pseudogram + sizeof(struct pseudo_header), tcp_segment, tcp_len);
+    
+    return checksum((unsigned short*)pseudogram, psize);
 }
 
 int main() {
@@ -65,7 +93,7 @@ int main() {
     // 设置目标地址
     sin.sin_family = AF_INET;
     sin.sin_port = htons(80);
-    sin.sin_addr.s_addr = inet_addr("192.168.196.128");
+    sin.sin_addr.s_addr = inet_addr("127.0.0.1");
     
     // 填充IP头部
     iph->ihl = 5;
@@ -77,43 +105,51 @@ int main() {
     iph->ttl = 255;
     iph->protocol = IPPROTO_TCP;
     iph->check = 0;
-    iph->saddr = inet_addr("192.168.196.1");
+    iph->saddr = inet_addr("192.168.196.128");
     iph->daddr = sin.sin_addr.s_addr;
     
     // 填充TCP头部（使用固定序列号）
     tcph->source = htons(12345);
     tcph->dest = htons(80);
     tcph->seq = htonl(fixed_sequence);  // 固定序列号
-    tcph->ack_seq = 0;
-    tcph->doff = 5;
-    tcph->fin = 0;
-    tcph->syn = 1;  // SYN标志
-    tcph->rst = 0;
-    tcph->psh = 0;
-    tcph->ack = 0;
-    tcph->urg = 0;
-    tcph->window = htons(5840);
-    tcph->check = 0;
-    tcph->urg_ptr = 0;
+
     
     // 发送多个具有相同序列号的包
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 50; i++) {
         // 每次发送前改变源端口以避免被系统过滤
-        tcph->source = htons(10000 );
+        tcph->source = htons(12345);   // 固定源端口
+        tcph->dest = htons(80);        // 固定目标端口
+        tcph->seq = htonl(fixed_sequence);  // 固定序列号
+         tcph->ack_seq = 0;
+        tcph->doff = 5;
+        tcph->fin = 0;
+        tcph->syn = 1;  // SYN标志
+        tcph->rst = 0;
+        tcph->psh = 0;
+        tcph->ack = 0;
+        tcph->urg = 0;
+        tcph->window = htons(5840);
+        tcph->check = 0;
+        tcph->urg_ptr = 0;
+
         
-        // 重新计算IP校验和
+        // 重新计算校验和
         iph->check = 0;
         iph->check = checksum((unsigned short *) packet, iph->tot_len >> 1);
         
+        tcph->check = 0;
+        tcph->check = tcp_checksum((unsigned short*)&iph->saddr, (unsigned short*)&iph->daddr,
+                                (unsigned short*)tcph, sizeof(struct tcphdr));
+        
         // 发送包
         if (sendto(sockfd, packet, iph->tot_len, 0, 
-                   (struct sockaddr *)&sin, sizeof(sin)) < 0) {
+                (struct sockaddr *)&sin, sizeof(sin)) < 0) {
             perror("发送包失败");
         } else {
-            printf("发送包 %d，序列号: %u\n", i+1, fixed_sequence);
+            printf("发送重放包 %d，序列号: %u\n", i+1, fixed_sequence);
         }
-        
-        usleep(100);  // 100ms间隔
+        printf("发送包 %d，序列号: %u (htonl: %u)\n", i+1, fixed_sequence, htonl(fixed_sequence));
+        usleep(10000);
     }
     
     close(sockfd);

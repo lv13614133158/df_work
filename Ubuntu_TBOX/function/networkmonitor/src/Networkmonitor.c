@@ -204,10 +204,10 @@ static int watchNicDeviceIsExist(char *watchNicDevice)
 }
 
 static void timerarrived(void){
-	log_i("networkmonitor","go to find watch nic device");
+	idpslog(2,"networkmonitor","go to find watch nic device");
 	if(watchNicDeviceIsExist(s_watchNicDevice))
 	{
-		log_i("networkmonitor","watch nic device is exist");
+		idpslog(2,"networkmonitor","watch nic device is exist");
 		StartMonitor(s_watchNicDevice);
 		if(startupFlowFalg)
 		{
@@ -342,7 +342,7 @@ static void initWhiteList(void)
 
 	head_ip = (list *)malloc(sizeof(list));
 	if (head_ip == NULL){  
-		log_e("networkmonitor","fatal error,Out Of Space head_ip");
+		idpslog(4,"networkmonitor","fatal error,Out Of Space head_ip");
 		return;
 	}
 	list_init(head_ip,free);
@@ -352,7 +352,7 @@ static void initWhiteList(void)
 
 	head_dns = (list *)malloc(sizeof(list));
 	if (head_dns == NULL){  
-		log_e("networkmonitor","fatal error,Out Of Space head_dns");
+		idpslog(4,"networkmonitor","fatal error,Out Of Space head_dns");
 		return;
 	}
 	list_init(head_dns,free);
@@ -369,7 +369,7 @@ void updatePortWhiteList(char* portIpList)
 
 	if (!portIpList)
 	{
-		log_e("networkmonitor","portIpList is null!");
+		idpslog(4,"networkmonitor","portIpList is null!");
 		return;
 	}
 
@@ -576,14 +576,14 @@ void updateNetAttackEvent(char* config, bool on)
 			for(int i=0; i< size; i++){
 				cJSON* child = cJSON_GetArrayItem(root, i);
 				if(!child) {
-					log_e("networkmonitor","Parse Attacklist element  error");
+					idpslog(4,"networkmonitor","Parse Attacklist element  error");
 					break;
 				}
 					
 				cJSON* js_type   = cJSON_GetObjectItem(child, "type");
 				cJSON* js_switch = cJSON_GetObjectItem(child, "switch");
 				if(!js_type || !js_switch){
-					log_e("networkmonitor","Parse Attacklist element type error");
+					idpslog(4,"networkmonitor","Parse Attacklist element type error");
 					break;
 				}
 					
@@ -598,7 +598,7 @@ void updateNetAttackEvent(char* config, bool on)
 			cJSON_Delete(root);
 		}
 		else{
-			log_e("networkmonitor","Parse Attacklist parameter list error");
+			idpslog(4,"networkmonitor","Parse Attacklist parameter list error");
 		}
 	}
 }
@@ -639,7 +639,7 @@ void setNetAttackThreshold(char *attackThreshold)
 	}
 	else
 	{
-		log_e("networkmonitor","Parse Attack Threshold parameter list error");
+		idpslog(4,"networkmonitor","Parse Attack Threshold parameter list error");
 	}
 }
 
@@ -679,7 +679,7 @@ void getTrafficUsageInfo_Base(char* _input,int maxlength){
 // 网卡流量数据记录
 void setSnifferFilePath(char* filePath){
 	if(filePath == NULL)
-		log_i("networkmonitor","incorrect parameter");
+		idpslog(2,"networkmonitor","incorrect parameter");
 	SetSnifferFilePath(filePath);
 }
 

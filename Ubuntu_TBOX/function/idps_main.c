@@ -78,10 +78,10 @@ static int GetImei(char *udid, configData configObj)
 	if(getVIN() && udid){
 		char spdlog[256] = {0};
 		snprintf(spdlog, 256, "Udid:%s, Vin:%s", udid, getVIN());
-		log_v("idps mian", spdlog);
+		idpslog(0,"idps mian", spdlog);
 	}
 	else{
-		log_e("idps mian", "udid or vin is null!");
+		idpslog(4,"idps mian", "udid or vin is null!");
 	}
 
 	return 0;
@@ -91,12 +91,16 @@ static int GetImei(char *udid, configData configObj)
 
 static int InitLog(configData configObj)
 {
-	set_console_logger(true);     // 客户端打印
-	set_file_write_logger(true);  // 写入文件
-    set_file_logger(configObj.commonModuleObj.dataspdlog, 5*1024*1024, 2);  //设置日志文件存储路径、大小、滚动个数
-	set_level(0);
-	log_v("idps version","360 Autocare DR V1.2"); 
+	// set_console_logger(true);     // 客户端打印
+	// set_file_write_logger(true);  // 写入文件
+    // set_file_logger(configObj.commonModuleObj.dataspdlog, 5*1024*1024, 2);  //设置日志文件存储路径、大小、滚动个数
+	// set_level(0);
 
+	// log_v("idps version","360 Autocare DR V1.2"); 
+
+	
+	idpslog_init(1,configObj.commonModuleObj.dataspdlog,5*1024*1024,2, //是否启用文件日志 路径 大小 滚动个数
+                  1,"./idpslog.db",1,1000,2000);    				   //是否启用数据库 路径  是否加密 文件大小  id大小 
 	return 0;
 }
 
@@ -110,11 +114,11 @@ static void KeyLoop(int atcion)
 		_sSn    	 = networkMangerMethodobj.getSn();
 		_sToken      = networkMangerMethodobj.getToken();
 		if(_sManagekey){
-			log_v("idps Key", "idps_Key successful");
-			log_v("idps Managekey", _sManagekey);
-			log_v("idps Sessionkey",_sSessionkey);
-			log_v("idps Sn", _sSn);
-			log_v("idps Token", _sToken);
+			idpslog(0,"idps Key", "idps_Key successful");
+			idpslog(0,"idps Managekey", _sManagekey);
+			idpslog(0,"idps Sessionkey",_sSessionkey);
+			idpslog(0,"idps Sn", _sSn);
+			idpslog(0,"idps Token", _sToken);
 			return;
 		}
 		sleep(5);
@@ -311,7 +315,7 @@ static void initNetConnect(void)
 	}
 	else
 	{
-		log_v("idps main", "Enter no network mode actively");
+		idpslog(0,"idps main", "Enter no network mode actively");
 		getCloudConfig(&configSetObj);	//获取探针配置
 		return;
 	}
@@ -322,14 +326,14 @@ static void initNetConnect(void)
 		sleep(1);
 		if (s_net_connect_fail_cnt >= 2)
 		{
-			log_v("idps main", "Enter no network mode passively");
+			idpslog(0,"idps main", "Enter no network mode passively");
 			getCloudConfig(&configSetObj);	//获取探针配置
 			break;
 		}
 
 		if (true == Websocket_is_init)
 		{
-			log_v("idps main", "Websocket_is_init ok");
+			idpslog(0,"idps main", "Websocket_is_init ok");
 			break;
 		}
 	}
@@ -417,9 +421,9 @@ int main(){
 		SysConfigMonitorObj.initConfigMonitor();
 		SysConfigMonitorObj.startConfigMonitor();
 		SysConfigMonitorObj.getValidUserInfo(&validuserinfo);
-		snprintf(spdlog, 256, "valid user info :%s", validuserinfo);
-		log_v("idps main",spdlog);
 		memset(spdlog,0,256);
+		snprintf(spdlog, 256, "valid user info :%s", validuserinfo);
+		idpslog(0,"idps main",spdlog);
 		if(validuserinfo)
 			free(validuserinfo);
 	}	
@@ -457,7 +461,7 @@ int main(){
 
 static void cleanHandler()
 {
-	log_v("idps mian","capture signnal >> exec cleanHandler");
+	idpslog(0,"idps mian","capture signnal >> exec cleanHandler");
 	exit(0);
 #if MODULE_NETWORKMANAGER
     networkMangerMethodobj.freeNetWorkManager();

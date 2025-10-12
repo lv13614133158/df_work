@@ -1,0 +1,481 @@
+
+register_key data
+
+2025-10-11 16:17:25.346 11419-11422 T/[IDS Post_Ret]:{
+    "code":0,
+    "data":{
+        "register_key":"TDQ2JXR3cEU1I1kjRl5kLUZjbnUwcDNlQXUqRDVqQzg=",
+        "sn":"T1000SGaec6a9f8fc04454"
+    }
+}
+
+session_key data
+
+]:{
+    "code":0,
+    "data":{
+        "session_key":"WUM1LSN3Klp0bDhXJjJsWShDZE9WN2E0K3FvMlJsQDg=",
+        "timestamp":1760170646169,
+        "token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTcwNDYsImp0aSI6IjEwMDMiLCJpYXQiOjE3NjAxNzA2NDZ9.ZBNWXrrUwBMagrZTGglZWRt9dWVIQLME5AJG9lrddvs"
+    }
+}
+
+cpu_usage 1060001
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010106000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"load_avg1\":\"2.68\",
+        \"load_avg5\":\"3.21\",
+        \"load_avg15\":\"2.84\",
+        \"cpu_num\":1,
+        \"cpu_load\":2.6800000667572021,
+        \"cpu_usage\":100,
+        \"ram_size\":116784,
+        \"ram_rate\":27,
+        \"rom_size\":778705920,
+        \"rom_rate\":11,
+        \"timestamp\":1760171737759
+    }
+}",
+
+
+1.txt 10100
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010101000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"path\":\"/system/1.txt\",
+        \"event_source\":\"[]\",
+        \"action\":4,
+        \"md5\":\"d41d8cd98f00b204e9800998ecf8427e\",
+        \"old_md5\":\"\",
+        \"sha1\":\"da39a3ee5e6b4b0d3255bfef95601890afd80709\",
+        \"sha256\":\"\",
+        \"size\":0,
+        \"uid\":0,
+        \"gid\":0,
+        \"mode\":\"-rw-rw-rw-\",
+        \"timestamp\":1760170712019
+    }
+}",
+
+
+sleep 10300
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010103000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"pid\":12260,
+        \"ppid\":11222,
+        \"uid\":0,
+        \"gid\":0,
+        \"path\":\"sleep\",
+        \"hashcode\":\"\",
+        \"mode\":\"\",
+        \"md5\":\"\",
+        \"action\":2,
+        \"timestamp\":1760170808507
+    }
+}",
+
+
+cpu_usage 1060002
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010106000223\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"load_avg1\":\"2.68\",
+        \"load_avg5\":\"3.21\",
+        \"load_avg15\":\"2.84\",
+        \"cpu_num\":1,
+        \"cpu_load\":2.6800000667572021,
+        \"cpu_usage\":100
+    }
+}",
+
+
+ram_rate 1060003
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010106000323\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"ram_size\":120892,
+        \"ram_rate\":28
+    }
+}",
+
+
+rom_rate 1060004
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010106000423\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"rom_size\":779035648,
+        \"rom_rate\":11
+    }
+}",
+
+
+TCP_SYN_SCAN 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_SYN_SCAN\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760170780365,
+        \"netInfo\":\"\"
+    }
+}",
+
+
+TCP_NULL_SCAN 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_NULL_SCAN\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760170798542,
+        \"netInfo\":\"Value:1120,
+         Threshold:50\"
+    }
+}",
+
+
+TCP_FIN_SCAN 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_FIN_SCAN\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760170819645,
+        \"netInfo\":\"Value:880,
+         Threshold:59\"
+    }
+}",
+
+
+TCP_ACK_SCAN 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_ACK_SCAN\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760170837779,
+        \"netInfo\":\"Value:1930,
+         Threshold:38\"
+    }
+}",
+
+
+TCP_FIN_RST_DOS 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_FIN_RST_DOS\",
+        \"srcIp\":\"172.16.6.80\",
+        \"localPort\":5555,
+        \"timestamp\":1760171790820,
+        \"netInfo\":\"Value:0,
+         Threshold:0\"
+    }
+}",
+
+
+TCP_ACK_FIN_DOS 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_ACK_FIN_DOS\",
+        \"srcIp\":\"172.16.6.80\",
+        \"localPort\":5555,
+        \"timestamp\":1760171793821,
+        \"netInfo\":\"Value:3,
+         Threshold:0\"
+    }
+}",
+
+
+TCP_SYN_ACK_FLOOD 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_SYN_ACK_FLOOD\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":5000,
+        \"timestamp\":1760170937051,
+        \"netInfo\":\"Value:3064,
+         Threshold:125\"
+    }
+}",
+
+
+TCP_ACK_RST_DOS 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_ACK_RST_DOS\",
+        \"srcIp\":\"172.16.6.80\",
+        \"localPort\":5555,
+        \"timestamp\":1760171799834,
+        \"netInfo\":\"Value:4,
+         Threshold:0\"
+    }
+}",
+
+
+TCP_ACK_PSH_FLOOD 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_ACK_PSH_FLOOD\",
+        \"srcIp\":\"172.16.6.80\",
+        \"localPort\":5555,
+        \"timestamp\":1760171802840,
+        \"netInfo\":\"Value:6,
+         Threshold:0\"
+    }
+}",
+
+
+TCP_SYN_FLOOD 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_SYN_FLOOD\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":5000,
+        \"timestamp\":1760170958099,
+        \"netInfo\":\"Value:417,
+         Threshold:8\"
+    }
+}",
+
+
+TCP_XMAS_SCAN 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_XMAS_SCAN\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760170979209,
+        \"netInfo\":\"Value:2788,
+         Threshold:56\"
+    }
+}",
+
+
+UDP_SRC_PORT_ZERO 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"UDP_SRC_PORT_ZERO\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760171022319,
+        \"netInfo\":\"\"
+    }
+}",
+
+
+FRAGGLE_ATTACK 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"FRAGGLE_ATTACK\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760171034333,
+        \"netInfo\":\"Value:5060,
+         Threshold:2\"
+    }
+}",
+
+
+UDP_PORT_FLOOD 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"UDP_PORT_FLOOD\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760171034355,
+        \"netInfo\":\"Value:5060,
+         Threshold:2\"
+    }
+}",
+
+
+TCP_LAND_ATTACK 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_LAND_ATTACK\",
+        \"srcIp\":\"172.16.6.7\",
+        \"localPort\":0,
+        \"timestamp\":1760171095974,
+        \"netInfo\":\"Value:0,
+         Threshold:0\"
+    }
+}",
+
+
+TCP_SRC_PORT_ZERO 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_SRC_PORT_ZERO\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":5000,
+        \"timestamp\":1760171127889,
+        \"netInfo\":\"\"
+    }
+}",
+
+
+TCP_FIN_SYN_DOS 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"TCP_FIN_SYN_DOS\",
+        \"srcIp\":\"172.16.6.80\",
+        \"localPort\":5555,
+        \"timestamp\":1760171826886,
+        \"netInfo\":\"Value:0,
+         Threshold:0\"
+    }
+}",
+
+
+UDP_PORT_SCAN 10900
+
+	"body":	"{
+    \"sn\":\"T1000SGaec6a9f8fc04454\",
+    \"type\":\"0010109000123\",
+    \"latitude\":0,
+    \"longitude\":0,
+    \"version\":\"1.5.0\",
+    \"data\":{
+        \"event\":\"UDP_PORT_SCAN\",
+        \"srcIp\":\"172.16.6.8\",
+        \"localPort\":0,
+        \"timestamp\":1760171145819,
+        \"netInfo\":\"Value:906,
+         Threshold:2\"
+    }
+}",
+

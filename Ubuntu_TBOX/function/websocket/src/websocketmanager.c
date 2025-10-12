@@ -66,7 +66,7 @@ static void initConfigSet(websocketInfoModult_t *pWebsocketInfoObj)
 {
 	if(!pWebsocketInfoObj)
 	{
-		log_e("idps_websocket","websocketconfigobj is NULL");
+		idpslog(4,"idps_websocket","websocketconfigobj is NULL");
 		return;
 	}
 	wbsSetConfig(pWebsocketInfoObj->url, pWebsocketInfoObj->channelId, pWebsocketInfoObj->equmentType, 

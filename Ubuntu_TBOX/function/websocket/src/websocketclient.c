@@ -76,11 +76,11 @@ sem_t listnotifynormal;
 							pthread_attr_t attr;\
 							int ret = pthread_attr_init(&attr);\
 							if((ret = pthread_attr_setstacksize(&attr, stacksize)) != 0){\
-								log_v("idps websocket","statcksize set error for webmessage process");\
+								idpslog(0,"idps websocket","statcksize set error for webmessage process");\
 							}\
 							pthread_create(&(threadHandle),&attr,ProcessMessageThread,NULL);\
 							if((ret = pthread_attr_destroy(&attr)) != 0)\
-								log_v("idps_websocket","thread attr destory error for webmessage process\n");\
+								idpslog(0,"idps_websocket","thread attr destory error for webmessage process\n");\
 
 // 调试链表
 void DBGlist(list *listTx)
@@ -151,7 +151,7 @@ void wbsClient_localWebsocketSendEx(char* _input){
 	if (listsize > 1024)
 	{
 		/*clear list*/
-		log_d("Send list", "listwebsockettx list overflow! clear!");
+		idpslog(2,"Send list", "listwebsockettx list overflow! clear!");
 		while (listsize > 0)
 		{
 			list_elmt* node = list_rem_head(&listwebsockettx); 
@@ -214,7 +214,7 @@ static void wbsClient_localWebsocketSend(long long lseqnumber, char *data, bool 
 		{
 			if (!wsisend && send_only_once == 1)
 			{
-				log_d("Not add Map", print_data);
+				idpslog(2,"Not add Map", print_data);
 				free(print_data);
 				cJSON_Delete(json);
 				free(data);
@@ -222,7 +222,7 @@ static void wbsClient_localWebsocketSend(long long lseqnumber, char *data, bool 
 			}
 			else
 			{
-				log_d("Add Map", print_data);
+				idpslog(2,"Add Map", print_data);
 			}
 			free(print_data);
 		}
@@ -236,7 +236,7 @@ static void wbsClient_localWebsocketSend(long long lseqnumber, char *data, bool 
 
 void wbsClient_localWebsocketSend_no_network(char* _input)
 {
-	log_d("offline", _input);
+	idpslog(2,"offline", _input);
 }
 
 void wbsClient_sendEventData(char* _postid,char* _data,char* _event)
@@ -330,7 +330,7 @@ void wbsClient_readLoopData()
 // 数据接收
 static int ReceiveData(char *in)
 {
-	log_d("SOCKET receive",in);
+	idpslog(2,"SOCKET receive",in);
 	char* message = NULL;
 	message = (char*)malloc(strlen(in)+1);
 	bzero(message,strlen(in)+1);
@@ -377,7 +377,7 @@ static int SendData(struct lws *wsi)
 		{
 			char spdlog[255] = {0};
 			snprintf(spdlog, 255, "%d < %d :%s", m, n, spdlog);
-			log_e("SOCKET send failed", spdlog);
+			idpslog(4,"SOCKET send failed", spdlog);
 		}
 	
 		if(_lstring)free(_lstring);
@@ -403,29 +403,29 @@ static int CallBack(struct lws *wsi, enum lws_callback_reasons reason,
 	char spdlog[255] ={0};
 
 	//snprintf(spdlog, logLen, "websocket callback called with reason %d", reason);
-	//log_v("idps_websocket",spdlog);
+	//idpslog(0,"idps_websocket",spdlog);
 	switch (reason) 
 	{
 	case LWS_CALLBACK_PROTOCOL_INIT:
-		log_v("idps_websocket","websocket callbak init");
+		idpslog(0,"idps_websocket","websocket callbak init");
 		break;
 
 	case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
 		s_wbs_connection_succ = false;
 		snprintf(spdlog, logLen, "websocket connection err: %s\n", in ? (char *)in :"(null)");
-		log_e("idps_websocket",spdlog);
+		idpslog(4,"idps_websocket",spdlog);
         wsisend = NULL;
 		break;
 	
 	case LWS_CALLBACK_CLIENT_ESTABLISHED: // 第一次建立连接
 		s_wbs_connection_succ = true;
 		lws_callback_on_writable(wsi);
-		log_d("idps_websocket","++++websocket connection established\n");
+		idpslog(2,"idps_websocket","++++websocket connection established\n");
 		break;
 
 	case LWS_CALLBACK_CLIENT_CLOSED:
 		s_wbs_connection_succ = false;
-		log_d("idps_websocket","----websocket connection closed\n");
+		idpslog(2,"idps_websocket","----websocket connection closed\n");
 		wsisend = NULL;
 		break;
 	
@@ -444,7 +444,7 @@ static int CallBack(struct lws *wsi, enum lws_callback_reasons reason,
 	case LWS_CALLBACK_WS_PEER_INITIATED_CLOSE:
 		snprintf(spdlog, logLen, "server initiated connection close: len = %lu, in = %s\n",
 		 (unsigned long)len, (char*)in);
-		log_v("idps_websocket",spdlog);
+		idpslog(0,"idps_websocket",spdlog);
 
 	default:
 		break;
@@ -486,7 +486,7 @@ static int ConnectClient(void)
 		char buff[1024] = {0};
 		char *token = strchr(tempToken,' ');
 		sprintf(buff,"/live/v1.5/tbox/linux?sn=%s&token=%s",wbsGetSnnumber(),token+1);
-		log_v("idps_websocket",buff);
+		idpslog(0,"idps_websocket",buff);
 		i.path   = buff;
 		i.host   = i.address;
 		i.origin = i.address;
@@ -496,7 +496,7 @@ static int ConnectClient(void)
 		//usleep(connection_delay);
 		char spdlog[255] ={0};
 		snprintf(spdlog, 255, "%s: %s:%d connecting...\n", __func__, i.address, i.port);
-		log_v("idps_websocket", spdlog);
+		idpslog(0,"idps_websocket", spdlog);
 		if (!(wsisend = lws_client_connect_via_info(&i))) {
 			return 1;
 		}
@@ -537,7 +537,7 @@ int wbsClient_init(void)
 	//printf("==================> ssl_connection: %d\n", ssl_connection);
 	context = lws_create_context(&info);  
 	if (!context) {
-		log_e("idps_websocket", "lws init failed\n");
+		idpslog(4,"idps_websocket", "lws init failed\n");
 		return -1;
 	}
 	return 0;
@@ -561,7 +561,7 @@ int wbsClient_localWebSocketclient()
 			if (context)
 			{
 				ConnectClient();
-				log_v("idps_websocket", "ConnectClient end");
+				idpslog(0,"idps_websocket", "ConnectClient end");
 			}
 		}
 
@@ -574,7 +574,7 @@ int wbsClient_localWebSocketclient()
 			sleep(1);
 		}
 
-		//log_v("idps_websocket", "lws_service end");
+		//idpslog(0,"idps_websocket", "lws_service end");
 		if (s_reinit_wbs_connect == true)
 		{
 			if (context)
@@ -583,14 +583,14 @@ int wbsClient_localWebSocketclient()
 				context = NULL;
 			}
 			wbsClient_init();
-			log_v("idps_websocket", "wbsClient_init");
+			idpslog(0,"idps_websocket", "wbsClient_init");
 			s_reinit_wbs_connect = false;
 		}
 	}
 
 	char spdlog[255]={0};
 	snprintf(spdlog, 255, "exiting service loop. n = %d, interrupted = %d\n", n, interrupted);
-	log_v("idps_websocket",spdlog);
+	idpslog(0,"idps_websocket",spdlog);
 
 	if (context)
 	{

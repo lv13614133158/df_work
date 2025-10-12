@@ -72,7 +72,7 @@ void initProcessWhiteList()
 	head = (list *)malloc(sizeof(list));
 	if (head == NULL)
 	{
-		log_e("processmonitor","fatal error,Out Of Space");
+		idpslog(4,"processmonitor","fatal error,Out Of Space");
 		return;
 	}
 	//list_destroy(head);
@@ -122,7 +122,7 @@ char* getLocalProcessWhileList()
       localList = get_process_information();
       if(setProcessWhileList(localList) < 0)
       {
-         log_e("processmonitor","write local WhileList error!");
+         idpslog(4,"processmonitor","write local WhileList error!");
       }
    }
    return localList;

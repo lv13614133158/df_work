@@ -29,6 +29,7 @@ mkdir -p $path/output/conf/config
 
 cp $path/build/IDPS $path/output/bin/
 cp $path/script/export $path/output/bin/export
+cp $path/script/read_idpslog $path/output/bin/read_idpslog
 cp $path/script/IDPS_start.sh $path/output/bin/IDPS_start.sh
 cp $path/script/IDPS_stop.sh $path/output/bin/
 cp $path/lib/libwebsockets.so.19 $path/output/lib/

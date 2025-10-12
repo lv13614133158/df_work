@@ -82,7 +82,7 @@ pResourceCpuLoadavgData getLoadavgInfo(void)
     fp = fopen("/proc/loadavg", "r");
     if (fp == NULL)
     {
-        log_v("resoucemonitor","fopen file /proc/loadavg error");
+        idpslog(4,"resoucemonitor","fopen file /proc/loadavg error");
         if (result)
         {
             free(result);
@@ -325,7 +325,7 @@ void setCPUWorkParameter(int cpuPeriod, int cpuThreshold, int cpuUsageRateThresh
 void setRAMWorkParameter(int ramPeriod, int ramThreshold)
 {
     if (ramPeriod <= 0 || ramThreshold <= 0)
-        log_e("resourcemonitor module","threshold incorrect parameter");
+        idpslog(4,"resourcemonitor module","threshold incorrect parameter");
     mRAMUsageCollectPeriod = MAX(ramPeriod,0);
     mRAMOverSizeThreshold  = ramThreshold;
 }
@@ -333,7 +333,7 @@ void setRAMWorkParameter(int ramPeriod, int ramThreshold)
 void setROMWorkParameter(int romPeriod, int romThreshold)
 {
     if (romPeriod <= 0 || romThreshold <= 0)
-        log_e("resourcemonitor module","threshold incorrect parameter");
+        idpslog(4,"resourcemonitor module","threshold incorrect parameter");
     mROMUsageCollectPeriod = MAX(romPeriod,0);
     mROMOverSizeThreshold  = romThreshold;
 }
@@ -534,7 +534,7 @@ void startResourceMonitor(void)
     }
     else
     {
-       log_e("resourcemonitor module","threshold incorrect parameter");
+       idpslog(4,"resourcemonitor module","threshold incorrect parameter");
     }
 
     isInitial = 1;

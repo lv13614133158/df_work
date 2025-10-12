@@ -25,7 +25,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include "spdloglib.h"
+#include <idpslog.h>
 #define UNIX_DOMAIN "@qihooidps"
 #define MAX_LENGTH  32
 /**
@@ -108,7 +108,7 @@ void initTPSize_Base(int consumerTPSize, int producerTPSize){
  */
 void setServerConfig_Base(char* baseUrl){
     if(strlen(baseUrl) < 4)
-        log_i("networkmanager","base url error");
+        idpslog(2,"networkmanager","base url error");
     networkclient.setServerConfig(baseUrl);
 }
 /**
@@ -331,10 +331,10 @@ static void createthreadsocket(void){
 	pthread_attr_t attr;
 	int ret = pthread_attr_init(&attr); 
 	if((ret = pthread_attr_setstacksize(&attr, stacksize)) != 0)
-		log_i("networkmonitor","statcksize set error");
+		idpslog(2,"networkmonitor","statcksize set error");
 	pthread_create(&_threadsocket,&attr,threadrun_socket,(void*)0);
 	if((ret = pthread_attr_destroy(&attr)) != 0)
-		log_i("networkmonitor","thread attr destory error");  
+		idpslog(2,"networkmonitor","thread attr destory error");  
 }
 /**
  * @name:   关闭SOCKET线程

@@ -1,0 +1,1609 @@
+2025-10-11 15:09:46.285 29720-29720 I/[ConfigParse]:ID:LQH02505280001, VIN:LQH913L2240000001, CAR:S73, SIMU:
+
+2025-10-11 15:09:46.288 29720-29720 T/[idps mian]:Udid:LQH02505280001, Vin:LQH913L2240000001
+2025-10-11 15:09:46.290 29720-29720 I/[ConfigParse]:s_network_connection_enabled:1
+
+2025-10-11 15:09:48.292 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/register;header:{"X-Proto-Buf":"0"},0;body:{"channel_id":"T00001","udid":"LQH02505280001","equipment_type":"t-box","os_type":"linux"},0
+2025-10-11 15:09:48.634 29720-29727 T/[IDS Post_Ret]:{"code":0,"data":{"register_key":"SzJHLUgrKnphKnFCbSVhWXpTZV4oJV5sSGpta29nVW8=","sn":"T1000TBb038f417f703306"}}
+2025-10-11 15:09:48.634 29720-29727 T/[checkCodeForKey]:code:0
+2025-10-11 15:09:48.635 29720-29727 T/[networkmanager]:save manage key 61e4cbc87552d5e3d146bd930eda3f07
+2025-10-11 15:09:48.635 29720-29727 T/[networkmanager]:save manage key to db :61e4cbc87552d5e3d146bd930eda3f07
+2025-10-11 15:09:48.635 29720-29727 T/[networkmanager]:managekey:K2G-H+*za*qBm%aYzSe^(%^lHjmkogUo
+2025-10-11 15:09:48.635 29720-29727 T/[networkmanager]:save indexSN to db :5307f5bd0791bc4ffd8ab72ca7e8dd90
+2025-10-11 15:09:48.635 29720-29727 T/[networkmanager]:sn:T1000TBb038f417f703306
+2025-10-11 15:09:48.635 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"av6lgCH+QEdPuMqM5pAtDg==","Authorization":""},0;body:C˙®V∑∫û2%hÅa£@|∫¡ ºıWOÕ#;%¶!àz,32
+2025-10-11 15:09:48.712 29720-29727 T/[IDS Post_Ret]:.‰uT]Üôl’”Â	úëPtSõ‘ÖÖ@ô— }&AL◊À©O˝ÓRúèï8Ìyj	~{Eú©*¯®Ë¯ŒUñ¬ö⁄â“„–áÜë-o¿™[8fV‘•≈ªﬂÏ£€˝Øf`oÚ\:ˇ”ïËù‘›˝„ºÖÔE	Dª•‘1wÔ}|øËò–≥d≈Âë
+≠ã˘ÒÊ"çê˝©∞ÀÍF˜≈æ€8[ÁRgVuÂ˝
+2025-10-11 15:09:48.712 29720-29727 T/[[IDS decrypt]:
+]:{"code":0,"data":{"session_key":"a1hMWXEpaVl3Myg4d1okYk5vWUtxMklkcy1TVCsjUm4=","timestamp":1760166588675,"token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g"}}
+2025-10-11 15:09:48.713 29720-29727 T/[checkCodeForKey]:code:0
+2025-10-11 15:09:48.713 29720-29727 T/[session key manager:]:kXLYq)iYw3(8wZ$bNoYKq2Ids-ST+#Rn
+2025-10-11 15:09:48.713 29720-29727 T/[ConfigParse]:update_time:1679489244188
+2025-10-11 15:09:48.715 29720-29727 T/[IDS Get]:url:https://vsocidps-uat.dfiov.com.cn/api/v1.2/policy/config?sn=T1000TBb038f417f703306&update_time=1679489244188;header:{"X-Channel-ID":"T00001","X-Crypt":"2","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsIn
+2025-10-11 15:09:49.015 29720-29727 T/[IDS Get_Ret]:Sì¿!π
+2025-10-11 15:09:49.016 29720-29727 T/[[IDS decrypt]:
+]:{"code":0,"data":{"list":[{"config":{"rules":[]},"desc":"","name":"FirewallRegulation","package":"com.qihoo360.caridps.module.firewall.FirewallManager","policy_type_id":200100,"switch":1,"terminal_type_id":0},{"config":{"storage_path":"","submit":{"addr":"","key":"","protocol":"preset","token":""}},"desc":"","name":"Log","policy_type_id":300100,"switch":1,"terminal_type_id":0},{"config":{"event_level":3,"watch_points":[]},"desc":"Êñá‰ª∂ÁõëÊéßÊé¢Èíà","name":"FileMonitor","package":"com.qihoo360.caridps.module.filemonitor.FileMonitor","policy_type_id":100100,"short_name":"FIM","switch":1,"terminal_type_id":0},{"config":{"collect_period":60,"dns_white_list":[],"event_level":3,"ip_white_list":[],"port_white_list":[]},"desc":"ÁΩëÁªúÁõëÊéßÊé¢Èíà","name":"NetworkMonitor","package":"com.qihoo360.caridps.module.networkmonitor.NetworkMonitor","policy_type_id":100200,"short_name":"NM","switch":0,"terminal_type_id":0},{"config":{"collect_period":900,"event_level":3,"white_list":[]},"desc":"ËøõÁ®ãÁõëÊéßÊé¢Èíà","name":"ProcessMonitor","policy_type_id":100300,"short_name":"TIMM","switch":0,"terminal_type_id":0},{"config":{"app_action":{"event_level":3},"event_level":3,"permission_action":{"auth_list":[],"collect_period":30,"event_level":3}},"desc":"Â∫îÁî®ÁõëÊéßÊé¢Èíà","name":"AppMonitor","package":"com.qihoo360.caridps.module.appmonitor.AppMonitor","policy_type_id":100400,"short_name":"APPM","switch":1,"terminal_type_id":0},{"config":{"event_level":3},"desc":"Áî®Êà∑ÁôªÂΩïÁõëÊéß","name":"ShellLoginMonitor","policy_type_id":100500,"switch":1,"terminal_type_id":0},{"config":{"collect_period":1000,"cpu":{"collect_period":910,"event_level":3,"overload_threshold":85},"event_level":3,"ram":{"collect_period":920,"event_level":3,"overload_threshold":85},"rom":{"collect_period":915,"event_level":3,"overload_threshold":85}},"desc":"Á≥ªÁªüËµÑÊ∫êÁõëÊéßÊé¢Èíà","name":"ResourceMonitor","package":"com.qihoo360.caridps.module.resourcemonitor.ResourceMonitor","policy_type_id":100600,"switch":1,"terminal_type_id":0},{"config":{"event_level":3},"desc":"Á≥ªÁªüÈÖçÁΩÆÁõëÊéßÊé¢Èíà","name":"SystemConfigMonitor","package":"com.qihoo360.caridps.module.configmonitor.SystemConfigMonitor","policy_type_id":100700,"short_name":"SCA","switch":1,"terminal_type_id":0},{"config":{"collect_period":925,"event_level":3},"desc":"ÁΩëÁªúÊµÅÈáèÁõëÊéßÊé¢Èíà","name":"NetworkTrafficMonitor","package":"com.qihoo360.caridps.module.trafficstatsmonitor.TrafficStatsMonitor","policy_type_id":100800,"short_name":"NTM","switch":1,"terminal_type_id":0},{"config":{"interface":"","list":[{"switch":1,"type":"TCP_SYN_SCAN"},{"switch":1,"type":"TCP_NULL_SCAN"},{"switch":1,"type":"TCP_FIN_SCAN"},{"switch":1,"type":"TCP_ACK_SCAN"},{"switch":1,"type":"TCP_FIN_RST_DOS"},{"switch":1,"type":"TCP_ACK_FIN_DOS"},{"switch":1,"type":"TCP_SYN_ACK_FLOOD"},{"switch":1,"type":"TCP_ACK_RST_DOS"},{"switch":1,"type":"TCP_ACK_PSH_FLOOD"},{"switch":1,"type":"TCP_SYN_FLOOD"},{"switch":1,"type":"TCP_XMAS_SCAN"},{"switch":1,"type":"UDP_SRC_PORT_ZERO"},{"switch":1,"type":"FRAGGLE_ATTACK"},{"switch":1,"type":"UDP_PORT_FLOOD"},{"switch":1,"type":"TCP_LAND_ATTACK"},{"switch":1,"type":"ICMP_LARGE_PING"},{"switch":1,"type":"TCP_SRC_PORT_ZERO"},{"switch":1,"type":"TCP_FIN_SYN_DOS"},{"switch":1,"type":"UDP_PORT_SCAN"}],"threshold":{"ARPATTACK":6,"ARPFLOOD":512,"ICMPDEATH":65502,"ICMPLARGE":1500,"ICMPLOOD":400,"IGMPFLOOD":512,"IMPLATTCK":64,"TCPCONNECT":85,"TCPDOSRET":250,"TCPPORTS":10,"TCPSCANRET":2,"UDPDOSRET":9000,"UDPFRAGGLE":16,"UDPPORTS":400}},"desc":"ÁΩëÁªúÂÖ•‰æµÊé¢Èíà","name":"NetworkInvasionMonitor","policy_type_id":100900,"short_name":"NTM","switch":1,"terminal_type_id":0},{"config":{"event_level":3},"desc":"WIFIÁõëÊéßÊé¢Èíà","name":"WifiMonitor","package":"com.dftc.caridps.module.wifimonitor.WifiMonitor","policy_type_id":101140,"short_name":"WM","switch":1,"terminal_type_id":0},{"config":{"event_level":3},"desc":"CANÁõëÊéßÊé¢Èíà","name":"CANMonitor","policy_type_id":101600,"short_name":"CANM","switch":1,"terminal_type_id":0},{"config":{"event_level":6},"desc":"ÊÅ∂ÊÑèÁ®ãÂ∫èÁõëÊéßÊé¢Èíà","name":"VirusFileMonitor","package":"com.qihoo360.caridps.module.appmonitor.VirusAppMonitor","policy_type_id":201100,"short_name":"AVM","switch":1,"terminal_type_id":0},{"config":{"event_level":6},"desc":"Êó•ÂøóÁõëÊéßÊé¢Èíà","name":"LogMonitor","package":"com.qihoo360.caridps.module.logeventmonitor.LogMonitor","policy_type_id":201200,"short_name":"CLM","switch":1,"terminal_type_id":0},{"config":{"attack":{"event_level":6,"network":"wlan0"},"event_level":3},"desc":"IVIÁΩëÁªúÂÖ•‰æµÊé¢Èíà","name":"NetworkAttackMonitor","package":"com.qihoo360.caridps.module.networkattackmonitor.NetworkAttackMonitor","policy_type_id":210111,"short_name":"NAM","switch":1,"terminal_type_id":0}],"update_time":1758243883628}}
+2025-10-11 15:09:49.016 29720-29727 T/[checkCodeForKey]:code:0
+2025-10-11 15:09:49.016 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"rules":	[]
+	},
+	"desc":	"",
+	"name":	"FirewallRegulation",
+	"package":	"com.qihoo360.caridps.module.firewall.FirewallManager",
+	"policy_type_id":	200100,
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.018 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"storage_path":	"",
+		"submit":	{
+			"addr":	"",
+			"key":	"",
+			"protocol":	"preset",
+			"token":	""
+		}
+	},
+	"desc":	"",
+	"name":	"Log",
+	"policy_type_id":	300100,
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.020 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3,
+		"watch_points":	[]
+	},
+	"desc":	"Êñá‰ª∂ÁõëÊéßÊé¢Èíà",
+	"name":	"FileMonitor",
+	"package":	"com.qihoo360.caridps.module.filemonitor.FileMonitor",
+	"policy_type_id":	100100,
+	"short_name":	"FIM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.023 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"collect_period":	60,
+		"dns_white_list":	[],
+		"event_level":	3,
+		"ip_white_list":	[],
+		"port_white_list":	[]
+	},
+	"desc":	"ÁΩëÁªúÁõëÊéßÊé¢Èíà",
+	"name":	"NetworkMonitor",
+	"package":	"com.qihoo360.caridps.module.networkmonitor.NetworkMonitor",
+	"policy_type_id":	100200,
+	"short_name":	"NM",
+	"switch":	0,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.026 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"collect_period":	900,
+		"event_level":	3,
+		"white_list":	[]
+	},
+	"desc":	"ËøõÁ®ãÁõëÊéßÊé¢Èíà",
+	"name":	"ProcessMonitor",
+	"policy_type_id":	100300,
+	"short_name":	"TIMM",
+	"switch":	0,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.028 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"app_action":	{
+			"event_level":	3
+		},
+		"event_level":	3,
+		"permission_action":	{
+			"auth_list":	[],
+			"collect_period":	30,
+			"event_level":	3
+		}
+	},
+	"desc":	"Â∫îÁî®ÁõëÊéßÊé¢Èíà",
+	"name":	"AppMonitor",
+	"package":	"com.qihoo360.caridps.module.appmonitor.AppMonitor",
+	"policy_type_id":	100400,
+	"short_name":	"APPM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.030 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3
+	},
+	"desc":	"Áî®Êà∑ÁôªÂΩïÁõëÊéß",
+	"name":	"ShellLoginMonitor",
+	"policy_type_id":	100500,
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.032 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"collect_period":	1000,
+		"cpu":	{
+			"collect_period":	910,
+			"event_level":	3,
+			"overload_threshold":	85
+		},
+		"event_level":	3,
+		"ram":	{
+			"collect_period":	920,
+			"event_level":	3,
+			"overload_threshold":	85
+		},
+		"rom":	{
+			"collect_period":	915,
+			"event_level":	3,
+			"overload_threshold":	85
+		}
+	},
+	"desc":	"Á≥ªÁªüËµÑÊ∫êÁõëÊéßÊé¢Èíà",
+	"name":	"ResourceMonitor",
+	"package":	"com.qihoo360.caridps.module.resourcemonitor.ResourceMonitor",
+	"policy_type_id":	100600,
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.033 29720-29727 E/[ConfigParse]:getJsonObjectItem_s NO have switch ObjectItem error
+2025-10-11 15:09:49.035 29720-29727 E/[ConfigParse]:getJsonObjectItem_s NO have policy_type_id ObjectItem error
+2025-10-11 15:09:49.038 29720-29727 E/[ConfigParse]:getJsonObjectItem_s NO have terminal_type_id ObjectItem error
+2025-10-11 15:09:49.040 29720-29727 E/[ConfigParse]:getJsonObjectItem_s NO have usage_rate_overload_threshold ObjectItem error
+2025-10-11 15:09:49.041 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3
+	},
+	"desc":	"Á≥ªÁªüÈÖçÁΩÆÁõëÊéßÊé¢Èíà",
+	"name":	"SystemConfigMonitor",
+	"package":	"com.qihoo360.caridps.module.configmonitor.SystemConfigMonitor",
+	"policy_type_id":	100700,
+	"short_name":	"SCA",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.043 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"collect_period":	925,
+		"event_level":	3
+	},
+	"desc":	"ÁΩëÁªúÊµÅÈáèÁõëÊéßÊé¢Èíà",
+	"name":	"NetworkTrafficMonitor",
+	"package":	"com.qihoo360.caridps.module.trafficstatsmonitor.TrafficStatsMonitor",
+	"policy_type_id":	100800,
+	"short_name":	"NTM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.044 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"interface":	"",
+		"list":	[{
+				"switch":	1,
+				"type":	"TCP_SYN_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"TCP_NULL_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"TCP_FIN_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"TCP_ACK_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"TCP_FIN_RST_DOS"
+			}, {
+				"switch":	1,
+				"type":	"TCP_ACK_FIN_DOS"
+			}, {
+				"switch":	1,
+				"type":	"TCP_SYN_ACK_FLOOD"
+			}, {
+				"switch":	1,
+				"type":	"TCP_ACK_RST_DOS"
+			}, {
+				"switch":	1,
+				"type":	"TCP_ACK_PSH_FLOOD"
+			}, {
+				"switch":	1,
+				"type":	"TCP_SYN_FLOOD"
+			}, {
+				"switch":	1,
+				"type":	"TCP_XMAS_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"UDP_SRC_PORT_ZERO"
+			}, {
+				"switch":	1,
+				"type":	"FRAGGLE_ATTACK"
+			}, {
+				"switch":	1,
+				"type":	"UDP_PORT_FLOOD"
+			}, {
+				"switch":	1,
+				"type":	"TCP_LAND_ATTACK"
+			}, {
+				"switch":	1,
+				"type":	"ICMP_LARGE_PING"
+			}, {
+				"switch":	1,
+				"type":	"TCP_SRC_PORT_ZERO"
+			}, {
+				"switch":	1,
+				"type":	"TCP_FIN_SYN_DOS"
+			}, {
+				"switch":	1,
+				"type":	"UDP_PORT_SCAN"
+			}],
+		"threshold":	{
+			"ARPATTACK":	6,
+			"ARPFLOOD":	512,
+			"ICMPDEATH":	65502,
+			"ICMPLARGE":	1500,
+			"ICMPLOOD":	400,
+			"IGMPFLOOD":	512,
+			"IMPLATTCK":	64,
+			"TCPCONNECT":	85,
+			"TCPDOSRET":	250,
+			"TCPPORTS":	10,
+			"TCPSCANRET":	2,
+			"UDPDOSRET":	9000,
+			"UDPFRAGGLE":	16,
+			"UDPPORTS":	400
+		}
+	},
+	"desc":	"ÁΩëÁªúÂÖ•‰æµÊé¢Èíà",
+	"name":	"NetworkInvasionMonitor",
+	"policy_type_id":	100900,
+	"short_name":	"NTM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.047 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3
+	},
+	"desc":	"WIFIÁõëÊéßÊé¢Èíà",
+	"name":	"WifiMonitor",
+	"package":	"com.dftc.caridps.module.wifimonitor.WifiMonitor",
+	"policy_type_id":	101140,
+	"short_name":	"WM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.049 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3
+	},
+	"desc":	"CANÁõëÊéßÊé¢Èíà",
+	"name":	"CANMonitor",
+	"policy_type_id":	101600,
+	"short_name":	"CANM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.050 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	6
+	},
+	"desc":	"ÊÅ∂ÊÑèÁ®ãÂ∫èÁõëÊéßÊé¢Èíà",
+	"name":	"VirusFileMonitor",
+	"package":	"com.qihoo360.caridps.module.appmonitor.VirusAppMonitor",
+	"policy_type_id":	201100,
+	"short_name":	"AVM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.052 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	6
+	},
+	"desc":	"Êó•ÂøóÁõëÊéßÊé¢Èíà",
+	"name":	"LogMonitor",
+	"package":	"com.qihoo360.caridps.module.logeventmonitor.LogMonitor",
+	"policy_type_id":	201200,
+	"short_name":	"CLM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.054 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"attack":	{
+			"event_level":	6,
+			"network":	"wlan0"
+		},
+		"event_level":	3
+	},
+	"desc":	"IVIÁΩëÁªúÂÖ•‰æµÊé¢Èíà",
+	"name":	"NetworkAttackMonitor",
+	"package":	"com.qihoo360.caridps.module.networkattackmonitor.NetworkAttackMonitor",
+	"policy_type_id":	210111,
+	"short_name":	"NAM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:09:49.056 29720-29727 T/[ConfigParse]:{
+	"code":	0,
+	"data":	{
+		"list":	[{
+				"config":	{
+					"rules":	[]
+				},
+				"desc":	"",
+				"name":	"FirewallRegulation",
+				"package":	"com.qihoo360.caridps.module.firewall.FirewallManager",
+				"policy_type_id":	200100,
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"storage_path":	"",
+					"submit":	{
+						"addr":	"",
+						"key":	"",
+						"protocol":	"preset",
+						"token":	""
+					}
+				},
+				"desc":	"",
+				"name":	"Log",
+				"policy_type_id":	300100,
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"event_level":	3,
+					"watch_points":	[]
+				},
+				"desc":	"Êñá‰ª∂ÁõëÊéßÊé¢Èíà",
+				"name":	"FileMonitor",
+				"package":	"com.qihoo360.caridps.module.filemonitor.FileMonitor",
+				"policy_type_id":	100100,
+				"short_name":	"FIM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"collect_period":	60,
+					"dns_white_list":	[],
+					"event_level":	3,
+					"ip_white_list":	[],
+					"port_white_list":	[]
+				},
+				"desc":	"ÁΩëÁªúÁõëÊéßÊé¢Èíà",
+				"name":	"NetworkMonitor",
+				"package":	"com.qihoo360.caridps.module.networkmonitor.NetworkMonitor",
+				"policy_type_id":	100200,
+				"short_name":	"NM",
+				"switch":	0,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"collect_period":	900,
+					"event_level":	3,
+					"white_list":	[]
+				},
+				"desc":	"ËøõÁ®ãÁõëÊéßÊé¢Èíà",
+				"name":	"ProcessMonitor",
+				"policy_type_id":	100300,
+				"short_name":	"TIMM",
+				"switch":	0,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"app_action":	{
+						"event_level":	3
+					},
+					"event_level":	3,
+					"permission_action":	{
+						"auth_list":	[],
+						"collect_period":	30,
+						"event_level":	3
+					}
+				},
+				"desc":	"Â∫îÁî®ÁõëÊéßÊé¢Èíà",
+				"name":	"AppMonitor",
+				"package":	"com.qihoo360.caridps.module.appmonitor.AppMonitor",
+				"policy_type_id":	100400,
+				"short_name":	"APPM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"event_level":	3
+				},
+				"desc":	"Áî®Êà∑ÁôªÂΩïÁõëÊéß",
+				"name":	"ShellLoginMonitor",
+				"policy_type_id":	100500,
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"collect_period":	1000,
+					"cpu":	{
+						"collect_period":	910,
+						"event_level":	3,
+						"overload_threshold":	85
+					},
+					"event_level":	3,
+					"ram":	{
+						"collect_period":	920,
+						"event_level":	3,
+						"overload_threshold":	85
+					},
+					"rom":	{
+						"collect_period":	915,
+						"event_level":	3,
+						"overload_threshold":	85
+					}
+				},
+				"desc":	"Á≥ªÁªüËµÑÊ∫êÁõëÊéßÊé¢Èíà",
+				"name":	"ResourceMonitor",
+				"package":	"com.qihoo360.caridps.module.resourcemonitor.ResourceMonitor",
+				"policy_type_id":	100600,
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"event_level":	3
+				},
+				"desc":	"Á≥ªÁªüÈÖçÁΩÆÁõëÊéßÊé¢Èíà",
+				"name":	"SystemConfigMonitor",
+				"package":	"com.qihoo360.caridps.module.configmonitor.SystemConfigMonitor",
+				"policy_type_id":	100700,
+				"short_name":	"SCA",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"collect_period":	925,
+					"event_level":	3
+				},
+				"desc":	"ÁΩëÁªúÊµÅÈáèÁõëÊéßÊé¢Èíà",
+				"name":	"NetworkTrafficMonitor",
+				"package":	"com.qihoo360.caridps.module.trafficstatsmonitor.TrafficStatsMonitor",
+				"policy_type_id":	100800,
+				"short_name":	"NTM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"interface":	"",
+					"list":	[{
+							"switch":	1,
+							"type":	"TCP_SYN_SCAN"
+						}, {
+							"switch":	1,
+							"type":	"TCP_NULL_SCAN"
+						}, {
+							"switch":	1,
+							"type":	"TCP_FIN_SCAN"
+						}, {
+							"switch":	1,
+							"type":	"TCP_ACK_SCAN"
+						}, {
+							"switch":	1,
+							"type":	"TCP_FIN_RST_DOS"
+						}, {
+							"switch":	1,
+							"type":	"TCP_ACK_FIN_DOS"
+						}, {
+							"switch":	1,
+							"type":	"TCP_SYN_ACK_FLOOD"
+						}, {
+							"switch":	1,
+							"type":	"TCP_ACK_RST_DOS"
+						}, {
+							"switch":	1,
+							"type":	"TCP_ACK_PSH_FLOOD"
+						}, {
+							"switch":	1,
+							"type":	"TCP_SYN_FLOOD"
+						}, {
+							"switch":	1,
+							"type":	"TCP_XMAS_SCAN"
+						}, {
+							"switch":	1,
+							"type":	"UDP_SRC_PORT_ZERO"
+						}, {
+							"switch":	1,
+							"type":	"FRAGGLE_ATTACK"
+						}, {
+							"switch":	1,
+							"type":	"UDP_PORT_FLOOD"
+						}, {
+							"switch":	1,
+							"type":	"TCP_LAND_ATTACK"
+						}, {
+							"switch":	1,
+							"type":	"ICMP_LARGE_PING"
+						}, {
+							"switch":	1,
+							"type":	"TCP_SRC_PORT_ZERO"
+						}, {
+							"switch":	1,
+							"type":	"TCP_FIN_SYN_DOS"
+						}, {
+							"switch":	1,
+							"type":	"UDP_PORT_SCAN"
+						}],
+					"threshold":	{
+						"ARPATTACK":	6,
+						"ARPFLOOD":	512,
+						"ICMPDEATH":	65502,
+						"ICMPLARGE":	1500,
+						"ICMPLOOD":	400,
+						"IGMPFLOOD":	512,
+						"IMPLATTCK":	64,
+						"TCPCONNECT":	85,
+						"TCPDOSRET":	250,
+						"TCPPORTS":	10,
+						"TCPSCANRET":	2,
+						"UDPDOSRET":	9000,
+						"UDPFRAGGLE":	16,
+						"UDPPORTS":	400
+					}
+				},
+				"desc":	"ÁΩëÁªúÂÖ•‰æµÊé¢Èíà",
+				"name":	"NetworkInvasionMonitor",
+				"policy_type_id":	100900,
+				"short_name":	"NTM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"event_level":	3
+				},
+				"desc":	"WIFIÁõëÊéßÊé¢Èíà",
+				"name":	"WifiMonitor",
+				"package":	"com.dftc.caridps.module.wifimonitor.WifiMonitor",
+				"policy_type_id":	101140,
+				"short_name":	"WM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"event_level":	3
+				},
+				"desc":	"CANÁõëÊéßÊé¢Èíà",
+				"name":	"CANMonitor",
+				"policy_type_id":	101600,
+				"short_name":	"CANM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"event_level":	6
+				},
+				"desc":	"ÊÅ∂ÊÑèÁ®ãÂ∫èÁõëÊéßÊé¢Èíà",
+				"name":	"VirusFileMonitor",
+				"package":	"com.qihoo360.caridps.module.appmonitor.VirusAppMonitor",
+				"policy_type_id":	201100,
+				"short_name":	"AVM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"event_level":	6
+				},
+				"desc":	"Êó•ÂøóÁõëÊéßÊé¢Èíà",
+				"name":	"LogMonitor",
+				"package":	"com.qihoo360.caridps.module.logeventmonitor.LogMonitor",
+				"policy_type_id":	201200,
+				"short_name":	"CLM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}, {
+				"config":	{
+					"attack":	{
+						"event_level":	6,
+						"network":	"wlan0"
+					},
+					"event_level":	3
+				},
+				"desc":	"IVIÁΩëÁªúÂÖ•‰æµÊé¢Èíà",
+				"name":	"NetworkAttackMonitor",
+				"package":	"com.qihoo360.caridps.module.networkattackmonitor.NetworkAttackMonitor",
+				"policy_type_id":	210111,
+				"short_name":	"NAM",
+				"switch":	1,
+				"terminal_type_id":	0
+			}],
+		"update_time":	1758243883628
+	}
+}
+2025-10-11 15:09:49.059 29720-29727 T/[idps_websocket]:websocket managerkey get success
+2025-10-11 15:09:49.059 29720-29727 T/[idps_websocket]:websocket sessionkey get success
+2025-10-11 15:09:49.059 29720-29727 T/[idps_websocket]:websocket getsnbumber success
+2025-10-11 15:09:49.059 29720-29727 T/[idps_websocket]:websocket gettokenbumber success
+2025-10-11 15:09:49.059 29720-29727 T/[idps_websocket]:managerkey && sessionkey && snnumber && tokennumber get success
+2025-10-11 15:09:49.059 29720-29765 T/[idps_websocket]:websocket managerkey get success
+2025-10-11 15:09:49.059 29720-29765 T/[idps_websocket]:websocket sessionkey get success
+2025-10-11 15:09:49.059 29720-29765 T/[idps_websocket]:websocket getsnbumber success
+2025-10-11 15:09:49.059 29720-29765 T/[idps_websocket]:websocket gettokenbumber success
+2025-10-11 15:09:49.059 29720-29765 T/[idps_websocket]:managerkey && sessionkey && snnumber && tokennumber get success
+2025-10-11 15:09:49.065 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:09:49.066 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:09:49.068 29720-29766 T/[idps_websocket]:websocket callbak init
+2025-10-11 15:09:49.077 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:09:49.344 29720-29766 I/[idps_websocket]:++++websocket connection established
+
+2025-10-11 15:09:49.348 29720-29766 I/[SOCKET receive]:{"action":"connack","seq_number":"1760166589304001","timestamp":1760166589304}
+2025-10-11 15:09:49.350 29720-29767 I/[Add Map]:{"action":"info","seq_number":"1","timestamp":1760166589313,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"vehicle_info\":{\"vin\":\"LQH913L2240000001\",\"model\":\"S73\",\"brand\":\"‰∏úÈ£é\"},\"terminal_info\":{\"core_num\":6,\"cpu_model_name\":\" AMD Ryzen 7 6800H with Radeon Graphics\\n\",\"host_name\":\"nvidia-virtual-machine\",\"ip_addr\":\"[{\\\"lo\\\":\\\"127.0.0.1\\\",\\\"ens33\\\":\\\"192.168.196.128\\\"}]\",\"machine\":\"x86_64\",\"mem_total\":4056494080,\"release\":\"6.8.0-85-generic\",\"os_name\":\"Linux\",\"os_version\":\"#85~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 19 \",\"sn\":\"LQH02505280001\",\"idps_version\":\"1.0.5\",\"manufacturer\":\"@\",\"simu_sys_version\":\"\",\"mac_addr\":\"00:00:00:00:00:00\"}}","hmac":"g5z6kP16q3jRNV/ol13AyreDUKk="}
+2025-10-11 15:09:49.419 29720-29766 I/[SOCKET receive]:{"action":"infoack","seq_number":"1","timestamp":1760166589381}
+2025-10-11 15:09:50.060 29720-29727 I/[Add Map]:{"action":"heart","seq_number":"2","timestamp":1760166590023,"runtime_OS":5291,"runtime_IDPS":0}
+2025-10-11 15:09:50.142 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"2","timestamp":1760166590105}
+2025-10-11 15:09:50.293 29720-29720 T/[idps main]:Websocket_is_init ok
+2025-10-11 15:09:50.296 29720-29720 T/[idps main]:valid user info :(null)
+2025-10-11 15:09:51.063 29720-29727 T/[idps_websocket]:websocket managerkey get success
+2025-10-11 15:09:51.063 29720-29727 T/[idps_websocket]:websocket sessionkey get success
+2025-10-11 15:09:51.063 29720-29727 T/[idps_websocket]:websocket getsnbumber success
+2025-10-11 15:09:51.063 29720-29727 T/[idps_websocket]:websocket gettokenbumber success
+2025-10-11 15:09:51.063 29720-29727 T/[idps_websocket]:managerkey && sessionkey && snnumber && tokennumber get success
+2025-10-11 15:10:02.307 29720-29771 I/[networkmonitor]:go to find watch nic device
+2025-10-11 15:10:02.309 29720-29771 I/[networkmonitor]:watch nic device is exist
+2025-10-11 15:10:02.311 29720-29877 T/[networkmonitor]:ens33: You don't have permission to capture on that device (socket: Operation not permitted)
+
+2025-10-11 15:10:52.120 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"3","timestamp":1760166652082,"runtime_OS":5354,"runtime_IDPS":0}
+2025-10-11 15:10:52.216 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"3","timestamp":1760166652162}
+2025-10-11 15:11:53.175 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"4","timestamp":1760166713137,"runtime_OS":5415,"runtime_IDPS":0}
+2025-10-11 15:11:53.353 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"4","timestamp":1760166713302}
+2025-10-11 15:12:54.206 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"5","timestamp":1760166774171,"runtime_OS":5476,"runtime_IDPS":0}
+2025-10-11 15:12:54.307 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"5","timestamp":1760166774267}
+2025-10-11 15:13:55.244 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"6","timestamp":1760166835211,"runtime_OS":5537,"runtime_IDPS":0}
+2025-10-11 15:13:55.297 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"6","timestamp":1760166835264}
+2025-10-11 15:14:56.251 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"7","timestamp":1760166896217,"runtime_OS":5598,"runtime_IDPS":0}
+2025-10-11 15:14:56.309 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"7","timestamp":1760166896272}
+2025-10-11 15:15:57.262 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"8","timestamp":1760166957233,"runtime_OS":5659,"runtime_IDPS":0}
+2025-10-11 15:15:57.393 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"8","timestamp":1760166957359}
+2025-10-11 15:16:58.268 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"9","timestamp":1760167018240,"runtime_OS":5720,"runtime_IDPS":0}
+2025-10-11 15:16:58.349 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"9","timestamp":1760167018320}
+2025-10-11 15:17:59.331 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"10","timestamp":1760167079304,"runtime_OS":5781,"runtime_IDPS":0}
+2025-10-11 15:17:59.387 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"10","timestamp":1760167079359}
+2025-10-11 15:19:00.391 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"11","timestamp":1760167140365,"runtime_OS":5842,"runtime_IDPS":0}
+2025-10-11 15:19:00.512 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"11","timestamp":1760167140479}
+2025-10-11 15:20:01.455 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"12","timestamp":1760167201429,"runtime_OS":5903,"runtime_IDPS":0}
+2025-10-11 15:20:01.515 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"12","timestamp":1760167201482}
+2025-10-11 15:21:02.518 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"13","timestamp":1760167262493,"runtime_OS":5964,"runtime_IDPS":0}
+2025-10-11 15:21:02.635 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"13","timestamp":1760167262607}
+2025-10-11 15:22:03.531 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"14","timestamp":1760167323507,"runtime_OS":6025,"runtime_IDPS":0}
+2025-10-11 15:22:03.661 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"14","timestamp":1760167323635}
+2025-10-11 15:23:04.573 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"15","timestamp":1760167384549,"runtime_OS":6086,"runtime_IDPS":0}
+2025-10-11 15:23:04.664 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"15","timestamp":1760167384633}
+2025-10-11 15:24:05.578 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"16","timestamp":1760167445555,"runtime_OS":6147,"runtime_IDPS":0}
+2025-10-11 15:24:24.828 29720-29766 I/[idps_websocket]:----websocket connection closed
+
+2025-10-11 15:24:24.835 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:24:24.836 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:24:44.855 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:24:44.858 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:24:49.191 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:24:49.193 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:25:03.331 29720-29774 I/[Add Map]:{"action":"event","seq_number":"17","timestamp":1760167503308,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000222\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.00\",\"load_avg5\":\"0.16\",\"load_avg15\":\"0.61\",\"cpu_num\":6,\"cpu_load\":0,\"cpu_usage\":0}}","hmac":"GrZEtFOjAA2cRabXeXFJAipNDd0=","len":205}
+2025-10-11 15:25:06.642 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"18","timestamp":1760167506619,"runtime_OS":6208,"runtime_IDPS":0}
+2025-10-11 15:25:07.411 29720-29776 I/[Add Map]:{"action":"event","seq_number":"19","timestamp":1760167507388,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000422\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"rom_size\":68403603456,\"rom_rate\":95}}","hmac":"qHPUkN+tYNeNWmYa/sExjW5ebMs=","len":145}
+2025-10-11 15:25:09.216 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:25:09.219 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:25:27.418 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"aERZodiT/gUkRen/xmhX8A==","Authorization":""},0;body:±Ô‹œ	R}1S^Œ^$∏ö?&æÉT‚»0:r Ö⁄¶,32
+2025-10-11 15:25:39.234 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:25:39.237 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:25:47.439 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:25:47.440 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"o4AEDTProchtzjbm8+ypvA==","Authorization":""},0;body:/)Ø”Q;F|≤Ã°?ZÏë*~˚∞πú◊Ÿ∂ìÎ©,32
+2025-10-11 15:25:59.261 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:25:59.263 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:26:07.462 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:26:07.705 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"20","timestamp":1760167567683,"runtime_OS":6269,"runtime_IDPS":0}
+2025-10-11 15:26:29.294 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:26:29.297 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:26:33.398 29720-29777 I/[Add Map]:{"action":"event","seq_number":"21","timestamp":1760167593377,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.00\",\"load_avg5\":\"0.12\",\"load_avg15\":\"0.54\",\"cpu_num\":6,\"cpu_load\":0,\"cpu_usage\":0,\"ram_size\":2449716,\"ram_rate\":62,\"rom_size\":68403615744,\"rom_rate\":95,\"timestamp\":1760167592374}}","hmac":"JF5B8EeC/UlZsoc1/hnUPxnEorg=","len":301}
+2025-10-11 15:26:49.316 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:26:49.319 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:27:08.725 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"22","timestamp":1760167628704,"runtime_OS":6330,"runtime_IDPS":0}
+2025-10-11 15:27:09.489 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"/PCGwgpn8909ysk3oZ0iFQ==","Authorization":""},0;body:_÷óv>†©∫¥ù‡+ò€ÈY}ÓÏ‚íæò6ﬁ†–V9=Èˇàz,32
+2025-10-11 15:27:19.326 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:27:19.329 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:27:29.511 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:27:29.511 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"rvXB8Mqig6vcGT7VB26zyQ==","Authorization":""},0;body:‡Yl¡Óãg'åcÔ·´∆å,32
+2025-10-11 15:27:39.351 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:27:39.354 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:27:39.355 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:27:39.356 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:27:49.530 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:27:59.373 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:27:59.375 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:27:59.377 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:27:59.380 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:28:09.730 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"23","timestamp":1760167689709,"runtime_OS":6391,"runtime_IDPS":0}
+2025-10-11 15:28:19.398 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:28:19.403 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:28:19.404 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:28:19.406 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:28:39.421 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:28:39.424 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:28:39.426 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:28:39.428 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:28:51.549 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"qSt7QykS5CpEf4kx5DIbDA==","Authorization":""},0;body:U˙˚”ùV-!â´K€ÀZΩÅƒf;ÒÚ©D[q4ô]á,32
+2025-10-11 15:28:59.449 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:28:59.451 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:29:10.753 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"24","timestamp":1760167750732,"runtime_OS":6452,"runtime_IDPS":0}
+2025-10-11 15:29:11.571 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:29:11.571 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"uAwq5Ne/ypWSAKumtsoTpg==","Authorization":""},0;body:·ê2Ul≤∆N¶›î5	Y°dÉ1T3	ˆ¶–$b~Ë,32
+2025-10-11 15:29:29.483 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:29:29.485 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:29:31.592 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:29:49.508 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:29:49.511 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:30:11.804 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"25","timestamp":1760167811784,"runtime_OS":6513,"runtime_IDPS":0}
+2025-10-11 15:30:19.517 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:30:19.520 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:30:33.618 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"3GeZiBhty8Hgnfs6qLYotA==","Authorization":""},0;body:∏E©ÿÒˇûs√‡√<îv^t9Oò˚≥ºÌes\(,32
+2025-10-11 15:30:39.543 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:30:39.545 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:30:53.641 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:30:53.641 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"+NA2YwM2XGfSgp+dkGvMAw==","Authorization":""},0;body:N(€–≤·€ÉÀ≈?3'™‰öıöhM)ä’GvMŒu˜Æ
+Á,32
+2025-10-11 15:31:09.547 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:31:09.552 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:31:12.869 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"26","timestamp":1760167872849,"runtime_OS":6574,"runtime_IDPS":0}
+2025-10-11 15:31:13.663 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:31:29.575 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:31:29.580 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:31:59.599 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:31:59.601 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:32:13.920 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"27","timestamp":1760167933900,"runtime_OS":6635,"runtime_IDPS":0}
+2025-10-11 15:32:15.686 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"+s7ErDE/6cqd+K0o3kMUaQ==","Authorization":""},0;body:∆/—ùO5˜h6ÂRùÅ3¯óÈ_√ƒƒ˜Ì.»oP4Ü,32
+2025-10-11 15:32:19.625 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:32:19.630 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:32:35.709 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:32:35.709 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"1bQGzr/hopS7zKjMNFRS0A==","Authorization":""},0;body:Ì¯˚`/…É,Ïùu|yÂ’‚ä»îêo&EÉ0h˘’N°æi/v1%,32
+2025-10-11 15:32:49.642 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:32:49.645 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:32:55.732 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:33:09.667 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:33:09.670 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:33:14.983 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"28","timestamp":1760167994963,"runtime_OS":6696,"runtime_IDPS":0}
+2025-10-11 15:33:39.702 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:33:39.705 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:33:57.759 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"9sExBfCu0lyBJgR7QhktCQ==","Authorization":""},0;body:¬ÇÌ´Í÷4øÃëÚ·§qêºùÚÂ«Ω8	O`.h·ß>,32
+2025-10-11 15:33:59.722 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:33:59.724 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:34:16.036 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"29","timestamp":1760168056017,"runtime_OS":6757,"runtime_IDPS":0}
+2025-10-11 15:34:17.781 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:34:17.781 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"2N0lJIwZUDlHySX45ONs9Q==","Authorization":""},0;body:A´\∞eÿà3úêíOªõÿøªñ›fhå3πÒ7{L‹",32
+2025-10-11 15:34:29.739 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:34:29.742 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:34:37.802 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:34:49.765 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:34:49.769 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:35:17.096 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"30","timestamp":1760168117078,"runtime_OS":6819,"runtime_IDPS":0}
+2025-10-11 15:35:19.801 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:35:19.804 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:35:39.823 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:35:39.824 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"a5Vsqs2luxjDwpQox8y1Dg==","Authorization":""},0;body:ë.<J^>Gg…ê!U©ÈÑK~˛›˚8üß'v¬¥û,32
+2025-10-11 15:35:39.825 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:35:59.840 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:35:59.840 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"DA/M1I2MjuVHXLS6QvDC0w==","Authorization":""},0;body:_>∏ÊkãíRô4“¯3“KN†3Õ(`∫b≤g,32
+2025-10-11 15:36:09.851 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:36:09.854 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:36:18.160 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"31","timestamp":1760168178142,"runtime_OS":6880,"runtime_IDPS":0}
+2025-10-11 15:36:19.862 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:36:29.870 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:36:29.873 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:36:59.884 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:36:59.887 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:37:19.223 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"32","timestamp":1760168239205,"runtime_OS":6941,"runtime_IDPS":0}
+2025-10-11 15:37:19.910 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:37:19.913 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:37:21.885 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"jtkTLmzj2weDa7TnIsAyGQ==","Authorization":""},0;body:FfV,32
+2025-10-11 15:37:41.902 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:37:41.902 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"hpgUTicWYyFLIWG1Nu/Umg==","Authorization":""},0;body:ˇeΩ
+†ÜÎSïzL@*?≥!<‹Kﬁ‰Ò˛	?ï"/6,32
+2025-10-11 15:37:49.932 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:37:49.936 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:38:01.924 29720-29727 T/[networkmanager]:get rescode is 28 
+2025-10-11 15:38:09.959 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:38:09.962 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:38:20.228 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"33","timestamp":1760168300210,"runtime_OS":7002,"runtime_IDPS":0}
+2025-10-11 15:38:39.990 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:38:39.992 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:39:00.013 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:39:00.017 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 15:39:00.019 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTI5ODgsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjY1ODh9.MD10-Cacw-l-RxrFdrmvIqsa7eW2mh7wJUCiNjwN--g
+2025-10-11 15:39:00.021 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:39:03.949 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"QlciX0BNPc0rScdL3CFOHg==","Authorization":""},0;body:r=_ÓP?≤mÏ‰2÷†RØF¥pAŸhfhòÕ@1,32
+2025-10-11 15:39:04.090 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:39:04.403 29720-29727 T/[IDS Post_Ret]:.‰uT]Üôl’”Â	úëPtSõ‘ÖÖ@ô— }&ALI`Ô-ÎM•ù∞µÙ'∫µK'ùÆ(aB€”gG·µœP◊√ÅHFs'∫j]v_O+ÉﬁY•Î≈ï+AH:&#R@n1>Jq£Ë‘üYjz‰7úqˇ`>Ê”ÚØpCäœË:7‰TÆW8^
+2025-10-11 15:39:04.403 29720-29727 T/[[IDS decrypt]:
+]:{"code":0,"data":{"session_key":"b21YbEVrRFBSeWZPKUExdipreTJkcFhzRipidldtMmQ=","timestamp":1760168344385,"token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM"}}
+2025-10-11 15:39:04.403 29720-29727 T/[checkCodeForKey]:code:0
+2025-10-11 15:39:04.403 29720-29727 T/[session key manager:]:omXlEkDPRyfO)A1v*ky2dpXsF*bvWm2d
+2025-10-11 15:39:04.404 29720-29727 T/[ConfigParse]:update_time:1758243883628
+2025-10-11 15:39:04.406 29720-29727 T/[IDS Get]:url:https://vsocidps-uat.dfiov.com.cn/api/v1.2/policy/config?sn=T1000TBb038f417f703306&update_time=1758243883628;header:{"X-Channel-ID":"T00001","X-Crypt":"2","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","Authorization":"Bearer eyJhbGciOiJIUzI1NiIsIn
+2025-10-11 15:39:04.411 29720-29766 I/[idps_websocket]:++++websocket connection established
+
+2025-10-11 15:39:04.413 29720-29766 I/[SOCKET receive]:{"action":"connack","seq_number":"1760168344386001","timestamp":1760168344386}
+2025-10-11 15:39:04.415 29720-29767 I/[Add Map]:{"action":"info","seq_number":"34","timestamp":1760168344397,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"vehicle_info\":{\"vin\":\"LQH913L2240000001\",\"model\":\"S73\",\"brand\":\"‰∏úÈ£é\"},\"terminal_info\":{\"core_num\":6,\"cpu_model_name\":\" AMD Ryzen 7 6800H with Radeon Graphics\\n\",\"host_name\":\"nvidia-virtual-machine\",\"ip_addr\":\"[{\\\"lo\\\":\\\"127.0.0.1\\\",\\\"ens33\\\":\\\"192.168.196.128\\\"}]\",\"machine\":\"x86_64\",\"mem_total\":4056494080,\"release\":\"6.8.0-85-generic\",\"os_name\":\"Linux\",\"os_version\":\"#85~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 19 \",\"sn\":\"LQH02505280001\",\"idps_version\":\"1.0.5\",\"manufacturer\":\"@\",\"simu_sys_version\":\"\",\"mac_addr\":\"00:00:00:00:00:00\"}}","hmac":"g5z6kP16q3jRNV/ol13AyreDUKk="}
+2025-10-11 15:39:04.465 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"17","timestamp":1760168344443}
+2025-10-11 15:39:04.472 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"19","timestamp":1760168344453}
+2025-10-11 15:39:04.477 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"21","timestamp":1760168344453}
+2025-10-11 15:39:04.488 29720-29766 I/[SOCKET receive]:{"action":"infoack","seq_number":"34","timestamp":1760168344468}
+2025-10-11 15:39:04.709 29720-29727 T/[IDS Get_Ret]:Yâá]ÕSÊáﬁãŸfíÎ‘≠úF§˘j?uÈÑy£—k.â¯È\1›‹∫÷*ë"OÅÕ¶èVö#$Êó®
+§eÙ
+2025-10-11 15:39:04.709 29720-29727 T/[[IDS decrypt]:
+]:{"code":0,"data":{"list":[],"update_time":1758243883628}}
+2025-10-11 15:39:04.709 29720-29727 T/[checkCodeForKey]:code:0
+2025-10-11 15:39:04.710 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"rules":	[]
+	},
+	"desc":	"",
+	"name":	"FirewallRegulation",
+	"package":	"com.qihoo360.caridps.module.firewall.FirewallManager",
+	"policy_type_id":	200100,
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.712 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"storage_path":	"",
+		"submit":	{
+			"addr":	"",
+			"key":	"",
+			"protocol":	"preset",
+			"token":	""
+		}
+	},
+	"desc":	"",
+	"name":	"Log",
+	"policy_type_id":	300100,
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.713 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3,
+		"watch_points":	[]
+	},
+	"desc":	"Êñá‰ª∂ÁõëÊéßÊé¢Èíà",
+	"name":	"FileMonitor",
+	"package":	"com.qihoo360.caridps.module.filemonitor.FileMonitor",
+	"policy_type_id":	100100,
+	"short_name":	"FIM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.714 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"collect_period":	60,
+		"dns_white_list":	[],
+		"event_level":	3,
+		"ip_white_list":	[],
+		"port_white_list":	[]
+	},
+	"desc":	"ÁΩëÁªúÁõëÊéßÊé¢Èíà",
+	"name":	"NetworkMonitor",
+	"package":	"com.qihoo360.caridps.module.networkmonitor.NetworkMonitor",
+	"policy_type_id":	100200,
+	"short_name":	"NM",
+	"switch":	0,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.716 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"collect_period":	900,
+		"event_level":	3,
+		"white_list":	[]
+	},
+	"desc":	"ËøõÁ®ãÁõëÊéßÊé¢Èíà",
+	"name":	"ProcessMonitor",
+	"policy_type_id":	100300,
+	"short_name":	"TIMM",
+	"switch":	0,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.717 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"app_action":	{
+			"event_level":	3
+		},
+		"event_level":	3,
+		"permission_action":	{
+			"auth_list":	[],
+			"collect_period":	30,
+			"event_level":	3
+		}
+	},
+	"desc":	"Â∫îÁî®ÁõëÊéßÊé¢Èíà",
+	"name":	"AppMonitor",
+	"package":	"com.qihoo360.caridps.module.appmonitor.AppMonitor",
+	"policy_type_id":	100400,
+	"short_name":	"APPM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.719 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3
+	},
+	"desc":	"Áî®Êà∑ÁôªÂΩïÁõëÊéß",
+	"name":	"ShellLoginMonitor",
+	"policy_type_id":	100500,
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.723 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"collect_period":	1000,
+		"cpu":	{
+			"collect_period":	910,
+			"event_level":	3,
+			"overload_threshold":	85
+		},
+		"event_level":	3,
+		"ram":	{
+			"collect_period":	920,
+			"event_level":	3,
+			"overload_threshold":	85
+		},
+		"rom":	{
+			"collect_period":	915,
+			"event_level":	3,
+			"overload_threshold":	85
+		}
+	},
+	"desc":	"Á≥ªÁªüËµÑÊ∫êÁõëÊéßÊé¢Èíà",
+	"name":	"ResourceMonitor",
+	"package":	"com.qihoo360.caridps.module.resourcemonitor.ResourceMonitor",
+	"policy_type_id":	100600,
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.725 29720-29727 E/[ConfigParse]:getJsonObjectItem_s NO have switch ObjectItem error
+2025-10-11 15:39:04.731 29720-29727 E/[ConfigParse]:getJsonObjectItem_s NO have policy_type_id ObjectItem error
+2025-10-11 15:39:04.733 29720-29727 E/[ConfigParse]:getJsonObjectItem_s NO have terminal_type_id ObjectItem error
+2025-10-11 15:39:04.735 29720-29727 E/[ConfigParse]:getJsonObjectItem_s NO have usage_rate_overload_threshold ObjectItem error
+2025-10-11 15:39:04.737 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3
+	},
+	"desc":	"Á≥ªÁªüÈÖçÁΩÆÁõëÊéßÊé¢Èíà",
+	"name":	"SystemConfigMonitor",
+	"package":	"com.qihoo360.caridps.module.configmonitor.SystemConfigMonitor",
+	"policy_type_id":	100700,
+	"short_name":	"SCA",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.739 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"collect_period":	925,
+		"event_level":	3
+	},
+	"desc":	"ÁΩëÁªúÊµÅÈáèÁõëÊéßÊé¢Èíà",
+	"name":	"NetworkTrafficMonitor",
+	"package":	"com.qihoo360.caridps.module.trafficstatsmonitor.TrafficStatsMonitor",
+	"policy_type_id":	100800,
+	"short_name":	"NTM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.741 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"interface":	"",
+		"list":	[{
+				"switch":	1,
+				"type":	"TCP_SYN_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"TCP_NULL_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"TCP_FIN_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"TCP_ACK_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"TCP_FIN_RST_DOS"
+			}, {
+				"switch":	1,
+				"type":	"TCP_ACK_FIN_DOS"
+			}, {
+				"switch":	1,
+				"type":	"TCP_SYN_ACK_FLOOD"
+			}, {
+				"switch":	1,
+				"type":	"TCP_ACK_RST_DOS"
+			}, {
+				"switch":	1,
+				"type":	"TCP_ACK_PSH_FLOOD"
+			}, {
+				"switch":	1,
+				"type":	"TCP_SYN_FLOOD"
+			}, {
+				"switch":	1,
+				"type":	"TCP_XMAS_SCAN"
+			}, {
+				"switch":	1,
+				"type":	"UDP_SRC_PORT_ZERO"
+			}, {
+				"switch":	1,
+				"type":	"FRAGGLE_ATTACK"
+			}, {
+				"switch":	1,
+				"type":	"UDP_PORT_FLOOD"
+			}, {
+				"switch":	1,
+				"type":	"TCP_LAND_ATTACK"
+			}, {
+				"switch":	1,
+				"type":	"ICMP_LARGE_PING"
+			}, {
+				"switch":	1,
+				"type":	"TCP_SRC_PORT_ZERO"
+			}, {
+				"switch":	1,
+				"type":	"TCP_FIN_SYN_DOS"
+			}, {
+				"switch":	1,
+				"type":	"UDP_PORT_SCAN"
+			}],
+		"threshold":	{
+			"ARPATTACK":	6,
+			"ARPFLOOD":	512,
+			"ICMPDEATH":	65502,
+			"ICMPLARGE":	1500,
+			"ICMPLOOD":	400,
+			"IGMPFLOOD":	512,
+			"IMPLATTCK":	64,
+			"TCPCONNECT":	85,
+			"TCPDOSRET":	250,
+			"TCPPORTS":	10,
+			"TCPSCANRET":	2,
+			"UDPDOSRET":	9000,
+			"UDPFRAGGLE":	16,
+			"UDPPORTS":	400
+		}
+	},
+	"desc":	"ÁΩëÁªúÂÖ•‰æµÊé¢Èíà",
+	"name":	"NetworkInvasionMonitor",
+	"policy_type_id":	100900,
+	"short_name":	"NTM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.743 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3
+	},
+	"desc":	"WIFIÁõëÊéßÊé¢Èíà",
+	"name":	"WifiMonitor",
+	"package":	"com.dftc.caridps.module.wifimonitor.WifiMonitor",
+	"policy_type_id":	101140,
+	"short_name":	"WM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.744 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	3
+	},
+	"desc":	"CANÁõëÊéßÊé¢Èíà",
+	"name":	"CANMonitor",
+	"policy_type_id":	101600,
+	"short_name":	"CANM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.746 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	6
+	},
+	"desc":	"ÊÅ∂ÊÑèÁ®ãÂ∫èÁõëÊéßÊé¢Èíà",
+	"name":	"VirusFileMonitor",
+	"package":	"com.qihoo360.caridps.module.appmonitor.VirusAppMonitor",
+	"policy_type_id":	201100,
+	"short_name":	"AVM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.748 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"event_level":	6
+	},
+	"desc":	"Êó•ÂøóÁõëÊéßÊé¢Èíà",
+	"name":	"LogMonitor",
+	"package":	"com.qihoo360.caridps.module.logeventmonitor.LogMonitor",
+	"policy_type_id":	201200,
+	"short_name":	"CLM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:04.750 29720-29727 I/[ConfigParse:]:{
+	"config":	{
+		"attack":	{
+			"event_level":	6,
+			"network":	"wlan0"
+		},
+		"event_level":	3
+	},
+	"desc":	"IVIÁΩëÁªúÂÖ•‰æµÊé¢Èíà",
+	"name":	"NetworkAttackMonitor",
+	"package":	"com.qihoo360.caridps.module.networkattackmonitor.NetworkAttackMonitor",
+	"policy_type_id":	210111,
+	"short_name":	"NAM",
+	"switch":	1,
+	"terminal_type_id":	0
+}
+2025-10-11 15:39:05.753 29720-29727 T/[idps_websocket]:websocket managerkey get success
+2025-10-11 15:39:05.753 29720-29727 T/[idps_websocket]:websocket sessionkey get success
+2025-10-11 15:39:05.753 29720-29727 T/[idps_websocket]:websocket getsnbumber success
+2025-10-11 15:39:05.753 29720-29727 T/[idps_websocket]:websocket gettokenbumber success
+2025-10-11 15:39:05.754 29720-29727 T/[idps_websocket]:managerkey && sessionkey && snnumber && tokennumber get success
+2025-10-11 15:39:07.519 29720-29766 I/[idps_websocket]:----websocket connection closed
+
+2025-10-11 15:39:07.529 29720-29766 T/[idps_websocket]:wbsClient_init
+2025-10-11 15:39:07.530 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 15:39:07.532 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:39:07.534 29720-29766 T/[idps_websocket]:websocket callbak init
+2025-10-11 15:39:07.536 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:39:12.913 29720-29766 I/[idps_websocket]:++++websocket connection established
+
+2025-10-11 15:39:12.915 29720-29766 I/[SOCKET receive]:{"action":"connack","seq_number":"1760168352889001","timestamp":1760168352889}
+2025-10-11 15:39:12.917 29720-29767 I/[Add Map]:{"action":"info","seq_number":"35","timestamp":1760168352899,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"vehicle_info\":{\"vin\":\"LQH913L2240000001\",\"model\":\"S73\",\"brand\":\"‰∏úÈ£é\"},\"terminal_info\":{\"core_num\":6,\"cpu_model_name\":\" AMD Ryzen 7 6800H with Radeon Graphics\\n\",\"host_name\":\"nvidia-virtual-machine\",\"ip_addr\":\"[{\\\"lo\\\":\\\"127.0.0.1\\\",\\\"ens33\\\":\\\"192.168.196.128\\\"}]\",\"machine\":\"x86_64\",\"mem_total\":4056494080,\"release\":\"6.8.0-85-generic\",\"os_name\":\"Linux\",\"os_version\":\"#85~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 19 \",\"sn\":\"LQH02505280001\",\"idps_version\":\"1.0.5\",\"manufacturer\":\"@\",\"simu_sys_version\":\"\",\"mac_addr\":\"00:00:00:00:00:00\"}}","hmac":"g5z6kP16q3jRNV/ol13AyreDUKk="}
+2025-10-11 15:39:12.966 29720-29766 I/[SOCKET receive]:{"action":"infoack","seq_number":"35","timestamp":1760168352949}
+2025-10-11 15:39:21.291 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"36","timestamp":1760168361273,"runtime_OS":7063,"runtime_IDPS":0}
+2025-10-11 15:39:21.350 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"36","timestamp":1760168361331}
+2025-10-11 15:40:15.376 29720-29774 I/[Add Map]:{"action":"event","seq_number":"37","timestamp":1760168415358,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000222\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.00\",\"load_avg5\":\"0.02\",\"load_avg15\":\"0.22\",\"cpu_num\":6,\"cpu_load\":0,\"cpu_usage\":0}}","hmac":"rNsmxTfT+NnqZbatUChlS53ZxPc=","len":205}
+2025-10-11 15:40:15.469 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"37","timestamp":1760168415447}
+2025-10-11 15:40:22.354 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"38","timestamp":1760168422336,"runtime_OS":7124,"runtime_IDPS":0}
+2025-10-11 15:40:22.403 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"38","timestamp":1760168422384}
+2025-10-11 15:40:23.511 29720-29776 I/[Add Map]:{"action":"event","seq_number":"39","timestamp":1760168423493,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000422\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"rom_size\":68403828736,\"rom_rate\":95}}","hmac":"+OqZI6MU1p6uyF7QHFyv8BOX3fQ=","len":145}
+2025-10-11 15:40:23.625 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"39","timestamp":1760168423607}
+2025-10-11 15:41:23.418 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"40","timestamp":1760168483401,"runtime_OS":7185,"runtime_IDPS":0}
+2025-10-11 15:41:23.508 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"40","timestamp":1760168483486}
+2025-10-11 15:42:24.481 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"41","timestamp":1760168544464,"runtime_OS":7246,"runtime_IDPS":0}
+2025-10-11 15:42:24.585 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"41","timestamp":1760168544562}
+2025-10-11 15:43:15.480 29720-29777 I/[Add Map]:{"action":"event","seq_number":"42","timestamp":1760168595464,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.00\",\"load_avg5\":\"0.00\",\"load_avg15\":\"0.17\",\"cpu_num\":6,\"cpu_load\":0,\"cpu_usage\":0,\"ram_size\":2246708,\"ram_rate\":57,\"rom_size\":68403783680,\"rom_rate\":95,\"timestamp\":1760168594461}}","hmac":"G+8wkVxQ/3nd2K6jdlTtHcqv8bk=","len":301}
+2025-10-11 15:43:15.529 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"42","timestamp":1760168595512}
+2025-10-11 15:43:25.544 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"43","timestamp":1760168605527,"runtime_OS":7307,"runtime_IDPS":0}
+2025-10-11 15:43:25.619 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"43","timestamp":1760168605599}
+2025-10-11 15:44:26.599 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"44","timestamp":1760168666583,"runtime_OS":7368,"runtime_IDPS":0}
+2025-10-11 15:44:26.659 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"44","timestamp":1760168666641}
+2025-10-11 15:45:27.604 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"45","timestamp":1760168727588,"runtime_OS":7429,"runtime_IDPS":0}
+2025-10-11 15:45:27.647 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"45","timestamp":1760168727631}
+2025-10-11 15:46:28.670 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"46","timestamp":1760168788654,"runtime_OS":7490,"runtime_IDPS":0}
+2025-10-11 15:46:28.757 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"46","timestamp":1760168788732}
+2025-10-11 15:47:29.720 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"47","timestamp":1760168849702,"runtime_OS":7551,"runtime_IDPS":0}
+2025-10-11 15:47:29.782 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"47","timestamp":1760168849759}
+2025-10-11 15:48:30.726 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"48","timestamp":1760168910700,"runtime_OS":7612,"runtime_IDPS":0}
+2025-10-11 15:48:30.828 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"48","timestamp":1760168910802}
+2025-10-11 15:49:31.738 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"49","timestamp":1760168971705,"runtime_OS":7673,"runtime_IDPS":0}
+2025-10-11 15:49:31.833 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"49","timestamp":1760168971792}
+2025-10-11 15:50:32.801 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"50","timestamp":1760169032762,"runtime_OS":7734,"runtime_IDPS":0}
+2025-10-11 15:50:32.848 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"50","timestamp":1760169032807}
+2025-10-11 15:51:33.866 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"51","timestamp":1760169093821,"runtime_OS":7795,"runtime_IDPS":0}
+2025-10-11 15:51:34.049 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"51","timestamp":1760169094000}
+2025-10-11 15:52:34.918 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"52","timestamp":1760169154868,"runtime_OS":7856,"runtime_IDPS":0}
+2025-10-11 15:52:34.964 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"52","timestamp":1760169154912}
+2025-10-11 15:53:35.975 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"53","timestamp":1760169215921,"runtime_OS":7917,"runtime_IDPS":0}
+2025-10-11 15:53:36.047 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"53","timestamp":1760169215992}
+2025-10-11 15:54:37.031 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"54","timestamp":1760169276973,"runtime_OS":7978,"runtime_IDPS":0}
+2025-10-11 15:54:37.113 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"54","timestamp":1760169277052}
+2025-10-11 15:55:27.472 29720-29774 I/[Add Map]:{"action":"event","seq_number":"55","timestamp":1760169327411,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000222\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.01\",\"load_avg5\":\"0.02\",\"load_avg15\":\"0.08\",\"cpu_num\":6,\"cpu_load\":0.0016666665906086564,\"cpu_usage\":0}}","hmac":"d6ATrd2a/aIAkC4B8k4frt72lg0=","len":225}
+2025-10-11 15:55:27.592 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"55","timestamp":1760169327527}
+2025-10-11 15:55:38.064 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"56","timestamp":1760169338002,"runtime_OS":8039,"runtime_IDPS":0}
+2025-10-11 15:55:38.125 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"56","timestamp":1760169338062}
+2025-10-11 15:55:39.561 29720-29776 I/[Add Map]:{"action":"event","seq_number":"57","timestamp":1760169339499,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000422\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"rom_size\":68403779584,\"rom_rate\":95}}","hmac":"IliaUnHcGvfZkAgXLPdNMO2fGXw=","len":145}
+2025-10-11 15:55:39.612 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"57","timestamp":1760169339547}
+2025-10-11 15:56:39.128 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"58","timestamp":1760169399062,"runtime_OS":8101,"runtime_IDPS":0}
+2025-10-11 15:56:39.173 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"58","timestamp":1760169399106}
+2025-10-11 15:57:40.143 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"59","timestamp":1760169460073,"runtime_OS":8162,"runtime_IDPS":0}
+2025-10-11 15:57:40.212 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"59","timestamp":1760169460142}
+2025-10-11 15:58:41.155 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"60","timestamp":1760169521083,"runtime_OS":8223,"runtime_IDPS":0}
+2025-10-11 15:58:41.255 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"60","timestamp":1760169521181}
+2025-10-11 15:59:11.758 29720-29766 I/[idps_websocket]:----websocket connection closed
+
+2025-10-11 15:59:11.762 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 15:59:11.764 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 15:59:11.771 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 15:59:13.033 29720-29766 I/[idps_websocket]:++++websocket connection established
+
+2025-10-11 15:59:13.036 29720-29766 I/[SOCKET receive]:{"action":"connack","seq_number":"1760169552961001","timestamp":1760169552961}
+2025-10-11 15:59:13.038 29720-29767 I/[Add Map]:{"action":"info","seq_number":"61","timestamp":1760169552964,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"vehicle_info\":{\"vin\":\"LQH913L2240000001\",\"model\":\"S73\",\"brand\":\"‰∏úÈ£é\"},\"terminal_info\":{\"core_num\":6,\"cpu_model_name\":\" AMD Ryzen 7 6800H with Radeon Graphics\\n\",\"host_name\":\"nvidia-virtual-machine\",\"ip_addr\":\"[{\\\"lo\\\":\\\"127.0.0.1\\\",\\\"ens33\\\":\\\"192.168.196.128\\\"}]\",\"machine\":\"x86_64\",\"mem_total\":4056494080,\"release\":\"6.8.0-85-generic\",\"os_name\":\"Linux\",\"os_version\":\"#85~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 19 \",\"sn\":\"LQH02505280001\",\"idps_version\":\"1.0.5\",\"manufacturer\":\"@\",\"simu_sys_version\":\"\",\"mac_addr\":\"00:00:00:00:00:00\"}}","hmac":"g5z6kP16q3jRNV/ol13AyreDUKk="}
+2025-10-11 15:59:13.087 29720-29766 I/[SOCKET receive]:{"action":"infoack","seq_number":"61","timestamp":1760169553015}
+2025-10-11 15:59:42.213 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"62","timestamp":1760169582138,"runtime_OS":8284,"runtime_IDPS":0}
+2025-10-11 15:59:42.251 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"62","timestamp":1760169582177}
+2025-10-11 15:59:57.570 29720-29777 I/[Add Map]:{"action":"event","seq_number":"63","timestamp":1760169597495,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.00\",\"load_avg5\":\"0.00\",\"load_avg15\":\"0.05\",\"cpu_num\":6,\"cpu_load\":0,\"cpu_usage\":0,\"ram_size\":2212876,\"ram_rate\":56,\"rom_size\":68403808256,\"rom_rate\":95,\"timestamp\":1760169596491}}","hmac":"BYOe/bUSzZZRQzt8jgWvVhi1i30=","len":301}
+2025-10-11 15:59:57.662 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"63","timestamp":1760169597583}
+2025-10-11 16:00:43.276 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"64","timestamp":1760169643199,"runtime_OS":8345,"runtime_IDPS":0}
+2025-10-11 16:00:43.323 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"64","timestamp":1760169643242}
+2025-10-11 16:01:44.304 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"65","timestamp":1760169704224,"runtime_OS":8406,"runtime_IDPS":0}
+2025-10-11 16:01:44.347 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"65","timestamp":1760169704267}
+2025-10-11 16:02:09.475 29720-29773 I/[Add Map]:{"action":"event","seq_number":"66","timestamp":1760169729394,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010105000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"user_name\":\"nvidia\",\"login_address\":\"tty2\",\"login_type\":7,\"timestamp\":1760161312116}}","hmac":"aHfxiKTDkCYmVL7cNDpRJEJBifM=","len":193}
+2025-10-11 16:02:09.481 29720-29773 I/[Add Map]:{"action":"event","seq_number":"67","timestamp":1760169729400,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010105000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"user_name\":\"nvidia\",\"login_address\":\"pts/4\",\"login_type\":7,\"timestamp\":1760169729474}}","hmac":"aG5uxXdwzxHuyaQAzbtcd16pTgA=","len":194}
+2025-10-11 16:02:11.699 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"66","timestamp":1760169729535}
+2025-10-11 16:02:11.703 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"67","timestamp":1760169729582}
+2025-10-11 16:02:45.367 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"68","timestamp":1760169765285,"runtime_OS":8467,"runtime_IDPS":0}
+2025-10-11 16:02:45.411 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"68","timestamp":1760169765328}
+2025-10-11 16:03:09.442 29720-29773 I/[Add Map]:{"action":"event","seq_number":"69","timestamp":1760169789360,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010105000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"user_name\":\"nvidia\",\"login_address\":\"pts/4\",\"login_type\":7,\"timestamp\":1760169789442}}","hmac":"984CHaMy2j0q2AghQczPK+/GWok=","len":194}
+2025-10-11 16:03:09.495 29720-29766 I/[SOCKET receive]:{"action":"eventack","seq_number":"69","timestamp":1760169789412}
+2025-10-11 16:03:46.430 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"70","timestamp":1760169826346,"runtime_OS":8528,"runtime_IDPS":0}
+2025-10-11 16:03:46.471 29720-29766 I/[SOCKET receive]:{"action":"heartack","seq_number":"70","timestamp":1760169826387}
+2025-10-11 16:04:47.435 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"71","timestamp":1760169887349,"runtime_OS":8589,"runtime_IDPS":0}
+2025-10-11 16:05:00.978 29720-29773 I/[Add Map]:{"action":"event","seq_number":"72","timestamp":1760169900891,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010105000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"user_name\":\"nvidia\",\"login_address\":\"pts/6\",\"login_type\":7,\"timestamp\":1760169900977}}","hmac":"z8dHvsa5BLVQ2Ocgv2A2gAhveXk=","len":194}
+2025-10-11 16:05:48.498 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"73","timestamp":1760169948410,"runtime_OS":8650,"runtime_IDPS":0}
+2025-10-11 16:05:57.653 29720-29773 I/[Add Map]:{"action":"event","seq_number":"74","timestamp":1760169957564,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010105000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"user_name\":\"nvidia\",\"login_address\":\"pts/6\",\"login_type\":7,\"timestamp\":1760169957652}}","hmac":"MaxLxq755/CCMh/Jy0Zz25Mt+Wk=","len":194}
+2025-10-11 16:06:49.562 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"75","timestamp":1760170009472,"runtime_OS":8711,"runtime_IDPS":0}
+2025-10-11 16:07:50.624 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"76","timestamp":1760170070533,"runtime_OS":8772,"runtime_IDPS":0}
+2025-10-11 16:08:51.688 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"77","timestamp":1760170131595,"runtime_OS":8833,"runtime_IDPS":0}
+2025-10-11 16:09:23.144 29720-29766 I/[idps_websocket]:----websocket connection closed
+
+2025-10-11 16:09:37.816 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:09:37.819 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:09:37.821 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:09:47.823 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:09:52.751 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"78","timestamp":1760170192657,"runtime_OS":8894,"runtime_IDPS":0}
+2025-10-11 16:10:07.827 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:10:07.830 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:10:07.832 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:10:17.834 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:10:25.438 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"ZTbKAcxdqe0PebSFo93mfA==","Authorization":""},0;body:¶ƒMå˜6IªêIX0≤˚é‡ën∂t§RΩÍ®;πNØÈ,32
+2025-10-11 16:10:25.439 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:10:25.439 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"ZTbKAcxdqe0PebSFo93mfA==","Authorization":""},0;body:¶ƒMå˜6IªêIX0≤˚é‡ën∂t§RΩÍ®;πNØÈ,32
+2025-10-11 16:10:25.440 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:10:37.860 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:10:37.862 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:10:37.864 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:10:39.576 29720-29774 I/[Add Map]:{"action":"event","seq_number":"79","timestamp":1760170239481,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000222\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.58\",\"load_avg5\":\"0.69\",\"load_avg15\":\"0.39\",\"cpu_num\":6,\"cpu_load\":0.096666663885116577,\"cpu_usage\":1}}","hmac":"4XVQEQ/aVK48jtBK5ZWbhOucMG0=","len":224}
+2025-10-11 16:10:47.865 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:10:53.815 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"80","timestamp":1760170253719,"runtime_OS":8955,"runtime_IDPS":0}
+2025-10-11 16:10:55.643 29720-29776 I/[Add Map]:{"action":"event","seq_number":"81","timestamp":1760170255547,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000422\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"rom_size\":68403881984,\"rom_rate\":95}}","hmac":"zEmgmb0FD+oeq+Q+JI6VYW+zBtc=","len":145}
+2025-10-11 16:11:07.869 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:11:07.872 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:11:07.874 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:11:17.875 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:11:27.464 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"K1UMYZQuRwNMsBINPGiCqQ==","Authorization":""},0;body:è!µ8W©⁄SÕìl4Ê¯æ†,32
+2025-10-11 16:11:27.466 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:11:27.466 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"K1UMYZQuRwNMsBINPGiCqQ==","Authorization":""},0;body:è!µ8W©⁄SÕìl4Ê¯æ†,32
+2025-10-11 16:11:27.467 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:11:37.899 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:11:37.904 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:11:37.907 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:11:47.908 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:11:54.880 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"82","timestamp":1760170314782,"runtime_OS":9016,"runtime_IDPS":0}
+2025-10-11 16:12:07.931 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:12:07.933 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:12:07.935 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:12:17.937 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:12:29.493 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"1nyQ8GMPmAj//9zVurpYVw==","Authorization":""},0;body:Êti–Ù;Ÿ≠†üY…‡~÷ŸfAõ BUÈô|¸!œÃÂ,32
+2025-10-11 16:12:29.495 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:12:29.495 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"1nyQ8GMPmAj//9zVurpYVw==","Authorization":""},0;body:Êti–Ù;Ÿ≠†üY…‡~÷ŸfAõ BUÈô|¸!œÃÂ,32
+2025-10-11 16:12:29.496 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:12:37.952 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:12:37.954 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:12:37.958 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:12:47.958 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:12:55.944 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"83","timestamp":1760170375845,"runtime_OS":9077,"runtime_IDPS":0}
+2025-10-11 16:13:07.967 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:13:07.969 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:13:07.971 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:13:17.057 29720-29773 I/[Add Map]:{"action":"event","seq_number":"84","timestamp":1760170396958,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010105000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"user_name\":\"nvidia\",\"login_address\":\"pts/4\",\"login_type\":7,\"timestamp\":1760170397057}}","hmac":"WBos04xQZ4E+7cffHhjF0oqt7VE=","len":194}
+2025-10-11 16:13:17.972 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:13:31.517 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"xc+RWewetrPNnGT1N4n43w==","Authorization":""},0;body:y^°ÉÓçπ≈J:¨	€È¿ªäë˛ëâQ0$–NÎÕ,32
+2025-10-11 16:13:31.518 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:13:31.518 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"xc+RWewetrPNnGT1N4n43w==","Authorization":""},0;body:y^°ÉÓçπ≈J:¨	€È¿ªäë˛ëâQ0$–NÎÕ,32
+2025-10-11 16:13:31.519 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:13:37.995 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:13:37.998 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:13:38.000 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:13:48.001 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:13:57.006 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"85","timestamp":1760170436906,"runtime_OS":9138,"runtime_IDPS":0}
+2025-10-11 16:14:08.023 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:14:08.026 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:14:08.028 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:14:18.030 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:14:33.541 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"m9BkkXRQGGbUsQX0I70tlg==","Authorization":""},0;body:fæ|Ä0uòrƒ¸W=T>„]Ù8gCñ%É_3,32
+2025-10-11 16:14:33.544 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:14:33.544 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"m9BkkXRQGGbUsQX0I70tlg==","Authorization":""},0;body:fæ|Ä0uòrƒ¸W=T>„]Ù8gCñ%É_3,32
+2025-10-11 16:14:33.545 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:14:38.053 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:14:38.057 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:14:38.059 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:14:48.062 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:14:58.038 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"86","timestamp":1760170497937,"runtime_OS":9199,"runtime_IDPS":0}
+2025-10-11 16:15:08.065 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:15:08.068 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:15:08.070 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:15:18.071 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:15:35.558 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"XeMCJadhpxzHq+h7VJcJ9w==","Authorization":""},0;body:=‹+”»j˝Z† lÕÑä	JªvŸ»…" ∫q;xÈÆàz,32
+2025-10-11 16:15:35.562 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:15:35.562 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"XeMCJadhpxzHq+h7VJcJ9w==","Authorization":""},0;body:=‹+”»j˝Z† lÕÑä	JªvŸ»…" ∫q;xÈÆ,32
+2025-10-11 16:15:35.563 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:15:38.082 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:15:38.085 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:15:38.087 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:15:48.089 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:15:59.053 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"87","timestamp":1760170558950,"runtime_OS":9260,"runtime_IDPS":0}
+2025-10-11 16:16:08.111 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:16:08.113 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:16:08.116 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:16:18.117 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:16:37.589 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"KEU7aPJGFqeg/cvYJ9e3YA==","Authorization":""},0;body:Œ◊áÂ‹HJî#Ô˛ÓÒRóπÑäQÃ◊?g%dJçÀæi,32
+2025-10-11 16:16:37.590 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:16:37.590 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"KEU7aPJGFqeg/cvYJ9e3YA==","Authorization":""},0;body:Œ◊áÂ‹HJî#Ô˛ÓÒRóπÑäQÃ◊?g%dJçÀæiàz,32
+2025-10-11 16:16:37.591 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:16:38.140 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:16:38.143 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:16:38.145 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:16:39.653 29720-29777 I/[Add Map]:{"action":"event","seq_number":"88","timestamp":1760170599549,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.29\",\"load_avg5\":\"0.48\",\"load_avg15\":\"0.38\",\"cpu_num\":6,\"cpu_load\":0.048333331942558289,\"cpu_usage\":0,\"ram_size\":2463836,\"ram_rate\":62,\"rom_size\":68403918848,\"rom_rate\":95,\"timestamp\":1760170598547}}","hmac":"F97t6EIN9sfGljVjk8bolcbx0Mw=","len":320}
+2025-10-11 16:16:48.146 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:17:00.111 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"89","timestamp":1760170620007,"runtime_OS":9322,"runtime_IDPS":0}
+2025-10-11 16:17:08.164 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:17:08.167 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:17:08.171 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:17:18.172 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:17:38.195 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:17:38.198 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:17:38.201 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:17:39.615 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"GuunWddv0txd8nwcJvXWug==","Authorization":""},0;body: òî3˙¡,"ﬁÚÏ◊î{ª‚ùzúz	KEÑ4ﬂ@,32
+2025-10-11 16:17:39.617 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:17:39.617 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"GuunWddv0txd8nwcJvXWug==","Authorization":""},0;body: òî3˙¡,"ﬁÚÏ◊î{ª‚ùzúz	KEÑ4ﬂ@,32
+2025-10-11 16:17:39.618 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:17:48.202 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:18:01.158 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"90","timestamp":1760170681053,"runtime_OS":9383,"runtime_IDPS":0}
+2025-10-11 16:18:08.226 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:18:08.231 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:18:08.233 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:18:18.235 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:18:38.257 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:18:38.260 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:18:38.262 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:18:41.643 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"XteNUY9VRp6gOgCPiBfe8g==","Authorization":""},0;body:-"ÑÏ%∆òÕ:XG~¬i“H¨Y76e≈E•	OR,32
+2025-10-11 16:18:41.644 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:18:41.645 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"XteNUY9VRp6gOgCPiBfe8g==","Authorization":""},0;body:-"ÑÏ%∆òÕ:XG~¬i“H¨Y76e≈E•	OR,32
+2025-10-11 16:18:41.645 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:18:48.264 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:19:02.208 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"91","timestamp":1760170742102,"runtime_OS":9444,"runtime_IDPS":0}
+2025-10-11 16:19:08.274 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:19:08.277 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:19:08.279 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:19:14.990 29720-29773 I/[Add Map]:{"action":"event","seq_number":"92","timestamp":1760170754883,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010105000122\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"user_name\":\"nvidia\",\"login_address\":\"pts/4\",\"login_type\":7,\"timestamp\":1760170754989}}","hmac":"IrYHOG9HYNHwdOol1Cex6qyHT2I=","len":194}
+2025-10-11 16:19:18.280 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:19:38.305 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:19:38.308 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:19:38.311 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:19:43.670 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"+xWDB2/3nuRjui0koxC1uw==","Authorization":""},0;body:07∞
+¬œ•ï˚âí⁄»tkÉ‡ÄéÁ™®èÜ9F¿«≤ice_5,32
+2025-10-11 16:19:43.671 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:19:43.671 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"+xWDB2/3nuRjui0koxC1uw==","Authorization":""},0;body:07∞
+¬œ•ï˚âí⁄»tkÉ‡ÄéÁ™®èÜ9F¿«≤àz,32
+2025-10-11 16:19:43.671 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:19:48.311 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:20:03.273 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"93","timestamp":1760170803165,"runtime_OS":9505,"runtime_IDPS":0}
+2025-10-11 16:20:08.336 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:20:08.340 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:20:08.342 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:20:18.342 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:20:38.365 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:20:38.369 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:20:38.371 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:20:45.694 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"tDsm8f21j24VYQGJC6Sy0A==","Authorization":""},0;body:ıÌ,Âv$h°í≈Ö«≈j7c-z1Jç¿…W˘˚ﬁsËè,32
+2025-10-11 16:20:45.695 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:20:45.695 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"tDsm8f21j24VYQGJC6Sy0A==","Authorization":""},0;body:ıÌ,Âv$h°í≈Ö«≈j7c-z1Jç¿…W˘˚ﬁsËè,32
+2025-10-11 16:20:45.696 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:20:48.373 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:21:04.295 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"94","timestamp":1760170864186,"runtime_OS":9566,"runtime_IDPS":0}
+2025-10-11 16:21:08.398 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:21:08.401 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:21:08.403 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:21:18.404 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:21:38.426 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:21:38.429 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:21:38.431 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:21:47.717 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"CdAaQfOPeTvSZ+fmYTZ43Q==","Authorization":""},0;body:ß@l_˝ﬂ[T¯Ô>Ì©ô(–‹5G¶Ã)®ÔQæ’Iµ9àz,32
+2025-10-11 16:21:47.718 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:21:47.718 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"CdAaQfOPeTvSZ+fmYTZ43Q==","Authorization":""},0;body:ß@l_˝ﬂ[T¯Ô>Ì©ô(–‹5G¶Ã)®ÔQæ’Iµ9,32
+2025-10-11 16:21:47.719 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:21:48.432 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:22:05.359 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"95","timestamp":1760170925249,"runtime_OS":9627,"runtime_IDPS":0}
+2025-10-11 16:22:08.455 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:22:08.458 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:22:08.461 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:22:18.461 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:22:38.467 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:22:38.471 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:22:38.473 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:22:48.475 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:22:49.739 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"1KGr0Hy0drHURI/EU4B6YA==","Authorization":""},0;body:nœ¢û√G_'‰œ4z¢'hû$ØËX8åˇn,32
+2025-10-11 16:22:49.741 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:22:49.741 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"1KGr0Hy0drHURI/EU4B6YA==","Authorization":""},0;body:nœ¢û√G_'‰œ4z¢'hû$ØËX8åˇn,32
+2025-10-11 16:22:49.742 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:23:06.422 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"96","timestamp":1760170986311,"runtime_OS":9688,"runtime_IDPS":0}
+2025-10-11 16:23:08.498 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:23:08.501 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:23:08.505 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:23:18.505 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:23:38.529 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:23:38.534 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:23:38.536 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:23:48.536 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:23:51.765 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"EYHWojRLP/7yKv/H+iUKNw==","Authorization":""},0;body:âtÜ·zU|°¬‡
+hE˝76°≠YÑ¯3ßd([Ép,32
+2025-10-11 16:23:51.769 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:23:51.769 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"EYHWojRLP/7yKv/H+iUKNw==","Authorization":""},0;body:âtÜ·zU|°¬‡
+hE˝76°≠YÑ¯3ßd([Épàz,32
+2025-10-11 16:23:51.771 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:24:07.463 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"97","timestamp":1760171047351,"runtime_OS":9749,"runtime_IDPS":0}
+2025-10-11 16:24:08.560 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:24:08.562 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:24:08.565 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:24:18.564 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:24:38.589 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:24:38.592 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:24:38.595 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:24:48.595 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:24:53.781 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"isNNXWSc8xUIN8Q8h/myvg==","Authorization":""},0;body:í∫#Q@°±˝]’ ÏU{Q/äÛ¸DÏE¿ñjÒåÁ,32
+2025-10-11 16:24:53.782 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:24:53.782 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"isNNXWSc8xUIN8Q8h/myvg==","Authorization":""},0;body:í∫#Q@°±˝]’ ÏU{Q/äÛ¸DÏE¿ñjÒåÁ,32
+2025-10-11 16:24:53.783 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:25:08.485 29720-29768 I/[Not add Map]:{"action":"heart","seq_number":"98","timestamp":1760171108372,"runtime_OS":9810,"runtime_IDPS":0}
+2025-10-11 16:25:08.619 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:25:08.621 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:25:08.623 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:25:18.626 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:25:38.636 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:25:38.638 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:25:38.641 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:25:48.641 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:25:51.681 29720-29774 I/[Add Map]:{"action":"event","seq_number":"99","timestamp":1760171151567,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000222\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"load_avg1\":\"0.79\",\"load_avg5\":\"0.82\",\"load_avg15\":\"0.57\",\"cpu_num\":6,\"cpu_load\":0.13166667520999908,\"cpu_usage\":0}}","hmac":"xetrtq/s0U7U0YmkyRB/iMnOdEU=","len":223}
+2025-10-11 16:25:55.806 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"iFfZ7nqduvOWRhkpQY1SJQ==","Authorization":""},0;body:º“g:A⁄”¥HÎ˚5‘IDÕ3cÃvOBkÿä®≈\‘èz,32
+2025-10-11 16:25:55.808 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:25:55.808 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"iFfZ7nqduvOWRhkpQY1SJQ==","Authorization":""},0;body:º“g:A⁄”¥HÎ˚5‘IDÕ3cÃvOBkÿä®≈\‘ice_5,32
+2025-10-11 16:25:55.809 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:26:08.653 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:26:08.656 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:26:08.658 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:26:09.501 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"100","timestamp":1760171169387,"runtime_OS":9871,"runtime_IDPS":0}
+2025-10-11 16:26:11.730 29720-29776 I/[Add Map]:{"action":"event","seq_number":"101","timestamp":1760171171616,"body":"{\"sn\":\"T1000TBb038f417f703306\",\"type\":\"0010106000422\",\"latitude\":0,\"longitude\":0,\"version\":\"1.5.0\",\"data\":{\"rom_size\":68403980288,\"rom_rate\":95}}","hmac":"cNAswFUTk2RHQwwjIiS+HMgJCeE=","len":145}
+2025-10-11 16:26:18.659 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:26:38.666 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:26:38.668 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:26:38.670 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:26:48.672 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:26:57.830 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"ePgG54G2RDH2Y045cGvoaQ==","Authorization":""},0;body:˛¢a⁄7˛’–Ü± ëxÏ^‹8Ô'Q‹T‰Òﬁô¿û√,32
+2025-10-11 16:26:57.832 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:26:57.832 29720-29727 T/[IDS Post]:url:https://vsocidps-uat.dfiov.com.cn/api/v1/session;header:{"X-Channel-Id":"T00001","X-Crypt":"1","X-Proto-Buf":"0","X-Sn":"T1000TBb038f417f703306","X-HMAC":"ePgG54G2RDH2Y045cGvoaQ==","Authorization":""},0;body:˛¢a⁄7˛’–Ü± ëxÏ^‹8Ô'Q‹T‰Òﬁô¿û√,32
+2025-10-11 16:26:57.833 29720-29727 T/[networkmanager]:get rescode is 6 
+2025-10-11 16:27:08.694 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:27:08.696 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:27:08.698 29720-29766 T/[idps_websocket]:ConnectClient end
+2025-10-11 16:27:10.565 29720-29768 I/[Add Map]:{"action":"heart","seq_number":"102","timestamp":1760171230450,"runtime_OS":9932,"runtime_IDPS":0}
+2025-10-11 16:27:18.700 29720-29766 E/[idps_websocket]:websocket connection err: Closed before conn
+
+2025-10-11 16:27:38.707 29720-29766 T/[idps_websocket]:/live/v1.5/tbox/linux?sn=T1000TBb038f417f703306&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjAyNTQ3NDQsImp0aSI6IjIiLCJpYXQiOjE3NjAxNjgzNDR9.nh7c-ohKmbSSP6kRP5uKFVGyS9-5Qm-C9ZnnLX3HznM
+2025-10-11 16:27:38.709 29720-29766 T/[idps_websocket]:ConnectClient: vsocidps-uat.dfiov.com.cn:443 connecting...
+
+2025-10-11 16:27:38.711 29720-29766 T/[idps_websocket]:ConnectClient end

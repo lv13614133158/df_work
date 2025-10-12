@@ -8,7 +8,9 @@
 
 int main()
 {
-    char *buff="qwertyuiopasdfghjklzxcQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQvbnm111111111111111111111111111111111111111111111111111111111111111111111111111111111111111123";
+    char  buff[256];
+  	snprintf(buff, 256, "valid user info :%s", "1");
+		//idpslog(0,"idps main",spdlog);
     idpslog_init(1,"./log.db",1000,2,
                   1,"./idpslog.db",
                     1,1000,2000);

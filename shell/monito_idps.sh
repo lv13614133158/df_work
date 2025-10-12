@@ -327,7 +327,8 @@ fun() {
             if [ "$(echo "$IDS_cpu $min_IDS_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then
                 min_IDS_cpu=$IDS_cpu
             fi
-
+            sum_IDS_cpu=$(printf "%.2f" "$sum_IDS_cpu")
+            IDS_cpu=$(printf "%.2f" "$IDS_cpu")
             sum_IDS_cpu=$(echo "$sum_IDS_cpu $IDS_cpu" | awk '{print $1 + $2}')
         fi
         

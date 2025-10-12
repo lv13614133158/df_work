@@ -471,7 +471,7 @@ void setWatchPoint(char* _input)
 static void saveFileEvent(char *eventSource,char* filePath, int mask){
     char spdlog[255] = {0};
     snprintf(spdlog, 255,"eventSource:%s,filePath:%s,mask0%x", eventSource, filePath, mask);
-    log_d("filemonitor", spdlog);
+    idpslog(2,"filemonitor", spdlog);
 }
 
 static int onFileMonitorEvent(char* filePath, int mask,char *processInfo) {
@@ -583,7 +583,7 @@ void initWatchPoint(void) {
 	head = (list *)malloc(sizeof(list));
 	if (head == NULL)
 	{
-		log_e("filemonitor","fatal error,Out Of Space");
+		idpslog(4,"filemonitor","fatal error,Out Of Space");
 		return;
 	}	
 	list_init(head,free);

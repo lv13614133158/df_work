@@ -6,7 +6,7 @@
 #include "spdloglib.h"
 #include "cJSON.h"
 #include "util.h"
-#include "spdloglib.h"
+#include <idpslog.h>
 #include "sIptables.h"
 
 char iptables_table[][16]={"filter","nat","mangle","raw"}; //表
@@ -18,7 +18,7 @@ static void _addIptable(char *body)
 {
     char cmd[255] ={0};
     sprintf(cmd, "iptables %s", body);
-    log_v("networkfirewall", cmd);
+    idpslog(0,"networkfirewall", cmd);
     int result = system(cmd);
 }
 
@@ -55,7 +55,7 @@ int addIptableForlist(list *rules)
     {
         char *body = (char*)cur->data;
         sprintf(cmd, "iptables %s",body);
-        log_e("networkfirewall",cmd);
+        idpslog(4,"networkfirewall",cmd);
         int retsult = system(cmd);
         cur = cur->next;
     }

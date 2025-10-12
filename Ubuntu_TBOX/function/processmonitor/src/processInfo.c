@@ -14,7 +14,7 @@
 #include "fileOption.h"
 #include <pwd.h>
 #include "util.h"
-#include "spdloglib.h"
+#include <idpslog.h>
 #include "processInfo.h"
 
 
@@ -182,6 +182,6 @@ void getProcessInfo(processNode_t *h)
 	return;
 fail:
 	printf("some error happen \n");
-    log_e("processmonitor","open proc error");
+    idpslog(4,"processmonitor","open proc error");
 }
 

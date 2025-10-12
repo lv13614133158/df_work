@@ -43,7 +43,7 @@ ${GCC} -Wno-deprecated-declarations read_main.c \
     -lstdc++ \
     -lm \
     -lpthread \
-    -o read.a
+    -o read_idpslog
 
 
 LD_LIBRARY_PATH=${OPENSSL_LIB_PATH}/build:${DIR}/:$LD_LIBRARY_PATH

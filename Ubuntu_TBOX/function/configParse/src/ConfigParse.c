@@ -29,7 +29,7 @@ static int readLocalJson(char* path, char* buf, int len)
 	int ret = -1;
 	int fd  = open(path,O_RDONLY);
 	if(fd < 0){
-		log_e("ConfigParse","open file failed");
+		idpslog(4,"ConfigParse","open file failed");
 		return ret;
 	}
 
@@ -38,7 +38,7 @@ static int readLocalJson(char* path, char* buf, int len)
 		ret = read(fd, buf, len);
 
 		if(ret == -1)
-			log_e("ConfigParse","read file failed");
+			idpslog(4,"ConfigParse","read file failed");
 	}
 	else  //读取文件长度
 	{
@@ -81,18 +81,18 @@ static int writeLocalJson(char* path, char* buf, int len)
 		if(writeBuf){
 			ret = fwrite(writeBuf, strlen(writeBuf), 1, fp);
 			fflush(fp);
-			log_v("ConfigParse",writeBuf);
+			idpslog(0,"ConfigParse",writeBuf);
 			free(writeBuf);
 
 			if(ret == -1)
-				log_e("ConfigParse","write file failed");
+				idpslog(4,"ConfigParse","write file failed");
 		}
 		cJSON_Delete(cJSONBuf);
 		fclose(fp);
 		return ret;
 	}
 	
-	log_e("ConfigParse","open file failed");
+	idpslog(4,"ConfigParse","open file failed");
 	return -1;	
 }
 
@@ -102,7 +102,7 @@ cJSON* getJsonObjectItem_s(cJSON* cJSONBuf, char *name)
 	char spdlog[128] ={0};
 	if(!cJSONBuf && !name)
 	{
-		log_e("ConfigParse","getJsonObjectItem_s parameter Input error");
+		idpslog(4,"ConfigParse","getJsonObjectItem_s parameter Input error");
 		return NULL;
 	}
 
@@ -110,7 +110,7 @@ cJSON* getJsonObjectItem_s(cJSON* cJSONBuf, char *name)
 	if(!child)
 	{
 		snprintf(spdlog, sizeof(spdlog), "getJsonObjectItem_s NO have %s ObjectItem error", name);
-		log_e("ConfigParse",spdlog);
+		idpslog(4,"ConfigParse",spdlog);
 	}
 
 	return child;
@@ -130,7 +130,7 @@ double getJsonItemValue_s(cJSON* cJSONBuf, char *name)
 		}
 		else{
 			snprintf(spdlog, sizeof(spdlog), "getJsonItemValue_s %s type NO is Int is %x", name, child->type);
-			log_e("ConfigParse",spdlog);
+			idpslog(4,"ConfigParse",spdlog);
 		}
 	}
 
@@ -151,7 +151,7 @@ char* getJsonItemString_t(cJSON* cJSONBuf, char* name)
 		}
 		else{
 			snprintf(spdlog, sizeof(spdlog), "getJsonItemString_t %s type NO is string is %x", name, child->type);
-			log_e("ConfigParse",spdlog);
+			idpslog(4,"ConfigParse",spdlog);
 		}
 	}
 	
@@ -172,7 +172,7 @@ void getJsonItemString_s(cJSON* cJSONBuf, char* name, char* valuestr)
 		}
 		else {
 			sprintf(spdlog,"getJsonItemString_s %s parameter Input error",name);
-			log_e("ConfigParse",spdlog);
+			idpslog(4,"ConfigParse",spdlog);
 		}
 	}
 	else{
@@ -209,7 +209,7 @@ long long parseCloudTime(char* str, configSet* configSetObj)
 			configSetObj->updateTime = ret;
 
 		sprintf(log, "update_time:%lld", ret);
-		log_v("ConfigParse",log);
+		idpslog(0,"ConfigParse",log);
 	}
 	cJSON_Delete(root);
 	return ret;
@@ -226,7 +226,7 @@ int parseCloudConfig(char* str,  configSet* configSetObj)
 	if (size == 0)
 	{                         
 		cJSON_Delete(root); 
-		log_e("ConfigParse","not get valid rules\n");                   
+		idpslog(4,"ConfigParse","not get valid rules\n");                   
 		return -1;                     
 	}
 
@@ -235,7 +235,7 @@ int parseCloudConfig(char* str,  configSet* configSetObj)
 		cJSON* child = cJSON_GetArrayItem(js_list, i);
 		char * print_data = cJSON_Print(child);
 		if(print_data){
-			log_d("ConfigParse:",print_data);
+			idpslog(2,"ConfigParse:",print_data);
 			free(print_data);
 		}
 
@@ -319,21 +319,21 @@ static int getPolicyConfigMd5(char *md5, int md5_len)
     len = readLocalJson(POLICY_CONFIG_MD5, NULL, 0);
     if (len <= 0)
     {
-        log_i("ConfigParse","getPolicyConfigMd5 readLocalJson faild");
+        idpslog(3,"ConfigParse","getPolicyConfigMd5 readLocalJson faild");
         return -1;
     }
 
     malloc_policy_buff = (char *)malloc(len);
     if (!malloc_policy_buff)
     {
-        log_e("ConfigParse","getPolicyConfigMd5 malloc error");
+        idpslog(4,"ConfigParse","getPolicyConfigMd5 malloc error");
         return -1;
     }
 
     ret = readLocalJson(POLICY_CONFIG_MD5, malloc_policy_buff, len);
     if (ret <= 0)
     {
-        log_e("ConfigParse","getPolicyConfigMd5 readLocalJson faild");
+        idpslog(4,"ConfigParse","getPolicyConfigMd5 readLocalJson faild");
         free(malloc_policy_buff);
         return -1;
     }
@@ -360,14 +360,14 @@ static int setPolicyConfigMd5(char *md5)
 
     if (!md5)
     {
-        log_e("ConfigParse","setPolicyConfigMd5 param is null");
+        idpslog(4,"ConfigParse","setPolicyConfigMd5 param is null");
         return -1;
     }
 
     cJSONObj = cJSON_CreateObject();
     if (!cJSONObj)
     {
-        log_e("ConfigParse","setPolicyConfigMd5 cJSON_CreateObject err");
+        idpslog(4,"ConfigParse","setPolicyConfigMd5 cJSON_CreateObject err");
         return -1;
     }
 
@@ -389,7 +389,7 @@ static int setPolicyConfigMd5(char *md5)
     }
     cJSON_Delete(cJSONObj);
 
-    log_e("ConfigParse","setPolicyConfigMd5 open file failed");
+    idpslog(4,"ConfigParse","setPolicyConfigMd5 open file failed");
 
     return -1;
 }
@@ -434,7 +434,7 @@ int selectParseConfig(char* responses, configSet* configSetObj)
 	
 		result = (char*)malloc(len);  
 		if(result == NULL){
-			log_e("ConfigParse","policy config malloc error");
+			idpslog(4,"ConfigParse","policy config malloc error");
 			return -1;
 		}
 
@@ -501,7 +501,7 @@ int getCloudConfig(configSet* configSetObj)
     if(response == NULL) {
 		char log[255]={0};
         sprintf(log,"%s  %s  %d  malloc error\n",__FILE__,__func__,__LINE__);
-		log_e("ConfigParse",log);
+		idpslog(4,"ConfigParse",log);
         return ret;
     }
 	memset(configSetObj, 0, sizeof(configSet));
@@ -520,7 +520,7 @@ int getCloudConfig(configSet* configSetObj)
     {
         /*repull the configuration*/
         updateTime = 0;
-        log_e("ConfigParse","md5 is diff!");
+        idpslog(4,"ConfigParse","md5 is diff!");
     }
 #endif
 
@@ -529,7 +529,7 @@ int getCloudConfig(configSet* configSetObj)
     ret = selectParseConfig(response, configSetObj);  
 	free(response);
     if(ret == -1){
-	  log_e("ConfigParse","Config pasre err!");
+	  idpslog(4,"ConfigParse","Config pasre err!");
 	  return ret;
 	}
 
@@ -646,7 +646,7 @@ int getLocalConfig(configData* configObj, int mode)
 	cJSON* root = cJSON_Parse(buf);
 	if(!root)
 	{
-		log_e("ConfigParse","ConfigParse get root faild");
+		idpslog(4,"ConfigParse","ConfigParse get root faild");
 		return -1;
 	}
 
@@ -749,22 +749,22 @@ int tbox_get_info(tboxInfo_t *p_tbox_mcu_info) {
 
     FILE *file = fopen(TBOX_INFO_PATH, "r");
     if (file == NULL) {
-        log_e("tbox_get_info", "Failed to open tboxinfo file");
+        idpslog(4,"tbox_get_info", "Failed to open tboxinfo file");
         return 1;
     }
 
     while (fgets(line, sizeof(line), file)) {
         if (extract_field(line, "vin:", VIN, sizeof(VIN))) {
-            log_d("tbox_get_info", "get vin success");
+            idpslog(2,"tbox_get_info", "get vin success");
         }
         if (extract_field(line, "sn:", SN, sizeof(SN))) {
-            log_d("tbox_get_info", "get SN success");
+            idpslog(2,"tbox_get_info", "get SN success");
         }
         if (extract_field(line, "vendorInfo:", MANUFACTURER, sizeof(MANUFACTURER))) {
-            log_d("tbox_get_info", "get MANUFACTURER success");
+            idpslog(2,"tbox_get_info", "get MANUFACTURER success");
         }
         if (extract_field(line, "sdkSwVersion:", SYS_VERSION, sizeof(SYS_VERSION))) {
-            log_d("tbox_get_info", "get SYS_VERSION success");
+            idpslog(2,"tbox_get_info", "get SYS_VERSION success");
         }
     }
 
@@ -785,7 +785,7 @@ int tbox_get_info(tboxInfo_t *p_tbox_mcu_info) {
 // 	memset(spdlog, 0 ,sizeof(spdlog));
 // 	snprintf(spdlog, sizeof(spdlog),
 // 				"location update:latitude(%f),longitude(%f),altitude(%f)", gnss.latitude, gnss.longitude, gnss.altitude);
-// 	log_d("gnss_callback", spdlog);
+// 	idpslog(2,"gnss_callback", spdlog);
 //     wbsClient_setPosition(gnss.latitude, gnss.longitude);
 // }
 
@@ -795,7 +795,7 @@ static void *get_gps_task(void *arg)
 
 	// if (dfsdkapi_init("Dfsdk"))
     // {
-    //     log_e("get_gps_task", "init client fail");
+    //     idpslog(4,"get_gps_task", "init client fail");
     //     return NULL;
     // }
     
@@ -836,7 +836,7 @@ int initTboxInfo(configData* configObj)
 	cJSON* root = cJSON_Parse(buf);
 	if(!root)      
 	{
-		log_d("ConfigParse","tboxinfo file format error");
+		idpslog(2,"ConfigParse","tboxinfo file format error");
 		ret=-1;
 		goto exit;
 	}
@@ -904,7 +904,7 @@ exit:
 
 	memset(spdlog, 0 ,sizeof(spdlog));
 	sprintf(spdlog, "ID:%s, VIN:%s, CAR:%s, SIMU:%s\n", tboxInfo_obj.ID, tboxInfo_obj.VIN, tboxInfo_obj.CAR, tboxInfo_obj.SYS_VERSION);
-	log_d("ConfigParse", spdlog);
+	idpslog(2,"ConfigParse", spdlog);
 
 	strncpy(file_data.vin, "LQH913L2240000001", sizeof(file_data.vin));
 	strncpy(file_data.sn, "LQH02505280001", sizeof(file_data.sn));	
@@ -944,7 +944,7 @@ int initCert(void)
 	// }
 	// else
 	// {
-	// 	log_e("ConfigParse", "read client certificate err!");
+	// 	idpslog(4,"ConfigParse", "read client certificate err!");
 	// }
 
 	// /*create client private key*/
@@ -968,7 +968,7 @@ int initCert(void)
 	// }
 	// else
 	// {
-	// 	log_e("ConfigParse", "read client private key err");
+	// 	idpslog(4,"ConfigParse", "read client private key err");
 	// }
 
 	// /*create root certificate*/
@@ -991,7 +991,7 @@ int initCert(void)
 	// }
 	// else
 	// {
-	// 	log_e("ConfigParse", "read root certificate err");
+	// 	idpslog(4,"ConfigParse", "read root certificate err");
 	// }
 
 	return 0;
@@ -1093,7 +1093,7 @@ void initFlagNetworkConnection(void)
 
 	char log[255]={0};
 	sprintf(log,"s_network_connection_enabled:%d\n",s_network_connection_enabled);
-	log_d("ConfigParse",log);
+	idpslog(2,"ConfigParse",log);
 }
 
 /*使用本地时间初始化IDPS上传到平台的时间，防止无网状态下时间未同步，导致事件中timestamp错误的问题*/
@@ -1149,7 +1149,7 @@ int get_Cache_data(struct Cache_date * date,char *fpath)
 	struct Cache_date file_data;
 	int fd;
     if (fpath == NULL) {
-        log_e("ConfigParse", "get_Cache_config parameter error");
+        idpslog(4,"ConfigParse", "get_Cache_config parameter error");
         return -1;
     }
     char  file_name[64];
@@ -1160,12 +1160,12 @@ int get_Cache_data(struct Cache_date * date,char *fpath)
 		mk_dir_exist(fpath);
 		fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
 		if (fd < 0) {
-            log_e("ConfigParse", "Failed to create cache file");
+            idpslog(4,"ConfigParse", "Failed to create cache file");
             return -1;
         }
 		ssize_t written = write(fd, date, sizeof(struct Cache_date));
         if (written != sizeof(struct Cache_date)) {
-            log_e("ConfigParse", "Failed to write cache data");
+            idpslog(4,"ConfigParse", "Failed to write cache data");
             close(fd);
             return -1;
         }
@@ -1188,12 +1188,12 @@ int get_Cache_data(struct Cache_date * date,char *fpath)
 					mk_dir_exist(fpath);
 					fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
 					if (fd < 0) {
-						log_e("ConfigParse", "Failed to create cache file");
+						idpslog(4,"ConfigParse", "Failed to create cache file");
 						return -1;
 					}
 					ssize_t written = write(fd, date, sizeof(struct Cache_date));
 					if (written != sizeof(struct Cache_date)) {
-						log_e("ConfigParse", "Failed to write cache data");
+						idpslog(4,"ConfigParse", "Failed to write cache data");
 						close(fd);
 						return -1;
 					}

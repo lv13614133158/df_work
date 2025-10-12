@@ -99,7 +99,7 @@ MyHashMap *ProcessCheck_formatStringToProcessMap(char *processString)
     cJSON *processMapJSON = cJSON_Parse(processString);
     if (!processMapJSON)
     {
-        log_i("processmonitor","formatStringToProcessMap processString parse NULL");
+        idpslog(2,"processmonitor","formatStringToProcessMap processString parse NULL");
         return processMap;
     }
     n = cJSON_GetArraySize(processMapJSON);
