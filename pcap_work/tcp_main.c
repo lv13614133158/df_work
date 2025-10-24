@@ -7,9 +7,9 @@
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 
-#define TCP_TABLE_SIZE 1024
-#define REPLAY_THRESHOLD 20      // 提高阈值以减少误报
-#define TIME_WINDOW 50          // 时间窗口(秒)
+#define TCP_TABLE_SIZE 4096
+#define REPLAY_THRESHOLD 5      // 提高阈值以减少误报
+#define TIME_WINDOW 20          // 时间窗口(秒)
 
 // TCP连接信息结构
 typedef struct {
@@ -52,12 +52,11 @@ int is_tcp_replay_attack(struct ip *ip_header, struct tcphdr *tcp_header, time_t
     u_int16_t dst_port = ntohs(tcp_header->th_dport);
     u_int32_t seq_num = ntohl(tcp_header->th_seq);
     
-    //  printf("DEBUG: 收到TCP包 %u.%u.%u.%u:%d -> %u.%u.%u.%u:%d 序列号=%u\n",
-    //        src_ip & 0xFF, (src_ip >> 8) & 0xFF, (src_ip >> 16) & 0xFF, (src_ip >> 24) & 0xFF, src_port,
-    //        dst_ip & 0xFF, (dst_ip >> 8) & 0xFF, (dst_ip >> 16) & 0xFF, (dst_ip >> 24) & 0xFF, dst_port,
-    //        seq_num);
+    printf("DEBUG: 检查重放攻击 - 源IP: %u.%u.%u.%u:%d, 目标IP: %u.%u.%u.%u:%d, 序列号: %u\n",
+           src_ip & 0xFF, (src_ip >> 8) & 0xFF, (src_ip >> 16) & 0xFF, (src_ip >> 24) & 0xFF, src_port,
+           dst_ip & 0xFF, (dst_ip >> 8) & 0xFF, (dst_ip >> 16) & 0xFF, (dst_ip >> 24) & 0xFF, dst_port,
+           seq_num);
     
-    // 查找是否已存在相同的连接和序列号
     for (i = 0; i < tcp_table_size; i++) {
         if (tcp_table[i].src_ip == src_ip && 
             tcp_table[i].dst_ip == dst_ip &&
@@ -65,6 +64,7 @@ int is_tcp_replay_attack(struct ip *ip_header, struct tcphdr *tcp_header, time_t
             tcp_table[i].dst_port == dst_port &&
             tcp_table[i].seq_num == seq_num) {
             found = i;
+            printf("DEBUG: 找到匹配记录，索引: %d, 当前计数: %d\n", i, tcp_table[i].count);
             break;
         }
     }
@@ -73,13 +73,10 @@ int is_tcp_replay_attack(struct ip *ip_header, struct tcphdr *tcp_header, time_t
         // 更新记录
         tcp_table[found].last_seen = current_time;
         tcp_table[found].count++;
+        printf("DEBUG: 更新记录计数: %d\n", tcp_table[found].count);
         
-       // printf("DEBUG: 找到重复序列号，计数=%d\n", tcp_table[found].count);
-        
-        // 更智能的检测逻辑:
-        // 1. 如果在时间窗口内超过阈值，则判定为攻击
-        // 2. 如果超出时间窗口，则重置计数器
         if (current_time - tcp_table[found].first_seen <= TIME_WINDOW) {
+            printf("DEBUG: 在时间窗口内 (%ld 秒)\n", current_time - tcp_table[found].first_seen);
             if (tcp_table[found].count >= REPLAY_THRESHOLD) {
                 // 发现重放攻击，重置计数器以便继续检测
                 tcp_table[found].count = 1;
@@ -89,11 +86,13 @@ int is_tcp_replay_attack(struct ip *ip_header, struct tcphdr *tcp_header, time_t
             }
         } else {
             // 超出时间窗口，重置计数器和时间
+            printf("DEBUG: 超出时间窗口，重置计数器\n");
             tcp_table[found].count = 1;
             tcp_table[found].first_seen = current_time;
         }
     } else {
         // 添加新记录
+        printf("DEBUG: 未找到匹配记录，添加新记录\n");
         if (tcp_table_size < TCP_TABLE_SIZE) {
             tcp_table[tcp_table_size].src_ip = src_ip;
             tcp_table[tcp_table_size].dst_ip = dst_ip;
@@ -103,11 +102,13 @@ int is_tcp_replay_attack(struct ip *ip_header, struct tcphdr *tcp_header, time_t
             tcp_table[tcp_table_size].first_seen = current_time;
             tcp_table[tcp_table_size].last_seen = current_time;
             tcp_table[tcp_table_size].count = 1;
+            printf("DEBUG: 新记录添加完成，索引: %d\n", tcp_table_size);
             tcp_table_size++;
-       //  printf("DEBUG: 添加新连接记录\n");
+        } else {
+            printf("DEBUG: TCP表已满，无法添加新记录\n");
         }
     }
-     return 0;
+    return 0;
 }
 
 // 处理TCP数据包
@@ -128,25 +129,12 @@ void process_tcp_packet(const u_char *packet, int packet_len) {
     // 解析TCP头部
     tcp_header = (struct tcphdr *)(packet + sizeof(struct ether_header) + (ip_header->ip_hl * 4));
     
-    // 检查TCP标志位，只关注SYN, ACK, PSH, FIN包
+    // // 检查TCP标志位，只关注SYN, ACK, PSH, FIN包
     u_int8_t tcp_flags = tcp_header->th_flags;
     if (!(tcp_flags & TH_SYN) ) {
         return;
     }
-    // 在 process_tcp_packet 函数中添加
 
-    // u_int16_t src_port = ntohs(tcp_header->th_sport);
-    // u_int16_t dst_port = ntohs(tcp_header->th_dport);
-    
-    // if (src_port == 22 || dst_port == 22) {
-    // return ; // 排除SSH流量
-    // }
-    // u_int32_t expected_src = inet_addr("192.168.196.128");
-    // u_int32_t expected_dst = inet_addr("192.168.196.128");
-
-    // if (ip_header->ip_src.s_addr != expected_src || ip_header->ip_dst.s_addr != expected_dst) {
-    //     return;
-    // }
     // 检查是否为TCP重放攻击
     if (is_tcp_replay_attack(ip_header, tcp_header, current_time)) {
         char src_ip_str[16], dst_ip_str[16];
@@ -205,12 +193,12 @@ int main() {
     
 
     // 打开网络设备进行捕获
-    handle = pcap_open_live("lo", BUFSIZ, 1, 1000, errbuf);
+    handle = pcap_open_live(dev, BUFSIZ, 1, 1000, errbuf);
     if (handle == NULL) {
         fprintf(stderr, "无法打开设备 %s: %s\n", dev, errbuf);
         return 1;
     }
-    
+    printf("打开的网口 = %s\n", dev);
     // 编译和设置过滤器
     if (pcap_compile(handle, &fp, filter_exp, 0, net) == -1) {
         fprintf(stderr, "无法解析过滤器 %s: %s\n", filter_exp, pcap_geterr(handle));

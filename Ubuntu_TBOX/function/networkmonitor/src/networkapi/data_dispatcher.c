@@ -40,6 +40,16 @@
 #define	IPV6_VERSION	(6)
 #define IF_INTERFACE_MAX_SIZE 			(65535)//28800000//65535
 #define	IF_INTERFACE_NAME_MAX_SIZE 		(0x40)
+
+#define TIME_WINDOW 50  
+
+#define ARP_TABLE_SIZE 256
+#define	ARP_REPLAY_ATTACK_COUNT  5
+
+#define TCP_TABLE_SIZE 1024
+#define REPLAY_THRESHOLD 30      // 提高阈值以减少误报
+        
+
 s8 local_net_ip[32];
 u8 local_net_ip_hex[4];
 u8 local_net_mac_hex[6];
@@ -53,6 +63,50 @@ static list *whiteIpName = NULL;
 static pthread_t thread_parser_thd = 0;
 static boolean exit_thread_parser_thd = FALSE;
 static int s_net_connect_report_interval = 30;
+
+
+// 存储ARP映射和统计信息的结构
+typedef struct {
+    u_char mac[6];              // MAC地址
+    u_char ip[4];               // IP地址
+    time_t last_seen;           // 最后一次见到该ARP记录的时间
+    time_t last_reply_time;     // 上一次收到ARP回复的时间
+    int duplicate_count;        // 连续重复ARP回复计数
+} arp_host_info;
+
+// 全局变量存储ARP信息
+arp_host_info arp_table[ARP_TABLE_SIZE];
+int arp_table_size = 0;
+
+// ARP头部结构
+struct arp_header {
+    u_short hardware_type;
+    u_short protocol_type;
+    u_char hardware_len;
+    u_char protocol_len;
+    u_short opcode;
+    u_char sender_mac[6];
+    u_char sender_ip[4];
+    u_char target_mac[6];
+    u_char target_ip[4];
+};
+
+
+// TCP连接信息结构
+typedef struct {
+    u_int32_t src_ip;        // 源IP地址
+    u_int32_t dst_ip;        // 目标IP地址
+    u_int16_t src_port;      // 源端口
+    u_int16_t dst_port;      // 目标端口
+    u_int32_t seq_num;       // 序列号
+    time_t first_seen;       // 第一次见到该连接的时间
+    time_t last_seen;        // 最后一次见到该连接的时间
+    int count;               // 相同序列号出现的次数
+} tcp_connection_info;
+
+tcp_connection_info tcp_table[TCP_TABLE_SIZE];
+int tcp_table_size = 0;
+
 
 typedef struct networkNode{
 	unsigned int dstip;
@@ -326,7 +380,7 @@ char* getnettxrx(){
 	root = cJSON_CreateArray(); 
 	if(root == NULL){
 		char log[256] = {0};
-		sprintf(log,"%s""cJSON_CreateArray NULL");
+		sprintf(log,"%s","cJSON_CreateArray NULL");
 		log_i("networkmonitor", log);
 		return NULL;}
 	//跳过前两行，后面一行代表一个网卡的信息，循环读取每个网卡的信息
@@ -703,6 +757,324 @@ static void update_network_list_state(networkNode_t *h)
 	pthread_mutex_unlock(&network_lock);
 }
 
+
+int detect_tls13_in_server_hello(const u_char *server_hello_data, int server_hello_len) {
+    // 确保有足够的数据进行解析
+    if (server_hello_len < 38) {
+        return 0;
+    }
+    
+    // Server Hello结构解析
+    // 跳过Handshake头部 (type: 1 byte + length: 3 bytes)
+    // 跳过Version (2 bytes) + Random (32 bytes)
+    const u_char *ptr = server_hello_data + 38;
+    int offset = 38;
+
+    if (offset + 1 > server_hello_len) {
+        return 0;
+    }
+    int session_id_len = ptr[0];
+    if (offset + 1 + session_id_len > server_hello_len) {
+        return 0;
+    }
+    offset += 1 + session_id_len;
+    ptr += 1 + session_id_len;
+    
+    if (offset + 2 > server_hello_len) {
+        return 0;
+    }
+    offset += 2;
+    ptr += 2;
+    
+    if (offset + 1 > server_hello_len) {
+        return 0;
+    }
+    offset += 1;
+    ptr += 1;
+    
+    if (offset + 2 > server_hello_len) {
+        return 0;
+    }
+    int extensions_len = (ptr[0] << 8) | ptr[1];
+    if (offset + 2 + extensions_len > server_hello_len) {
+        return 0;
+    }
+    offset += 2;
+    ptr += 2;
+    
+    int extensions_end = offset + extensions_len;
+    while (offset < extensions_end && offset + 4 <= server_hello_len) {
+        if (offset + 4 > server_hello_len) {
+            break;
+        }
+        
+        int extension_type = (ptr[0] << 8) | ptr[1];
+        int extension_length = (ptr[2] << 8) | ptr[3];
+        if (extension_type == 0x002b) {
+            if (extension_length >= 2 && offset + 4 + 2 <= server_hello_len) {
+                u_char major = ptr[4];
+                u_char minor = ptr[5];
+                if (major == 0x03 && minor == 0x04) {
+                    return 1; // TLS 1.3
+                }
+            }
+        }
+        offset += 4 + extension_length;
+        if (offset <= server_hello_len && extension_length <= server_hello_len) {
+            ptr += 4 + extension_length;
+        } else {
+            break;
+        }
+    }
+    
+    return 0; // 不是TLS 1.3
+}
+
+void mac_to_str(u_char *mac, char *str) {
+    sprintf(str, "%02x:%02x:%02x:%02x:%02x:%02x",
+            mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+}
+
+// 将IP地址转换为字符串
+void ip_to_str(u_char *ip, char *str) {
+    sprintf(str, "%d.%d.%d.%d", ip[0], ip[1], ip[2], ip[3]);
+}
+void cleanup_arp_table(time_t current_time) {
+    int i, j;
+    for (i = 0; i < arp_table_size; i++) {
+        // 清理长时间未见的记录（例如超过5分钟）
+        if (current_time - arp_table[i].last_seen > 300) {
+            for (j = i; j < arp_table_size - 1; j++) {
+                memcpy(&arp_table[j], &arp_table[j+1], sizeof(arp_host_info));
+            }
+            arp_table_size--;
+            i--;
+        }
+    }
+}
+void arp_replay_attack(struct arp_header  *arp_hdr)
+{
+		time_t current_time = time(NULL);
+		cleanup_arp_table(current_time);
+        if (ntohs(arp_hdr->opcode) != 2) {
+            // printf("收到ARP非应答包 - 忽略\n");
+            return;
+        }
+		  char sender_ip_str[16];
+        char sender_mac_str[18];
+        ip_to_str(arp_hdr->sender_ip, sender_ip_str);
+        mac_to_str(arp_hdr->sender_mac, sender_mac_str);
+
+        // 查找是否已存在该MAC地址的记录
+        int mac_exists = -1;
+        for (int i = 0; i < arp_table_size; i++) {
+            if (memcmp(arp_table[i].mac, arp_hdr->sender_mac, 6) == 0) {
+                mac_exists = i;
+                break;
+            }
+        }
+        if (mac_exists != -1) {
+            // 检查时间间隔并检查重复次数
+            if (current_time - arp_table[mac_exists].last_reply_time < TIME_WINDOW) {
+                arp_table[mac_exists].duplicate_count++;
+                // 如果重复次数超过阈值(5次)，认为是ARP重放攻击
+                if (arp_table[mac_exists].duplicate_count > ARP_REPLAY_ATTACK_COUNT) {
+					// printf("----------------------------------------\n");
+                    // printf("[警告] 检测到ARP重放攻击!\n");
+                    // printf("       IP: %s, MAC: %s\n", sender_ip_str, sender_mac_str);
+                    // printf("       连续重复回复次数: %d\n", arp_table[mac_exists].duplicate_count);
+					// printf("-----------------------------------------\n");
+					report_log(ARP_REPLAY_ATTACK,sender_ip_str,arp_table[mac_exists].duplicate_count);
+				}
+            } else {
+                arp_table[mac_exists].duplicate_count = 0;
+            }
+            arp_table[mac_exists].last_seen = current_time;
+            arp_table[mac_exists].last_reply_time = current_time;
+            if (memcmp(arp_table[mac_exists].ip, arp_hdr->sender_ip, 4) != 0) {
+                memcpy(arp_table[mac_exists].ip, arp_hdr->sender_ip, 4);
+            }
+        } else {
+            // 添加新记录
+            if (arp_table_size < ARP_TABLE_SIZE) {
+                memcpy(arp_table[arp_table_size].mac, arp_hdr->sender_mac, 6);
+                memcpy(arp_table[arp_table_size].ip, arp_hdr->sender_ip, 4);
+                arp_table[arp_table_size].last_seen = current_time;
+                arp_table[arp_table_size].last_reply_time = current_time;
+                arp_table[arp_table_size].duplicate_count = 0;
+                arp_table_size++;
+            }
+        }
+}
+
+
+void cleanup_tcp_table(time_t current_time) {
+    int i, j;
+    for (i = 0; i < tcp_table_size; i++) {
+        if (current_time - tcp_table[i].last_seen > 300) {
+            for (j = i; j < tcp_table_size - 1; j++) {
+                memcpy(&tcp_table[j], &tcp_table[j+1], sizeof(tcp_connection_info));
+            }
+            tcp_table_size--;
+            i--;
+        }
+    }
+}
+
+// 检查是否为TCP重放攻击
+int is_tcp_replay_attack(struct ip *ip_header, struct tcphdr *tcp_header, time_t current_time) {
+    int i;
+    int found = -1;
+    
+    u_int32_t src_ip = ip_header->ip_src.s_addr;
+    u_int32_t dst_ip = ip_header->ip_dst.s_addr;
+    u_int16_t src_port = ntohs(tcp_header->th_sport);
+    u_int16_t dst_port = ntohs(tcp_header->th_dport);
+    u_int32_t seq_num = ntohl(tcp_header->th_seq);
+
+    for (i = 0; i < tcp_table_size; i++) {
+        if (tcp_table[i].src_ip == src_ip && 
+            tcp_table[i].dst_ip == dst_ip &&
+            tcp_table[i].src_port == src_port &&
+            tcp_table[i].dst_port == dst_port &&
+            tcp_table[i].seq_num == seq_num) {
+            found = i;
+            break;
+        }
+    }
+
+    if (found != -1) {
+        // 更新记录
+        tcp_table[found].last_seen = current_time;
+        tcp_table[found].count++;
+        if (current_time - tcp_table[found].first_seen <= TIME_WINDOW) {
+            if (tcp_table[found].count >= REPLAY_THRESHOLD) {
+                // 发现重放攻击，重置计数器以便继续检测
+                tcp_table[found].count = 1;
+                tcp_table[found].first_seen = current_time;
+                return 1;
+            }
+        } else {
+            // 超出时间窗口，重置计数器和时间
+            tcp_table[found].count = 1;
+            tcp_table[found].first_seen = current_time;
+        }
+    } else {
+        // 添加新记录
+        if (tcp_table_size < TCP_TABLE_SIZE) {
+            tcp_table[tcp_table_size].src_ip = src_ip;
+            tcp_table[tcp_table_size].dst_ip = dst_ip;
+            tcp_table[tcp_table_size].src_port = src_port;
+            tcp_table[tcp_table_size].dst_port = dst_port;
+            tcp_table[tcp_table_size].seq_num = seq_num;
+            tcp_table[tcp_table_size].first_seen = current_time;
+            tcp_table[tcp_table_size].last_seen = current_time;
+            tcp_table[tcp_table_size].count = 1;
+            tcp_table_size++;
+        }
+    }
+     return 0;
+}
+
+
+ void tcp_replay_attack(const u_char *packet, int packet_len)
+ {
+    struct ether_header *eth_header;
+    struct ip *ip_header;
+    struct tcphdr *tcp_header;
+    time_t current_time = time(NULL);
+    
+    // 解析以太网头部
+    eth_header = (struct ether_header *)packet;
+    if (ntohs(eth_header->ether_type) != ETHERTYPE_IP) return;
+
+    // 解析IP头部
+    ip_header = (struct ip *)(packet + sizeof(struct ether_header));
+    if (ip_header->ip_p != IPPROTO_TCP) return;
+
+    // 解析TCP头部
+    tcp_header = (struct tcphdr *)(packet + sizeof(struct ether_header) + (ip_header->ip_hl * 4));
+    
+    // 检查TCP标志位，只关注SYN, ACK, PSH, FIN包
+    u_int8_t tcp_flags = tcp_header->th_flags;
+    if (!(tcp_flags & (TH_SYN| TH_ACK | TH_FIN | TH_RST)) ) {
+        return;
+    }
+    if (is_tcp_replay_attack(ip_header, tcp_header, current_time)) {
+        char src_ip_str[16], dst_ip_str[16];
+        sprintf(src_ip_str, "%u.%u.%u.%u", 
+                ip_header->ip_src.s_addr & 0xFF,
+                (ip_header->ip_src.s_addr >> 8) & 0xFF,
+                (ip_header->ip_src.s_addr >> 16) & 0xFF,
+                (ip_header->ip_src.s_addr >> 24) & 0xFF);
+                
+        sprintf(dst_ip_str, "%u.%u.%u.%u",
+                ip_header->ip_dst.s_addr & 0xFF,
+                (ip_header->ip_dst.s_addr >> 8) & 0xFF,
+                (ip_header->ip_dst.s_addr >> 16) & 0xFF,
+                (ip_header->ip_dst.s_addr >> 24) & 0xFF);
+        
+        // printf("[警告] 检测到可能的TCP重放攻击!\n");
+        // printf("       源IP: %s:%d\n", src_ip_str, ntohs(tcp_header->th_sport));
+        // printf("       目标IP: %s:%d\n", dst_ip_str, ntohs(tcp_header->th_dport));
+        // printf("       序列号: %u\n", ntohl(tcp_header->th_seq));
+        // printf("       TCP标志: %s%s%s%s%s%s\n",
+        //        (tcp_header->th_flags & TH_SYN) ? "SYN " : "",
+        //        (tcp_header->th_flags & TH_ACK) ? "ACK " : "",
+        //        (tcp_header->th_flags & TH_PUSH) ? "PSH " : "",
+        //        (tcp_header->th_flags & TH_FIN) ? "FIN " : "",
+        //        (tcp_header->th_flags & TH_RST) ? "RST " : "",
+        //        (tcp_header->th_flags & TH_URG) ? "URG " : "");
+        // printf("       时间戳: %ld\n", current_time);
+		report_log(TCP_REPLAY_ATTACK,src_ip_str,ntohs(tcp_header->th_sport));
+    }
+    // 清理过期记录
+    cleanup_tcp_table(current_time);
+ }
+
+
+void tls_version_mismatch(const struct pcap_pkthdr* pkthdr,const u_char *packet) { 
+
+	struct ip *ip_header = (struct ip*)(packet + sizeof(struct ether_header));
+
+	if (ip_header->ip_p == IPPROTO_TCP) {
+		struct tcphdr *tcp_header = (struct tcphdr*)(packet + sizeof(struct ether_header) + ip_header->ip_hl*4);
+		if (ntohs(tcp_header->th_dport) == 443 || ntohs(tcp_header->th_sport) == 443) {
+					// 计算TCP数据载荷在数据包中的偏移位置
+			int data_offset = sizeof(struct ether_header) + ip_header->ip_hl*4 + tcp_header->th_off*4;
+			int data_len = pkthdr->len - data_offset;		
+			if (data_len >= 6) {
+				const u_char *payload = packet + data_offset;
+						// 检查是否为TLS Handshake协议
+				if (payload[0] == 0x16) {
+					u_char handshake_type = payload[5];       
+							// 只处理Server Hello消息 (类型为0x02)
+					if (handshake_type == 0x02) {
+						uint16_t record_length = (payload[3] << 8) | payload[4];
+						if (ip_header->ip_v == 4)
+						{
+									//printf("IPv4\n");	
+						}else if (ip_header->ip_v == 6)
+						{
+									//printf("IPv6\n");	
+							report_log(IP_VERSION_MISMATCH,inet_ntoa(ip_header->ip_src),ntohs(tcp_header->th_sport));
+						}
+				
+								// 检查数据长度是否有效
+						if (record_length >= 38 && record_length <= (data_len - 5)) {
+							int is_tls13 = detect_tls13_in_server_hello(payload + 5, record_length);
+							if (!is_tls13)
+							{
+								report_log(TLS_VERSION_MISMATCH,inet_ntoa(ip_header->ip_src),ntohs(tcp_header->th_sport));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+ 
 void call(u_char *argument,const struct pcap_pkthdr* pack,const u_char *content)
 {	
 	// printf("network callback\n\n");
@@ -720,12 +1092,19 @@ void call(u_char *argument,const struct pcap_pkthdr* pack,const u_char *content)
 	char PIDname[0x80] = {0};
 	s8 src_bytes[20] = {0};
 	s8 dst_bytes[20] = {0};
-		
-	// 如果上面的文件存储打开，这里可以将捕获的数据content，写入文件里
+
 	if(pcap_dumper != NULL)
 	{
 		pcap_dump((char *)pcap_dumper, pack, content);
 	}
+
+
+    struct ether_header *eth_header = (struct ether_header *)content;
+    if (ntohs(eth_header->ether_type) == ETHERTYPE_IP) {
+        tcp_replay_attack(content, pack->len);
+		tls_version_mismatch(pack,content);
+    }
+
 	ethernet = (struct ETHERNET_FRAME_HEAD *)content;
 
 	if(ntohs(ethernet->ether_type) == ETHERTYPE_IP)
@@ -860,9 +1239,12 @@ void call(u_char *argument,const struct pcap_pkthdr* pack,const u_char *content)
 			default:
 				break;
 		}
+		
 	} else if(ntohs (ethernet->ether_type) == ETHERTYPE_ARP) {
 		arp = (struct arphdr *)(content + ETHERNET_HEADER);
 		arp_parser(arp);
+		struct arp_header * arp_header = (struct arp_header *)(content + sizeof(struct ether_header));
+		arp_replay_attack(arp_header);
 	}
 	
 	//	api_data(argument,pack,content);//flow count
@@ -910,7 +1292,7 @@ void create_parserthread(void)
 	
 	if((ret = pthread_attr_setstacksize(&attr, stacksize)) != 0) {
 		char log[256] = {0};
-		sprintf(log,"%s""statcksize set error");
+		sprintf(log,"%s","statcksize set error");
 		log_i("networkmonitor", log);
 	}
 	
@@ -1071,7 +1453,7 @@ void list_network_card()
 	if(pcap_findalldevs(&alldev,error)==-1)
 	{
 		char log[256] = {0};
-		sprintf(log,"%s""find all devices is error");
+		sprintf(log,"%s","find all devices is error");
 		log_i("networkmonitor", log);
 		return;
 	}

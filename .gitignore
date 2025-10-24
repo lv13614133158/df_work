@@ -1,0 +1,15 @@
+**/bin
+**/build
+**/gen
+**/doc
+**/javadoc
+**/output
+**/.idea
+**/.gradle
+**/.vscode
+**/*/.iml
+**/*.o
+**/*.ko
+**/*.mod.c
+*~
+local.properties

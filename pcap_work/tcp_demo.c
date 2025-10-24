@@ -59,6 +59,7 @@ unsigned short tcp_checksum(unsigned short *ip_src, unsigned short *ip_dst,
     return checksum((unsigned short*)pseudogram, psize);
 }
 
+// tcp_demo.c 修改部分
 int main() {
     int sockfd;
     char packet[4096];
@@ -90,10 +91,10 @@ int main() {
     // 清零包内容
     memset(packet, 0, 4096);
     
-    // 设置目标地址
+    // 设置目标地址为回环地址（用于本地测试）
     sin.sin_family = AF_INET;
     sin.sin_port = htons(80);
-    sin.sin_addr.s_addr = inet_addr("127.0.0.1");
+    sin.sin_addr.s_addr = inet_addr("192.168.192.168");  
     
     // 填充IP头部
     iph->ihl = 5;
@@ -105,22 +106,16 @@ int main() {
     iph->ttl = 255;
     iph->protocol = IPPROTO_TCP;
     iph->check = 0;
-    iph->saddr = inet_addr("192.168.196.128");
+    iph->saddr = inet_addr("192.168.192.166");  // 改为回环地址
     iph->daddr = sin.sin_addr.s_addr;
-    
-    // 填充TCP头部（使用固定序列号）
-    tcph->source = htons(12345);
-    tcph->dest = htons(80);
-    tcph->seq = htonl(fixed_sequence);  // 固定序列号
-
     
     // 发送多个具有相同序列号的包
     for (int i = 0; i < 50; i++) {
-        // 每次发送前改变源端口以避免被系统过滤
+        // 填充TCP头部（使用固定序列号）
         tcph->source = htons(12345);   // 固定源端口
         tcph->dest = htons(80);        // 固定目标端口
         tcph->seq = htonl(fixed_sequence);  // 固定序列号
-         tcph->ack_seq = 0;
+        tcph->ack_seq = 0;
         tcph->doff = 5;
         tcph->fin = 0;
         tcph->syn = 1;  // SYN标志
@@ -132,12 +127,9 @@ int main() {
         tcph->check = 0;
         tcph->urg_ptr = 0;
 
-        
         // 重新计算校验和
-        iph->check = 0;
         iph->check = checksum((unsigned short *) packet, iph->tot_len >> 1);
         
-        tcph->check = 0;
         tcph->check = tcp_checksum((unsigned short*)&iph->saddr, (unsigned short*)&iph->daddr,
                                 (unsigned short*)tcph, sizeof(struct tcphdr));
         
@@ -148,8 +140,7 @@ int main() {
         } else {
             printf("发送重放包 %d，序列号: %u\n", i+1, fixed_sequence);
         }
-        printf("发送包 %d，序列号: %u (htonl: %u)\n", i+1, fixed_sequence, htonl(fixed_sequence));
-        usleep(10000);
+        usleep(10000);  // 10ms间隔
     }
     
     close(sockfd);

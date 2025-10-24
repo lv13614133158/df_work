@@ -2,3 +2,4 @@
 #gcc arp_main.c -I./include/ -L. -lpcap  -o arp.out
 #gcc dhcp_main.c -I./include/ -L. -lpcap  -o dhcp.out
 gcc tcp_main.c -I./include/ -L. -lpcap  -o tcp.out
+gcc tcp_demo.c -I./include/ -L. -lpcap  -o a.out

@@ -111,6 +111,6 @@ int runtime_test()
     // 测试更改系统时间
     for(int i=0; i<1000; i++){
         sleep(1);
-        printf("Uptime:%d, Forecasttime:%d\n",getRunTime(), ++timeout); 
+        printf("Uptime:%lld, Forecasttime:%d\n",getRunTime(), ++timeout); 
     }
 }

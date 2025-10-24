@@ -47,7 +47,7 @@
 				"terminal_type_id":	0
 			}, {
 				"config":	{
-					"collect_period":	60,
+					"collect_period":	900,
 					"event_level":	3,
 					"ip_white_list":	[{
 							"ip":	"0.0.0.1"
@@ -353,22 +353,34 @@
 						}, {
 							"switch":	1,
 							"type":	"UDP_PORT_SCAN"
+						}, {
+							"switch":	1,
+							"type":	"IP_VERSION_MISMATCH"
+						}, {
+							"switch":	1,
+							"type":	"TLS_VERSION_MISMATCH"
+						}, {
+							"switch":	1,
+							"type":	"ARP_REPLAY_ATTACK"
+						}, {
+							"switch":	1,
+							"type":	"TCP_REPLAY_ATTACK"
 						}],
 					"threshold":	{
-						"ARPATTACK":	-1,
-						"ARPFLOOD":	-1,
-						"ICMPDEATH":	-1,
-						"ICMPLARGE":	-1,
-						"ICMPLOOD":	-1,
-						"IGMPFLOOD":	-1,
-						"IMPLATTCK":	-1,
-						"TCPCONNECT":	-1,
-						"TCPDOSRET":	-1,
-						"TCPPORTS":	-1,
-						"TCPSCANRET":	-1,
-						"UDPDOSRET":	-1,
-						"UDPFRAGGLE":	-1,
-						"UDPPORTS":	-1
+						"ARPATTACK": 6,
+						"ARPFLOOD": 512,
+						"ICMPDEATH": 65502,
+						"ICMPLARGE": 1500,
+						"ICMPLOOD": 400,
+						"IGMPFLOOD": 512,
+						"IMPLATTCK": 64,
+						"TCPCONNECT": 85,
+						"TCPDOSRET": 250,
+						"TCPPORTS": 10,
+						"TCPSCANRET": 2,
+						"UDPDOSRET": 6000,
+						"UDPFRAGGLE": 16,
+						"UDPPORTS": 200
 					}
 				},
 				"desc":	"网络入侵探针",
@@ -376,43 +388,6 @@
 				"policy_type_id":	100900,
 				"short_name":	"NTM",
 				"switch":	1,
-				"terminal_type_id":	0
-			}, {
-				"config":	{
-					"event_level":	6
-				},
-				"desc":	"恶意程序监控探针",
-				"name":	"VirusFileMonitor",
-				"package":	"com.qihoo360.caridps.module.appmonitor.VirusAppMonitor",
-				"policy_type_id":	201100,
-				"short_name":	"AVM",
-				"switch":	1,
-				"terminal_type_id":	0
-			}, {
-				"config":	{
-					"event_level":	6
-				},
-				"desc":	"日志监控探针",
-				"name":	"LogMonitor",
-				"package":	"com.qihoo360.caridps.module.logeventmonitor.LogMonitor",
-				"policy_type_id":	201200,
-				"short_name":	"CLM",
-				"switch":	1,
-				"terminal_type_id":	0
-			}, {
-				"config":	{
-					"attack":	{
-						"event_level":	6,
-						"network":	"wlan0"
-					},
-					"event_level":	3
-				},
-				"desc":	"IVI网络入侵探针",
-				"name":	"NetworkAttackMonitor",
-				"package":	"com.qihoo360.caridps.module.networkattackmonitor.NetworkAttackMonitor",
-				"policy_type_id":	210111,
-				"short_name":	"NAM",
-				"switch":	0,
 				"terminal_type_id":	0
 			}],
 		"update_time":	1679489244188

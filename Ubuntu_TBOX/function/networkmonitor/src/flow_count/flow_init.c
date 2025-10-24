@@ -787,7 +787,7 @@ void flowmoduleinit(char *watchNicDevice){
 	ret = pthread_attr_init(&attr); 
 	if((ret = pthread_attr_setstacksize(&attr, stacksize)) != 0){
 		char log[256] = {0};
-		sprintf(log,"oops file %d line %d\n",__FILE__,__LINE__);
+		sprintf(log,"oops file %s line %d\n",__FILE__,__LINE__);
 		log_i("networkmonitor", log);
 	}
 	pthread_create(&(instance_eth0.ip_dispatcher_thd),&attr,packet_inithandle,&instance_eth0);
@@ -800,7 +800,7 @@ void flowmoduleinit(char *watchNicDevice){
 	ret = pthread_attr_init(&attr); 
 	if((ret = pthread_attr_setstacksize(&attr, stacksize)) != 0){
 		char log[256] = {0};
-		sprintf(log,"oops file %d line %d\n",__FILE__,__LINE__);
+		sprintf(log,"oops file %s line %d\n",__FILE__,__LINE__);
 		log_i("networkmonitor", log);
 	}
 	pthread_create(&(flow_loop),&attr,uploadflowinfo,NULL);

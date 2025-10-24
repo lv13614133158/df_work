@@ -96,9 +96,9 @@ get_system_stats() {
         idle_cpu=$(echo "$cpu_line" | awk -F',' '{print $4}' | awk '{print $1}' | sed 's/%.*//' | tr -d ' \t')
     else
         # OpenWrt格式: CPU:   0% usr  18% sys   0% nic  81% idle   0% io   0% irq   0% sirq
-        usr_cpu=$(echo "$cpu_line" | awk '{print $2}' | sed 's/%.*//' | tr -d ' \t')
-        sys_cpu=$(echo "$cpu_line" | awk '{print $4}' | sed 's/%.*//' | tr -d ' \t')
-        idle_cpu=$(echo "$cpu_line" | awk '{print $8}' | sed 's/%.*//' | tr -d ' \t')
+        usr_cpu=$(echo "$cpu_line" | grep -o '[0-9.]*%' | head -1 | sed 's/%//')
+        sys_cpu=$(echo "$cpu_line" | grep -o '[0-9.]*%' | head -2 | tail -1 | sed 's/%//')
+        idle_cpu=$(echo "$cpu_line" | grep -o '[0-9.]*%' | head -4 | tail -1 | sed 's/%//')
     fi
     
     # 验证并确保获取到的是数字
@@ -154,12 +154,25 @@ get_process_stats() {
 
 # 打印统计数据
 print_stats() {
-    if [ $count_stats -gt 0 ]; then
-        avg_usr_cpu=$(echo "scale=2; $sum_usr_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
-        avg_sys_cpu=$(echo "scale=2; $sum_sys_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
-        avg_idle_cpu=$(echo "scale=2; $sum_idle_cpu / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
-        avg_used_mem=$(echo "scale=2; $sum_used_mem / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
-        avg_free_mem=$(echo "scale=2; $sum_free_mem / $count_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
+    # 确保所有变量都是有效的数字
+    count_stats=$(echo "$count_stats" | grep -E '^[0-9]+$' || echo "0")
+    count_IDS_stats=$(echo "$count_IDS_stats" | grep -E '^[0-9]+$' || echo "0")
+    
+    sum_usr_cpu=$(echo "$sum_usr_cpu" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+    sum_sys_cpu=$(echo "$sum_sys_cpu" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+    sum_idle_cpu=$(echo "$sum_idle_cpu" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+    sum_used_mem=$(echo "$sum_used_mem" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+    sum_free_mem=$(echo "$sum_free_mem" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+    sum_IDS_cpu=$(echo "$sum_IDS_cpu" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+    sum_IDS_mem_RSS=$(echo "$sum_IDS_mem_RSS" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
+    
+    if [ "$count_stats" -gt 0 ]; then
+        # 使用更安全的计算方式
+        avg_usr_cpu=$(awk "BEGIN {printf \"%.2f\", $sum_usr_cpu/$count_stats}" 2>/dev/null || echo "0.00")
+        avg_sys_cpu=$(awk "BEGIN {printf \"%.2f\", $sum_sys_cpu/$count_stats}" 2>/dev/null || echo "0.00")
+        avg_idle_cpu=$(awk "BEGIN {printf \"%.2f\", $sum_idle_cpu/$count_stats}" 2>/dev/null || echo "0.00")
+        avg_used_mem=$(awk "BEGIN {printf \"%.2f\", $sum_used_mem/$count_stats}" 2>/dev/null || echo "0.00")
+        avg_free_mem=$(awk "BEGIN {printf \"%.2f\", $sum_free_mem/$count_stats}" 2>/dev/null || echo "0.00")
     else
         # 当还没有统计数据时，使用当前值作为平均值
         avg_usr_cpu=${usr_cpu:-"0.00"}
@@ -171,22 +184,13 @@ print_stats() {
     
     # 计算进程CPU和内存的平均值
     if [ "$count_IDS_stats" -gt 0 ]; then
-        avg_IDS_cpu=$(echo "scale=2; $sum_IDS_cpu / $count_IDS_stats" | bc 2>/dev/null | awk '{printf "%.2f", $0}' || echo "0.00")
-        avg_IDS_mem_RSS=$(echo "scale=0; $sum_IDS_mem_RSS / $count_IDS_stats" | bc 2>/dev/null | awk '{printf "%.0f", $0}' || echo "0.00")
-        
-        # 验证计算结果是否为有效数字
-        if ! echo "$avg_IDS_cpu" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
-            avg_IDS_cpu="$last_avg_IDS_cpu"
-        fi
+        avg_IDS_cpu=$(awk "BEGIN {printf \"%.2f\", $sum_IDS_cpu/$count_IDS_stats}" 2>/dev/null || echo "0.00")
+        avg_IDS_mem_RSS=$(awk "BEGIN {printf \"%.0f\", $sum_IDS_mem_RSS/$count_IDS_stats}" 2>/dev/null || echo "0")
         
         # 确保avg_IDS_cpu在合理范围内(0-100)
-        avg_IDS_cpu_value=$(echo "$avg_IDS_cpu" | awk '{print ($1 > 100) ? 100 : ($1 < 0 ? 0 : $1)}')
+        avg_IDS_cpu=$(echo "$avg_IDS_cpu" | awk '{print ($1 > 100) ? 100 : ($1 < 0 ? 0 : $1)}')
         # 格式化为两位小数
-        avg_IDS_cpu=$(printf "%.2f" "$avg_IDS_cpu_value")
-        
-        if ! echo "$avg_IDS_mem_RSS" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
-            avg_IDS_mem_RSS="$last_avg_IDS_mem_RSS"
-        fi
+        avg_IDS_cpu=$(printf "%.2f" "$avg_IDS_cpu")
         
         last_avg_IDS_cpu="$avg_IDS_cpu"
         last_avg_IDS_mem_RSS="$avg_IDS_mem_RSS"
@@ -244,40 +248,49 @@ fun() {
     
     # 更新CPU统计值
     if [ -n "$usr_cpu" ] && echo "$usr_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
+        usr_cpu_float=$(printf "%.2f" "$usr_cpu")
         # 使用awk进行数值比较，避免(( ))中的语法错误
-        if [ "$(echo "$usr_cpu $max_usr_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
-            max_usr_cpu=$usr_cpu
+        if [ "$(echo "$usr_cpu_float $max_usr_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
+            max_usr_cpu=$usr_cpu_float
         fi
         
-        if [ "$(echo "$usr_cpu $min_usr_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
-            min_usr_cpu=$usr_cpu
+        if [ "$(echo "$usr_cpu_float $min_usr_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
+            min_usr_cpu=$usr_cpu_float
         fi
         
-        sum_usr_cpu=$(echo "$sum_usr_cpu $usr_cpu" | awk '{print $1 + $2}')
+        sum_usr_cpu=$(echo "$sum_usr_cpu $usr_cpu_float" | awk '{print $1 + $2}')
+        # 确保sum_usr_cpu是有效数字
+        sum_usr_cpu=$(echo "$sum_usr_cpu" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
     fi
     
     if [ -n "$sys_cpu" ] && echo "$sys_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
-        if [ "$(echo "$sys_cpu $max_sys_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
-            max_sys_cpu=$sys_cpu
+        sys_cpu_float=$(printf "%.2f" "$sys_cpu")
+        if [ "$(echo "$sys_cpu_float $max_sys_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
+            max_sys_cpu=$sys_cpu_float
         fi
         
-        if [ "$(echo "$sys_cpu $min_sys_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
-            min_sys_cpu=$sys_cpu
+        if [ "$(echo "$sys_cpu_float $min_sys_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
+            min_sys_cpu=$sys_cpu_float
         fi
         
-        sum_sys_cpu=$(echo "$sum_sys_cpu $sys_cpu" | awk '{print $1 + $2}')
+        sum_sys_cpu=$(echo "$sum_sys_cpu $sys_cpu_float" | awk '{print $1 + $2}')
+        # 确保sum_sys_cpu是有效数字
+        sum_sys_cpu=$(echo "$sum_sys_cpu" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
     fi
     
     if [ -n "$idle_cpu" ] && echo "$idle_cpu" | grep -qE '^[0-9]+\.?[0-9]*$'; then
-        if [ "$(echo "$idle_cpu $max_idle_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
-            max_idle_cpu=$idle_cpu
+        idle_cpu_float=$(printf "%.2f" "$idle_cpu")
+        if [ "$(echo "$idle_cpu_float $max_idle_cpu" | awk '{print ($1 > $2)}')" = "1" ]; then 
+            max_idle_cpu=$idle_cpu_float
         fi
         
-        if [ "$(echo "$idle_cpu $min_idle_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
-            min_idle_cpu=$idle_cpu
+        if [ "$(echo "$idle_cpu_float $min_idle_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then 
+            min_idle_cpu=$idle_cpu_float
         fi
         
-        sum_idle_cpu=$(echo "$sum_idle_cpu $idle_cpu" | awk '{print $1 + $2}')
+        sum_idle_cpu=$(echo "$sum_idle_cpu $idle_cpu_float" | awk '{print $1 + $2}')
+        # 确保sum_idle_cpu是有效数字
+        sum_idle_cpu=$(echo "$sum_idle_cpu" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
     fi
     
     # 更新内存统计值
@@ -291,6 +304,8 @@ fun() {
         fi
         
         sum_used_mem=$((sum_used_mem + used_mem))
+        # 确保sum_used_mem是有效数字
+        sum_used_mem=$(echo "$sum_used_mem" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
     fi
     
     if [ -n "$free_mem" ] && echo "$free_mem" | grep -qE '^[0-9]+$'; then
@@ -303,6 +318,8 @@ fun() {
         fi
         
         sum_free_mem=$((sum_free_mem + free_mem))
+        # 确保sum_free_mem是有效数字
+        sum_free_mem=$(echo "$sum_free_mem" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
     fi
     
     # 只有当进程存在时才更新进程统计值
@@ -327,9 +344,10 @@ fun() {
             if [ "$(echo "$IDS_cpu $min_IDS_cpu" | awk '{print ($1 < $2)}')" = "1" ]; then
                 min_IDS_cpu=$IDS_cpu
             fi
-            sum_IDS_cpu=$(printf "%.2f" "$sum_IDS_cpu")
-            IDS_cpu=$(printf "%.2f" "$IDS_cpu")
+            
             sum_IDS_cpu=$(echo "$sum_IDS_cpu $IDS_cpu" | awk '{print $1 + $2}')
+            # 确保sum_IDS_cpu是有效数字
+            sum_IDS_cpu=$(echo "$sum_IDS_cpu" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
         fi
         
         # 更新进程内存统计值（同样需要验证）
@@ -343,6 +361,8 @@ fun() {
             fi
             
             sum_IDS_mem_RSS=$((sum_IDS_mem_RSS + IDS_mem_RSS))
+            # 确保sum_IDS_mem_RSS是有效数字
+            sum_IDS_mem_RSS=$(echo "$sum_IDS_mem_RSS" | grep -E '^[0-9]+\.?[0-9]*$' || echo "0")
         fi
     fi
 
