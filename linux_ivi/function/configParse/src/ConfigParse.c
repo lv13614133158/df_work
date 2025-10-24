@@ -1178,7 +1178,7 @@ int get_Cache_data(struct Cache_date * date,char *fpath)
             if (memcmp(date, &file_data, sizeof(struct Cache_date)) != 0) {
 				//删除固定文件夹下的文件
 				char command[64];
-				snprintf(command, sizeof(command), "rm -rf %s", fpath);
+				snprintf(command, sizeof(command), "rm -rf %s/*", fpath);
 				int result = system(command);
 				if (result != 0) {
 					close(fd);

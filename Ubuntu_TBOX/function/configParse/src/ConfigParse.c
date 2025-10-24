@@ -906,9 +906,11 @@ exit:
 	sprintf(spdlog, "ID:%s, VIN:%s, CAR:%s, SIMU:%s\n", tboxInfo_obj.ID, tboxInfo_obj.VIN, tboxInfo_obj.CAR, tboxInfo_obj.SYS_VERSION);
 	idpslog(2,"ConfigParse", spdlog);
 
-	strncpy(file_data.vin, "LQH913L2240000001", sizeof(file_data.vin));
-	strncpy(file_data.sn, "LQH02505280001", sizeof(file_data.sn));	
-	strncpy(file_data.vehicle_model,tbox_info_local.CAR,sizeof(file_data.vehicle_model));
+	strncpy(file_data.vin, "LQH913L2240000001",18);
+	strncpy(file_data.sn, "LQH02505280001", 15);	
+	strncpy(file_data.vehicle_model,tbox_info_local.CAR,sizeof(tbox_info_local.CAR));
+	strncpy(file_data.http_url,configObj->networkManagerObj.server,sizeof(configObj->networkManagerObj.server));
+	strncpy(file_data.websocket_url,configObj->websocketInfoObj.url,sizeof(configObj->websocketInfoObj.url));
 
 	if(get_Cache_data(&file_data,configObj->commonModuleObj.dataBaseDir) == -1)
 	{
