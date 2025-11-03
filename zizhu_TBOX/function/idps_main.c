@@ -360,7 +360,7 @@ int main(){
 	}
 	
 	InitLog(configObj);
-	if(initTboxInfo()==-1)
+	if(initTboxInfo(&configObj))
 	{
 		printf("initTboxInfo failed, exit IDPS!\n");
 		return -1;

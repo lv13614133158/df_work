@@ -34,6 +34,7 @@ cp $path/lib/libwebsockets.so.19 $path/output/lib/
 #cp $path/tier1_part/tbox_info/lib/* $path/output/lib/
 #cp $path/tier1_part/lib/* $path/output/lib/libtbox_self
 cp $path/config/base_config.json $path/output/conf/config/
+cp $path/config/ids_model.json $path/output/conf/config/
 cp $path/config/device_info.conf $path/output/conf/config/
 cp $path/config/policy_config.json $path/output/conf/config/
 

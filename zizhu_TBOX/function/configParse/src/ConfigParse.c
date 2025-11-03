@@ -740,11 +740,62 @@ bool extract_field(const char *line, const char *field, char *dest, size_t dest_
     return false;
 }
 
+int get_car_model(tboxInfo_t *tbox_info)
+{ 
+	char buf[512]={0};
+	//读取车型
+	if(readLocalJson(IDS_MODEL_PATH, buf, sizeof(buf)) == -1){
+		return -1;
+	}
+	cJSON* root = cJSON_Parse(buf);
+	if(!root)      
+	{
+		log_d("ConfigParse","tboxinfo file format error");
+		return -1;
+	}
+	
+    int array_size = cJSON_GetArraySize(root);
+	int i = 0;
+    for (i; i < array_size; i++) {
+        cJSON *item = cJSON_GetArrayItem(root, i);
+        cJSON *idps = cJSON_GetObjectItem(item, "IDPS");
+        cJSON *vehicle_model_array = cJSON_GetObjectItem(item, "Vehicle_Model");
+
+		if (!idps||!vehicle_model_array)
+		{
+			continue;
+		}
+		
+        int vehicle_model_count = cJSON_GetArraySize(vehicle_model_array);
+        for (int j = 0; j < vehicle_model_count; j++) {
+            cJSON *vehicle_model = cJSON_GetArrayItem(vehicle_model_array, j);
+			if (strcasecmp(vehicle_model->valuestring, tbox_info->CAR) == 0)
+			{
+				strncpy(tboxInfo_obj.CAR, idps->valuestring, sizeof(tboxInfo_obj.CAR) - 1);
+				if (root)
+				{
+					cJSON_Delete(root);
+				}
+				return 0;
+			}
+			
+        }
+    }
+
+	if (root)
+	{
+		cJSON_Delete(root);
+	}
+	return 1;
+}
+
+
 int tbox_get_info(tboxInfo_t *p_tbox_mcu_info) {
     char SN[50] = {0};
     char VIN[50] = {0};
     char MANUFACTURER[50] = {0};
     char SYS_VERSION[50] = {0};
+	char CAR[50] = {0};
     char line[1024] = {0};
 
     FILE *file = fopen(TBOX_INFO_PATH, "r");
@@ -766,6 +817,10 @@ int tbox_get_info(tboxInfo_t *p_tbox_mcu_info) {
         if (extract_field(line, "sdkSwVersion:", SYS_VERSION, sizeof(SYS_VERSION))) {
             log_d("tbox_get_info", "get SYS_VERSION success");
         }
+        if (extract_field(line, "CAR:", CAR, sizeof(CAR))) {
+            log_d("tbox_get_info", "get CAR success");
+        }
+		
     }
 
     fclose(file);
@@ -773,6 +828,7 @@ int tbox_get_info(tboxInfo_t *p_tbox_mcu_info) {
     // Copy extracted values to p_tbox_mcu_info
     snprintf(p_tbox_mcu_info->VIN, sizeof(p_tbox_mcu_info->VIN), "%s", VIN);
     snprintf(p_tbox_mcu_info->ID, sizeof(p_tbox_mcu_info->ID), "%s", SN);
+	snprintf(p_tbox_mcu_info->CAR, sizeof(p_tbox_mcu_info->CAR), "%s", CAR);
     snprintf(p_tbox_mcu_info->MANUFACTURER, sizeof(p_tbox_mcu_info->MANUFACTURER), "%s", MANUFACTURER);
     snprintf(p_tbox_mcu_info->SYS_VERSION, sizeof(p_tbox_mcu_info->SYS_VERSION), "%s", SYS_VERSION);
 	return 0;
@@ -784,7 +840,7 @@ void gnss_callback(struct SdkGnssInfo gnss)
 
 	memset(spdlog, 0 ,sizeof(spdlog));
 	snprintf(spdlog, sizeof(spdlog),
-				"location update:latitude(%f),longitude(%f),altitude(%f)", gnss.latitude, gnss.longitude, gnss.altitude);
+				"location update:latitude(%f),longitude(%f),altitude(%f) v(%d)", gnss.latitude, gnss.longitude, gnss.altitude,gnss.valid);
 	//log_d("gnss_callback", spdlog);
     wbsClient_setPosition(gnss.latitude, gnss.longitude);
 }
@@ -809,7 +865,7 @@ static void *get_gps_task(void *arg)
     return NULL;
 }
 
-int initTboxInfo()
+int initTboxInfo(configData* configObj)
 {
 	char spdlog[512] = {0};
 	tboxInfo_t tbox_info_local = {0};	//从本地获取的信息
@@ -818,7 +874,7 @@ int initTboxInfo()
 	char buf[512]={0};
 	int ret = 0;
 	pthread_t pthread_get_gps = 0;
-	
+
 	while (1)
 	{
 		memset(&tbox_mcu_info, 0, sizeof(tbox_mcu_info));
@@ -865,7 +921,6 @@ int initTboxInfo()
 	pthread_create(&pthread_get_gps, NULL, get_gps_task, NULL);
 
 	if(readLocalJson(DEVICE_INFO_PATH, buf, sizeof(buf)) == -1){
-		ret=-1;
 		goto exit;
 	}
 
@@ -873,7 +928,6 @@ int initTboxInfo()
 	if(!root)      
 	{
 		log_d("ConfigParse","tboxinfo file format error");
-		ret=-1;
 		goto exit;
 	}
 
@@ -932,16 +986,37 @@ exit:
 		cJSON_Delete(root);
 	}
 
+	if(ret =get_car_model(&tbox_mcu_info))
+	{
+		if(ret == 1)
+		{
+			strncpy(tboxInfo_obj.CAR, tbox_mcu_info.CAR, sizeof(tbox_mcu_info.CAR) - 1);
+		}else{
+			log_d("ConfigParse", "CAR get fail");
+			return -1;
+		}
+
+	}	
+
 	strncpy(tboxInfo_obj.VIN, tbox_mcu_info.VIN, sizeof(tboxInfo_obj.VIN) - 1);
 	strncpy(tboxInfo_obj.ID, tbox_mcu_info.ID, sizeof(tboxInfo_obj.ID) - 1);
 	strncpy(tboxInfo_obj.MANUFACTURER, tbox_mcu_info.MANUFACTURER, sizeof(tboxInfo_obj.MANUFACTURER) - 1);
 	
-	strncpy(tboxInfo_obj.CAR, tbox_info_local.CAR, sizeof(tboxInfo_obj.CAR) - 1);
 
 	memset(spdlog, 0 ,sizeof(spdlog));
-	sprintf(spdlog, "ID:%s, VIN:%s, CAR:%s, SIMU:%s\n", tboxInfo_obj.ID, tboxInfo_obj.VIN, tboxInfo_obj.CAR, tboxInfo_obj.SYS_VERSION);
+	sprintf(spdlog, "ID:%s, VIN:%s, CAR:%s, SIMU:%s\n", tboxInfo_obj.ID, tboxInfo_obj.VIN, tbox_mcu_info.CAR, tboxInfo_obj.SYS_VERSION);
 	log_d("ConfigParse", spdlog);
-	return ret;
+
+
+	strncpy(tbox_mcu_info.HTTP_URL,configObj->networkManagerObj.server,sizeof(configObj->networkManagerObj.server));
+	strncpy(tbox_mcu_info.WEBSOCKET_URL,configObj->websocketInfoObj.url,sizeof(configObj->websocketInfoObj.url));
+
+	if(get_Cache_data(&tbox_mcu_info,configObj->commonModuleObj.dataBaseDir))
+	{
+		return -1;
+	}
+
+	return 0;
 }
 
 /*return: 1,str is AllZero; 0,str is not AllZero*/
@@ -1177,5 +1252,70 @@ int conf_rw_path_init()
         result = system(system_buff);
     }
 
+    return 0;
+}
+
+
+
+int get_Cache_data(tboxInfo_t * date,char *fpath)
+{
+	tboxInfo_t file_data;
+	int fd;
+    if (fpath == NULL) {
+        log_e("ConfigParse", "get_Cache_config parameter error");
+        return -1;
+    }
+    char  file_name[64];
+	snprintf(file_name, sizeof(file_name), "%s/device.info", fpath);
+    fd = open(file_name, O_RDONLY);
+    if (fd < 0) {
+;
+		mk_dir_exist(fpath);
+		fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
+		if (fd < 0) {
+            log_e("ConfigParse", "Failed to create cache file");
+            return -1;
+        }
+		ssize_t written = write(fd, date, sizeof(tboxInfo_t));
+        if (written != sizeof(tboxInfo_t)) {
+            log_e("ConfigParse", "Failed to write cache data");
+            close(fd);
+            return -1;
+        }
+        fsync(fd);
+
+    }else{
+        ssize_t read_bytes = read(fd, &file_data, sizeof(tboxInfo_t));
+        if (read_bytes == sizeof(tboxInfo_t)) {
+            // 成功读取数据，进行对比
+            if (memcmp(date, &file_data, sizeof(tboxInfo_t)) != 0) {
+				//删除固定文件夹下的文件
+				char command[64];
+				snprintf(command, sizeof(command), "rm -rf %s", fpath);
+				int result = system(command);
+				if (result != 0) {
+					close(fd);
+					return -1;
+				} else {
+					close(fd);
+					mk_dir_exist(fpath);
+					fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
+					if (fd < 0) {
+						log_e("ConfigParse", "Failed to create cache file");
+						return -1;
+					}
+					ssize_t written = write(fd, date, sizeof(tboxInfo_t));
+					if (written != sizeof(tboxInfo_t)) {
+						log_e("ConfigParse", "Failed to write cache data");
+						close(fd);
+						return -1;
+					}
+					fsync(fd);
+				}
+            }
+		}
+	}
+    close(fd);
+    
     return 0;
 }

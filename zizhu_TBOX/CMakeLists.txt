@@ -207,4 +207,44 @@ target_link_libraries( # Specifies the target library.
 
 	)
 
+add_executable(GPS 
+		${CMAKE_SOURCE_DIR}/demo.c
+	
+		)
+target_link_libraries( # Specifies the target library.
+	GPS
+	-lspdlog
+	-lpthread
+	-lrt
+	-ldl
+	-lz
+	-lcurl
+	-lssl
+	-lcrypto
+	-lpcap
+	-lwebsockets
+	-lnghttp2
+	-lssptbox
+	-ldfsdkapi
+	-lfdbus
+	-ldfsdkproto
+	-lprotobuf
+	-labsl_log_internal_check_op
+	-labsl_log_internal_message
+	-llog
+	-lprop2uci
+	-luci
+	-lubox
+	-ldf_utils
+	-ldfsdkproto
+	-ldf_log
+	-lql_sdk
+	-lql_sys_log
+	-lql_lib_ipc
+	-lql_lib_utils
+	-lteec
+	-lql-tee-service
+	-lm
+	-lstdc++
 
+	)

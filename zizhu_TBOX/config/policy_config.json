@@ -80,7 +80,7 @@
 				"terminal_type_id":	0
 			}, {
 				"config":	{
-					"collect_period":	900,
+					"collect_period":	90,
 					"event_level":	3,
 					"white_list":	[{
 							"process_id": 1,
@@ -243,23 +243,23 @@
 				"terminal_type_id":	0
 			}, {
 				"config":	{
-					"collect_period":	905,
+					"collect_period":	90,
 					"cpu":	{
 						"collect_period":	910,
 						"event_level":	3,
 						"overload_threshold":	2,
-						"usage_rate_overload_threshold":	70
+						"usage_rate_overload_threshold":	1
 					},
 					"event_level":	3,
 					"ram":	{
-						"collect_period":	915,
+						"collect_period":	90,
 						"event_level":	3,
-						"overload_threshold":	70
+						"overload_threshold":	1
 					},
 					"rom":	{
-						"collect_period":	920,
+						"collect_period":	90,
 						"event_level":	3,
-						"overload_threshold":	70
+						"overload_threshold":	1
 					}
 				},
 				"desc":	"系统资源监控探针",

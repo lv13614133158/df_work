@@ -5,7 +5,7 @@
 
 void gnss_callback(struct SdkGnssInfo gnss)
 {
-    printf("location update:latitude(%f),longitude(%f),altitude(%f)\n", gnss.latitude, gnss.longitude, gnss.altitude);
+    printf("location update:latitude(%f),longitude(%f),altitude(%f) v(%d)\n", gnss.latitude, gnss.longitude, gnss.altitude,gnss.valid);
 }
 
 int main(int argc, char *argv[])
