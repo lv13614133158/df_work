@@ -12,9 +12,10 @@
 #include <sys/un.h>
 
 #define SOCKET_PATH "/tmp/liblog_socket"
+#define MAX_PENDING_MESSAGES 1000
 
 // 回调函数类型定义
-typedef void (*log_message_callback)(const char* message, int len);
+typedef void (*log_message_callback)(LOG_DATA *message);
 
 // 函数声明
 void* receiver_thread_func(void* arg);
@@ -265,25 +266,24 @@ void* client_handler(void* arg)
     int client_socket = *(int*)arg;
     free(arg);
     
-    char buffer[1024];
+    LOG_DATA buffer;
     int bytes_read;
+    int pending_messages = 0;
     
     // 读取客户端发送的数据
     while (receiver_running) {
-        bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
-        if (bytes_read > 0) {
-            buffer[bytes_read] = '\0';
-            
-            // 处理末尾的换行符，避免重复
-            int actual_len = bytes_read;
-            while (actual_len > 0 && (buffer[actual_len-1] == '\n' || buffer[actual_len-1] == '\r')) {
-                actual_len--;
-                buffer[actual_len] = '\0';
-            }
-            
+
+        if (pending_messages > MAX_PENDING_MESSAGES) {
+            fprintf(stderr, "Too many pending messages, dropping connection\n");
+            break;
+        }
+        bytes_read = read(client_socket, &buffer, sizeof(buffer));
+        if (bytes_read == sizeof(LOG_DATA)) {
+            pending_messages++;
             if (message_callback != NULL && receiver_running) {
-                message_callback(buffer, actual_len);
+                message_callback(&buffer);
             }
+            pending_messages--;
         } else if (bytes_read == -1) {
             if (errno != EAGAIN && errno != EWOULDBLOCK) {
                 if (receiver_running) {
@@ -295,6 +295,9 @@ void* client_handler(void* arg)
         } else if (bytes_read == 0) {
             // 客户端关闭连接
             break;
+        } else {
+            // 读取了部分数据，可能是错误情况
+            break;
         }
     }
     
@@ -305,10 +308,9 @@ void* client_handler(void* arg)
 /**
  * 写入日志数据并通过套接字通知外部程序
  * @param data 日志数据
- * @param len 数据长度
  * @return 写入的字节数，失败返回-1
  */
-int ids_log_write(const char *data, int len)
+int ids_log_write(LOG_DATA *data)
 {
     if (!log_initialized) {
         // 如果未初始化，尝试初始化
@@ -317,14 +319,10 @@ int ids_log_write(const char *data, int len)
         }
     }
     
-    if (data == NULL || len <= 0) {
+    if (data == NULL) {
         return -1;
     }
 
-    if (len > 1023) {  
-        fprintf(stderr, "Message too long: %d bytes (max 1023)\n", len);
-        return -1;
-    }
     // 检查文件描述符是否有效，如果无效尝试重新连接
     if (client_fd == -1) {
         // 重新初始化连接
@@ -339,36 +337,27 @@ int ids_log_write(const char *data, int len)
         return -1;
     }
     
-    int total_written = 0;
+    // 发送整个LOG_DATA结构体
+    ssize_t result = write(client_fd, data, sizeof(LOG_DATA));
     
-    if (client_fd != -1) {
-        // 不再自动添加换行符，保持原始数据格式
-        ssize_t result = write(client_fd, data, len);
-        
-        if (result == -1) {
-            // 检查是否是因为没有读取端
-            if (errno == EPIPE) {
-                // 管道破裂，关闭连接但不退出程序
-                close(client_fd);
-                client_fd = -1;
-                // 返回错误表示消息未发送
-                return -1;
-            } else {
-                perror("write to socket failed");
-                // 关闭并重新打开连接
-                close(client_fd);
-                client_fd = -1;
-                return -1;
-            }
+    if (result == -1) {
+        // 检查是否是因为没有读取端
+        if (errno == EPIPE) {
+            // 管道破裂，关闭连接但不退出程序
+            close(client_fd);
+            client_fd = -1;
+            // 返回错误表示消息未发送
+            return -1;
+        } else {
+            perror("write to socket failed");
+            // 关闭并重新打开连接
+            close(client_fd);
+            client_fd = -1;
+            return -1;
         }
-        
-        total_written = (int)result;
-    } else {
-        // 没有连接，舍弃消息
-        return -1;
     }
     
-    return total_written;
+    return (int)result;
 }
 
 /**

@@ -23,6 +23,7 @@ typedef struct _websocketMangerMethod{
 }websocketMangerMethod;
 extern websocketMangerMethod  websocketMangerMethodobj;
 
+void on_json_idslog_message_received(cJSON *log_data);
 #ifdef __cplusplus
 }
 #endif

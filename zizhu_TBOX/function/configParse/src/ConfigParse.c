@@ -743,30 +743,29 @@ bool extract_field(const char *line, const char *field, char *dest, size_t dest_
 int get_car_model(tboxInfo_t *tbox_info)
 { 
 	char buf[512]={0};
-	//读取车型
+	int array_size=0;
+	int vehicle_model_count=0;
+	cJSON* root=NULL;
 	if(readLocalJson(IDS_MODEL_PATH, buf, sizeof(buf)) == -1){
+		log_d("get_car_model","readLocalJson  error");
 		return -1;
 	}
-	cJSON* root = cJSON_Parse(buf);
+	root = cJSON_Parse(buf);
 	if(!root)      
 	{
-		log_d("ConfigParse","tboxinfo file format error");
+		log_d("get_car_model","cJSON_Parse  error");
 		return -1;
 	}
-	
-    int array_size = cJSON_GetArraySize(root);
-	int i = 0;
-    for (i; i < array_size; i++) {
+    array_size = cJSON_GetArraySize(root);
+    for (int i = 0; i < array_size; i++) {
         cJSON *item = cJSON_GetArrayItem(root, i);
-        cJSON *idps = cJSON_GetObjectItem(item, "IDPS");
+        cJSON *idps = cJSON_GetObjectItem(item, "VOSC_Model");
         cJSON *vehicle_model_array = cJSON_GetObjectItem(item, "Vehicle_Model");
-
 		if (!idps||!vehicle_model_array)
 		{
 			continue;
 		}
-		
-        int vehicle_model_count = cJSON_GetArraySize(vehicle_model_array);
+        vehicle_model_count = cJSON_GetArraySize(vehicle_model_array);
         for (int j = 0; j < vehicle_model_count; j++) {
             cJSON *vehicle_model = cJSON_GetArrayItem(vehicle_model_array, j);
 			if (strcasecmp(vehicle_model->valuestring, tbox_info->CAR) == 0)
@@ -778,10 +777,8 @@ int get_car_model(tboxInfo_t *tbox_info)
 				}
 				return 0;
 			}
-			
         }
     }
-
 	if (root)
 	{
 		cJSON_Delete(root);
@@ -817,8 +814,8 @@ int tbox_get_info(tboxInfo_t *p_tbox_mcu_info) {
         if (extract_field(line, "sdkSwVersion:", SYS_VERSION, sizeof(SYS_VERSION))) {
             log_d("tbox_get_info", "get SYS_VERSION success");
         }
-        if (extract_field(line, "CAR:", CAR, sizeof(CAR))) {
-            log_d("tbox_get_info", "get CAR success");
+        if (extract_field(line, "vehicleCode:", CAR, sizeof(CAR))) {
+            log_d("tbox_get_info", "get vehicleCode success");
         }
 		
     }
@@ -986,17 +983,21 @@ exit:
 		cJSON_Delete(root);
 	}
 
-	if(ret =get_car_model(&tbox_mcu_info))
+
+	
+	if (strlen(tbox_mcu_info.CAR) > 0)
 	{
-		if(ret == 1)
+		if(get_car_model(&tbox_mcu_info))
 		{
 			strncpy(tboxInfo_obj.CAR, tbox_mcu_info.CAR, sizeof(tbox_mcu_info.CAR) - 1);
-		}else{
-			log_d("ConfigParse", "CAR get fail");
-			return -1;
-		}
+		}	
+				
+	}else
+	{
+		strncpy(tboxInfo_obj.CAR, tbox_info_local.CAR, sizeof(tbox_info_local.CAR) - 1);
+	}
 
-	}	
+
 
 	strncpy(tboxInfo_obj.VIN, tbox_mcu_info.VIN, sizeof(tboxInfo_obj.VIN) - 1);
 	strncpy(tboxInfo_obj.ID, tbox_mcu_info.ID, sizeof(tboxInfo_obj.ID) - 1);
@@ -1004,7 +1005,7 @@ exit:
 	
 
 	memset(spdlog, 0 ,sizeof(spdlog));
-	sprintf(spdlog, "ID:%s, VIN:%s, CAR:%s, SIMU:%s\n", tboxInfo_obj.ID, tboxInfo_obj.VIN, tbox_mcu_info.CAR, tboxInfo_obj.SYS_VERSION);
+	sprintf(spdlog, "ID:%s, VIN:%s, CAR:%s, SIMU:%s\n", tboxInfo_obj.ID, tboxInfo_obj.VIN, tboxInfo_obj.CAR, tboxInfo_obj.SYS_VERSION);
 	log_d("ConfigParse", spdlog);
 
 

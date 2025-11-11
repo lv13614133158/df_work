@@ -29,6 +29,7 @@
 #include "aes/KeyManager.h"
 #include "websocketclient.h"
 #include "websocketConfig.h"
+#include "libidslog.h"
 
 /*-----------------------------------------enum defination---------------------------------*/
 typedef enum
@@ -55,6 +56,29 @@ static int s_net_connect_fail_cnt = 0;
 #define THIRD_STAGE_RETRY_INTERVAL_TIME (1800) //30 minute
 
 #define IDSVERSION 		"IDPS-Version-"IDS_VERSION
+
+//三方日志
+
+void on_idslog_message_received(LOG_DATA *message)
+{
+
+	printf("[%s] %s %s~~~~~~~~~~~~~~~~~~~~~~~~~·\n", __FUNCTION__, "log_data",message);
+	if (!message) return;
+
+	char spdlog[1024] = {0};
+	cJSON *cjson_data = cJSON_CreateObject();
+	if (!cjson_data) return;
+	
+	cJSON_AddStringToObject(cjson_data, "source", "idslog");
+	cJSON_AddNumberToObject(cjson_data, "level", message->level);
+	cJSON_AddNumberToObject(cjson_data, "log type", message->log_type);
+	cJSON_AddStringToObject(cjson_data, "log tag", "tag");
+	memcpy(spdlog, message->log_date, message->data_len);
+	cJSON_AddStringToObject(cjson_data, "log_data",spdlog);
+    on_json_idslog_message_received(cjson_data);
+	if (cjson_data)
+        cJSON_Delete(cjson_data);
+}
 
 
 /**
@@ -450,6 +474,12 @@ int main(){
 	}
 #endif
 
+
+	if (ids_log_reader_init(on_idslog_message_received, 1) != 0) {
+        fprintf(stderr, "Failed to initialize log reader\n");
+        return -1;
+    }
+	printf("[%s] %s ~~~~~~~~~~~~~~~~~~~~~~~~~·\n", __FUNCTION__, "log_data");
  	//thats a loop
     signal(SIGINT, cleanHandler);
     for(;;){

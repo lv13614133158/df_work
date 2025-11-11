@@ -69,6 +69,7 @@ include_directories(third_part/curl/include)
 include_directories(third_part/openssl/include)
 include_directories(third_part/pcap/include)
 include_directories(third_part/websocket/include)
+include_directories(third_part/idpslog/include)
 include_directories(tier1_part/quecte/include)
 #硬件支持
 
@@ -163,5 +164,6 @@ target_link_libraries(
 	-lwebsockets
 	-lm
 	-lstdc++
+	-lidslog
 )
 

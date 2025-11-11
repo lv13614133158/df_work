@@ -820,8 +820,8 @@ int initTboxInfo(configData* configObj)
 	pthread_t pthread_get_gps = 0;
 	struct Cache_date file_data;
 
-	strncpy(tbox_mcu_info.VIN, "LQH913L2240000001", sizeof(tbox_mcu_info.VIN) - 1);
-	strncpy(tbox_mcu_info.ID, "LQH02505280001", sizeof(tbox_mcu_info.ID) - 1);
+	strncpy(tbox_mcu_info.VIN, "LQH913Livi0000001", sizeof(tbox_mcu_info.VIN) - 1);
+	strncpy(tbox_mcu_info.ID, "LQH02511060001", sizeof(tbox_mcu_info.ID) - 1);
 	
 	pthread_create(&pthread_get_gps, NULL, get_gps_task, NULL);
 

@@ -40,17 +40,29 @@ void testRpc()
 
 void testEvent()
 {
+	long long timestamp = clockobj.get_current_time();
     cJSON *cjson_data = cJSON_CreateObject();
 	cJSON_AddStringToObject(cjson_data,"user_name","ljk");
 	cJSON_AddStringToObject(cjson_data,"login_address","192.168.1.110");
 	cJSON_AddNumberToObject(cjson_data,"login_type",1);
-	cJSON_AddNumberToObject(cjson_data,"timestamp",1655435617354);
+	cJSON_AddNumberToObject(cjson_data,"timestamp",timestamp);
     char *s = cJSON_PrintUnformatted(cjson_data);
     if(cjson_data)
         cJSON_Delete(cjson_data);
 	websocketMangerMethodobj.sendEventData("0010105000122",s,"EVENT_TYPE_USER_LOGIN");
 	if(s) free(s);
 }
+
+void on_json_idslog_message_received(cJSON *log_data)
+{
+    char *s = cJSON_PrintUnformatted(log_data);
+    
+    websocketMangerMethodobj.sendEventData("0010101400122", s, "log");
+    if (s) 
+        free(s);
+}
+
+
 
 void sendEventData(char* _postid,char* _data,char* _event)
 {
