@@ -1,0 +1,3 @@
+/home/nvidia/df/df_work/IDS3.0/work/bulid/CMakeFiles/https.dir
+/home/nvidia/df/df_work/IDS3.0/work/bulid/CMakeFiles/edit_cache.dir
+/home/nvidia/df/df_work/IDS3.0/work/bulid/CMakeFiles/rebuild_cache.dir

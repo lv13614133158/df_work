@@ -151,8 +151,8 @@ void checkCodeForKey(int code,void* _curl)
         case ERROR_WRONG_MANAGE_KEY://客户端会触发重新协商注册密钥的动作
             setManageKeyToEmpty();
             getManageKey(_curl);
-            log_v("checkCodeForKey","IDPS exit!");
-            exit(0);
+           // log_v("checkCodeForKey","IDPS exit!");
+           // exit(0);
 
         break;
         default:

@@ -11,7 +11,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
-#define SOCKET_PATH "/tmp/liblog_socket"
+#define SOCKET_PATH "/tmp/libidslog_socket"
 #define MAX_PENDING_MESSAGES 1000
 
 // 回调函数类型定义
@@ -320,7 +320,7 @@ int ids_log_write(LOG_DATA *data)
     }
     
     if (data == NULL) {
-        return -1;
+        return -2;
     }
 
     // 检查文件描述符是否有效，如果无效尝试重新连接
@@ -334,7 +334,7 @@ int ids_log_write(LOG_DATA *data)
     // 如果连接仍然无效，说明没有reader，可以选择舍弃消息或返回错误
     if (client_fd == -1) {
         // 没有有效的连接，舍弃消息并返回错误
-        return -1;
+        return -3;
     }
     
     // 发送整个LOG_DATA结构体
@@ -347,17 +347,17 @@ int ids_log_write(LOG_DATA *data)
             close(client_fd);
             client_fd = -1;
             // 返回错误表示消息未发送
-            return -1;
+            return -3;
         } else {
             perror("write to socket failed");
             // 关闭并重新打开连接
             close(client_fd);
             client_fd = -1;
-            return -1;
+            return -4;
         }
     }
     
-    return (int)result;
+    return 0;
 }
 
 /**

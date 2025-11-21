@@ -62,7 +62,6 @@ static int s_net_connect_fail_cnt = 0;
 void on_idslog_message_received(LOG_DATA *message)
 {
 
-	printf("[%s] %s %s~~~~~~~~~~~~~~~~~~~~~~~~~·\n", __FUNCTION__, "log_data",message);
 	if (!message) return;
 
 	char spdlog[1024] = {0};
@@ -479,7 +478,7 @@ int main(){
         fprintf(stderr, "Failed to initialize log reader\n");
         return -1;
     }
-	printf("[%s] %s ~~~~~~~~~~~~~~~~~~~~~~~~~·\n", __FUNCTION__, "log_data");
+
  	//thats a loop
     signal(SIGINT, cleanHandler);
     for(;;){

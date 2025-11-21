@@ -1,0 +1,19 @@
+1、配置文件
+使用当前config下面的base_config.json
+	默认在 /ids下
+
+
+2、日志文件，其他文件
+	默认生成到  /ids/log下
+
+
+
+
+注意：
+每次配置时修改， 
+(1)在function/configParse/src/ConfigParse.c中 
+	修改读取配置文件base_config.json的位置(工程配置中尤为重要)
+
+(2)在config/base_config.json中 
+	修改生成文件放位的位置                
+

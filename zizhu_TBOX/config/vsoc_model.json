@@ -1,0 +1,22 @@
+[
+{
+   "VSOC_Model" :"S73",
+   "Vehicle_Model" : ["S73A1", "S73A2", "S73B"]
+},
+{
+   "VSOC_Model" : "S59",
+   "Vehicle_Model": ["S59A1","S597","S59B"]
+},
+{
+   "VSOC_Model" : "P59",
+   "Vehicle_Model": ["P59A"]
+},
+{
+   "VSOC_Model" : "S32",
+   "Vehicle_Model": ["S32A2"]
+},
+{
+   "VSOC_Model" : "M18-3",
+   "Vehicle_Model": ["M18_3"]
+}
+]

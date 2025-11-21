@@ -13,7 +13,7 @@ extern "C" {
 
 // ... existing code ...
 // 配置文件目录位置设置
-#define IDS_VERSION "1.0.7"
+#define IDS_VERSION "2.0.0"
 #define POS_3  1
 #ifdef POS_1
 	#define ROOT_PATH  "./"
@@ -32,7 +32,7 @@ extern "C" {
 
 #define DEVICE_INFO_PATH      ROOT_PATH_OR "/config/device_info.conf"
 #define BASE_CONFIG_PATH   ROOT_PATH_OR "/config/base_config.json"
-#define IDS_MODEL_PATH      ROOT_PATH_OR "/config/vosc_model.json"    //可读写
+#define VSOC_MODEL_PATH      ROOT_PATH_OR "/config/vsoc_model.json"    //只读
 #define DEFAULT_POLICY_CONFIG_PATH ROOT_PATH_OR "/config/policy_config.json"	//初始化的配置文件
 #define POLICY_CONFIG_PATH  ROOT_PATH_RW "/config/policy_config_cloud.json"			//云端获取的配置文件
 #define PROCESS_WLIST_PATH ROOT_PATH_RW "/config/process_list.json"

@@ -76,9 +76,9 @@ static int GetImei(char *udid, configData configObj)
 	}
 
 	if(getVIN() && udid){
-		char spdlog[256] = {0};
-		snprintf(spdlog, 256, "Udid:%s, Vin:%s", udid, getVIN());
-		log_v("idps mian", spdlog);
+		//char spdlog[256] = {0};
+		//snprintf(spdlog, 256, "Udid:%s, Vin:%s", udid, getVIN());
+		//log_v("idps mian", spdlog);
 	}
 	else{
 		log_e("idps mian", "udid or vin is null!");

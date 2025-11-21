@@ -4,6 +4,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 typedef enum 
 {
     LOG_DEFAULT = 0,   // 默认
@@ -14,14 +15,16 @@ typedef enum
     LOG_V2X = 5        // V2X
 } LOG_TYPE;
 
-typedef struct log_data
+typedef struct 
 {
-    char source[128]; 
-    int level;
-    LOG_TYPE log_type;
-    char log_tag[128];
-    int data_len;
-    char log_date[1024];
+
+    char source[128];       //来源
+    int level;              //日志等级
+    uint8_t log_time[14];   //日志时间
+    LOG_TYPE log_type;      //日志类型
+    char log_tag[128];      //日志标签
+    int data_len;           //日志数据长度
+    char log_date[1024];    //日志数据
 } LOG_DATA;
 // 回调函数类型定义
 typedef void (*log_message_callback)(LOG_DATA *  message);

@@ -12,6 +12,7 @@
 #include "pthread.h"
 #include "dfssptbox.h"
 #include "DfsdkAPIC.h"
+#include "base64.h"
 
 const char* GET_MONITOR_CONFIG = "/api/v1.2/policy/config";
 #define TBOX_INFO_PATH "/tmp/dftbox.info"
@@ -30,9 +31,10 @@ static int readLocalJson(char* path, char* buf, int len)
 	int fd  = open(path,O_RDONLY);
 	if(fd < 0){
 		log_e("ConfigParse","open file failed");
+		printf("open file  %s\n",path);
 		return ret;
 	}
-
+	printf("111111111111111\n");
 	if(buf) //读取数据
 	{
 		ret = read(fd, buf, len);
@@ -47,6 +49,7 @@ static int readLocalJson(char* path, char* buf, int len)
     	fstat(fd, &stat_buf);
 		ret = stat_buf.st_size;
 	}
+	printf("222222222\n");
 	close(fd);
 	return ret;
 }
@@ -92,7 +95,7 @@ static int writeLocalJson(char* path, char* buf, int len)
 		return ret;
 	}
 	
-	log_e("ConfigParse","open file failed");
+	log_e("ConfigParse","open file failed!");
 	return -1;	
 }
 
@@ -746,20 +749,20 @@ int get_car_model(tboxInfo_t *tbox_info)
 	int array_size=0;
 	int vehicle_model_count=0;
 	cJSON* root=NULL;
-	if(readLocalJson(IDS_MODEL_PATH, buf, sizeof(buf)) == -1){
-		log_d("get_car_model","readLocalJson  error");
+	if(readLocalJson(VSOC_MODEL_PATH, buf, sizeof(buf)) == -1){
+		log_d("get_VSOC_MODEL","readLocalJson  error");
 		return -1;
 	}
 	root = cJSON_Parse(buf);
 	if(!root)      
 	{
-		log_d("get_car_model","cJSON_Parse  error");
+		log_d("get_VSOC_MODEL","cJSON_Parse  error");
 		return -1;
 	}
     array_size = cJSON_GetArraySize(root);
     for (int i = 0; i < array_size; i++) {
         cJSON *item = cJSON_GetArrayItem(root, i);
-        cJSON *idps = cJSON_GetObjectItem(item, "VOSC_Model");
+        cJSON *idps = cJSON_GetObjectItem(item, "VSOC_Model");
         cJSON *vehicle_model_array = cJSON_GetObjectItem(item, "Vehicle_Model");
 		if (!idps||!vehicle_model_array)
 		{
@@ -871,6 +874,9 @@ int initTboxInfo(configData* configObj)
 	char buf[512]={0};
 	int ret = 0;
 	pthread_t pthread_get_gps = 0;
+	cJSON* root;
+	memset(&tbox_mcu_info, 0, sizeof(tboxInfo_t));
+	memset(&tbox_info_local, 0, sizeof(tboxInfo_t));
 
 	while (1)
 	{
@@ -890,7 +896,7 @@ int initTboxInfo(configData* configObj)
 
 		if (isString(tbox_mcu_info.VIN) && isString(tbox_mcu_info.ID))
 		{
-			log_d("ConfigParse", spdlog);
+			//log_d("ConfigParse", spdlog);
 			if (strlen(tbox_mcu_info.VIN) == 0 || strlen(tbox_mcu_info.ID) == 0)
 			{
 				log_i("ConfigParse", "device_num or diag_vin len is 0");
@@ -918,10 +924,11 @@ int initTboxInfo(configData* configObj)
 	pthread_create(&pthread_get_gps, NULL, get_gps_task, NULL);
 
 	if(readLocalJson(DEVICE_INFO_PATH, buf, sizeof(buf)) == -1){
+		printf("get_tbox_info","readLocalJson  error");
 		goto exit;
 	}
 
-	cJSON* root = cJSON_Parse(buf);
+	root = cJSON_Parse(buf);
 	if(!root)      
 	{
 		log_d("ConfigParse","tboxinfo file format error");
@@ -977,12 +984,12 @@ exit:
 	{
 		strncpy(tbox_info_local.SYS_VERSION,"TEST_LINUX_SYS_VERSION",strlen("TEST_LINUX_SYS_VERSION"));
 	}
-
+	printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 	if (root)
 	{
 		cJSON_Delete(root);
 	}
-
+	printf("!!!!!!!!!!!!!!!!222!!!!!!!!!!!!\n");
 
 	
 	if (strlen(tbox_mcu_info.CAR) > 0)
@@ -1006,8 +1013,8 @@ exit:
 
 	memset(spdlog, 0 ,sizeof(spdlog));
 	sprintf(spdlog, "ID:%s, VIN:%s, CAR:%s, SIMU:%s\n", tboxInfo_obj.ID, tboxInfo_obj.VIN, tboxInfo_obj.CAR, tboxInfo_obj.SYS_VERSION);
-	log_d("ConfigParse", spdlog);
-
+	//log_d("ConfigParse", spdlog);
+	printf("%s\n",spdlog);
 
 	strncpy(tbox_mcu_info.HTTP_URL,configObj->networkManagerObj.server,sizeof(configObj->networkManagerObj.server));
 	strncpy(tbox_mcu_info.WEBSOCKET_URL,configObj->websocketInfoObj.url,sizeof(configObj->websocketInfoObj.url));
@@ -1260,62 +1267,127 @@ int conf_rw_path_init()
 
 int get_Cache_data(tboxInfo_t * date,char *fpath)
 {
-	tboxInfo_t file_data;
-	int fd;
+    tboxInfo_t file_data;
+    int fd;
     if (fpath == NULL) {
         log_e("ConfigParse", "get_Cache_config parameter error");
         return -1;
     }
+    
+    // 内联的逐字段比较逻辑
+    auto int compare_tbox_info(const tboxInfo_t* data1, const tboxInfo_t* data2) {
+        if (!data1 || !data2) {
+            return -1;
+        }
+
+        if (strncmp(data1->VIN, data2->VIN, sizeof(data1->VIN)) != 0) {
+            return 1;
+        }
+
+        if (strncmp(data1->ID, data2->ID, sizeof(data1->ID)) != 0) {
+            return 1;
+        }
+
+        if (strncmp(data1->CAR, data2->CAR, sizeof(data1->CAR)) != 0) {
+            return 1;
+        }
+        if (strncmp(data1->HTTP_URL, data2->HTTP_URL, sizeof(data1->HTTP_URL)) != 0) {
+            return 1;
+        }
+
+        if (strncmp(data1->WEBSOCKET_URL, data2->WEBSOCKET_URL, sizeof(data1->WEBSOCKET_URL)) != 0) {
+            return 1;
+        }
+
+        return 0;
+    }
+    
     char  file_name[64];
-	snprintf(file_name, sizeof(file_name), "%s/device.info", fpath);
+    snprintf(file_name, sizeof(file_name), "%s/6f79cebe28f21c5dd86", fpath);
     fd = open(file_name, O_RDONLY);
     if (fd < 0) {
-;
-		mk_dir_exist(fpath);
-		fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
-		if (fd < 0) {
+        mk_dir_exist(fpath);
+        fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
+        if (fd < 0) {
             log_e("ConfigParse", "Failed to create cache file");
             return -1;
         }
-		ssize_t written = write(fd, date, sizeof(tboxInfo_t));
-        if (written != sizeof(tboxInfo_t)) {
-            log_e("ConfigParse", "Failed to write cache data");
-            close(fd);
-            return -1;
+        
+        // 加密写入
+        size_t encoded_len = 0;
+        unsigned char* encoded_data = base64_encode((const unsigned char*)date, sizeof(tboxInfo_t), &encoded_len);
+        if (encoded_data) {
+            ssize_t written = write(fd, encoded_data, encoded_len);
+            if (written != (ssize_t)encoded_len) {
+                log_e("ConfigParse", "Failed to write cache data");
+                free(encoded_data);
+                close(fd);
+                return -1;
+            }
+            free(encoded_data);
         }
         fsync(fd);
 
     }else{
-        ssize_t read_bytes = read(fd, &file_data, sizeof(tboxInfo_t));
-        if (read_bytes == sizeof(tboxInfo_t)) {
-            // 成功读取数据，进行对比
-            if (memcmp(date, &file_data, sizeof(tboxInfo_t)) != 0) {
-				//删除固定文件夹下的文件
-				char command[64];
-				snprintf(command, sizeof(command), "rm -rf %s", fpath);
-				int result = system(command);
-				if (result != 0) {
-					close(fd);
-					return -1;
-				} else {
-					close(fd);
-					mk_dir_exist(fpath);
-					fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
-					if (fd < 0) {
-						log_e("ConfigParse", "Failed to create cache file");
-						return -1;
-					}
-					ssize_t written = write(fd, date, sizeof(tboxInfo_t));
-					if (written != sizeof(tboxInfo_t)) {
-						log_e("ConfigParse", "Failed to write cache data");
-						close(fd);
-						return -1;
-					}
-					fsync(fd);
-				}
+        // 获取文件大小
+        struct stat st;
+        if (fstat(fd, &st) == 0) {
+            unsigned char* encoded_buffer = (unsigned char*)malloc(st.st_size + 1);
+            if (encoded_buffer) {
+                ssize_t read_bytes = read(fd, encoded_buffer, st.st_size);
+                if (read_bytes > 0) {
+                    encoded_buffer[read_bytes] = '\0';
+                    // 解密读取的数据
+                    size_t decoded_length = 0;
+                    unsigned char* decoded_data = base64_decode(encoded_buffer, read_bytes, &decoded_length);
+                    if (decoded_data && decoded_length == sizeof(tboxInfo_t)) {
+                        memcpy(&file_data, decoded_data, sizeof(tboxInfo_t));
+                        if (compare_tbox_info(date, &file_data) != 0) {
+                            // 删除固定文件夹下的文件
+                            char command[64];
+                            snprintf(command, sizeof(command), "rm -rf %s", fpath);
+                            int result = system(command);
+                            if (result != 0) {
+                                free(decoded_data);
+                                free(encoded_buffer);
+                                close(fd);
+                                return -1;
+                            } else {
+                                close(fd);
+                                mk_dir_exist(fpath);
+                                fd = open(file_name,O_CREAT |O_WRONLY | O_TRUNC, 0664);
+                                if (fd < 0) {
+                                    free(decoded_data);
+                                    free(encoded_buffer);
+                                    log_e("ConfigParse", "Failed to create cache file");
+                                    return -1;
+                                }
+                                
+                                // 重新加密写入新数据
+                                size_t new_encoded_len = 0;
+                                unsigned char* new_encoded_data = base64_encode((const unsigned char*)date, sizeof(tboxInfo_t), &new_encoded_len);
+                                if (new_encoded_data) {
+                                    ssize_t written = write(fd, new_encoded_data, new_encoded_len);
+                                    if (written != (ssize_t)new_encoded_len) {
+                                        log_e("ConfigParse", "Failed to write cache data");
+                                        free(new_encoded_data);
+                                        free(decoded_data);
+                                        free(encoded_buffer);
+                                        close(fd);
+                                        return -1;
+                                    }
+                                    free(new_encoded_data);
+                                }
+                                fsync(fd);
+                            }
+                        }
+                    }
+                    free(decoded_data);
+                }
+                free(encoded_buffer);
             }
-		}
-	}
+        }
+    }
     close(fd);
     
     return 0;

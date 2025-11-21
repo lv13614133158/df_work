@@ -23,6 +23,7 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 project(idps C CXX)
 
+link_directories(${SDKTARGETSYSROOT}/usr/lib64)
 # 设置包含和链接路径
 link_directories(${COMPILE_TOOL_PATH}/lib ${SDKTARGETSYSROOT}/usr/lib)
 
