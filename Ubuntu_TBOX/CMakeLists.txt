@@ -3,28 +3,122 @@ cmake_minimum_required(VERSION 3.4.1)
 
 
 project(idps C CXX)
+include(ExternalProject)
+# 统一设置目标架构
+set(TARGET_ARCH "x86_64-linux-gnu")
 
+# 然后在各个库中使用统一的变量：
+set(OPENSSL_CONFIG_TARGET "linux-x86_64")
+set(CURL_CONFIG_TARGET ${TARGET_ARCH})
+set(PCAP_CONFIG_TARGET ${TARGET_ARCH})  
 
-# 添加格式溢出检查忽略选项
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -Wno-error=format-truncation -Wno-error=return-local-addr -Wno-error=format -Wno-error=stringop-overflow -Wno-error=unused-macros -Wno-error=format-overflow -fPIE -fstack-protector-all -fsigned-char")
+#工具链路径
+set(STAGING_DIR )
+set(TOOLCHAIN_PATH )
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER g++)
+set(CMAKE_AR ar)
+set(CMAKE_RANLIB ranlib)
+set(OPENSSL_CC_PATH "") # openssl编译使用环境
+set(LIB_TOOL_PATH "/home/nvidia/df/lib") # 依赖库源码地址
+set(LIBRARY_DIR "/home/nvidia/df/lib/lib") # 设置动态库库文件所在目录
+set(BUILD_LIB ON)    # 是否编译静态库
+set(USE_LIB ON)      # 是否使用静态库（ON）或系统动态库
 
-# 设置编译时缓冲区溢出检查
-add_definitions(-D_FORTIFY_SOURCE=2)
+if(BUILD_LIB)
+    # 静态库模式 - 编译并链接生成的静态库
+    # 配置 OpenSSL 外部项目
+    ExternalProject_Add(openssl
+        SOURCE_DIR ${LIB_TOOL_PATH}/openssl-1.1.0j
+        CONFIGURE_COMMAND env
+            <SOURCE_DIR>/Configure 
+            ${OPENSSL_CONFIG_TARGET} 
+            --prefix=<INSTALL_DIR> 
+            no-asm
+            -DL_ENDIAN
+            --cross-compile-prefix=${OPENSSL_CC_PATH}
+        BUILD_COMMAND make
+        INSTALL_COMMAND make install
+        INSTALL_DIR ${CMAKE_BINARY_DIR}/openssl
+    )
+    # 获取 OpenSSL 安装路径
+    ExternalProject_Get_Property(openssl INSTALL_DIR)
+    set(OPENSSL_INSTALL_DIR ${INSTALL_DIR})
+  
+    include_directories(${OPENSSL_INSTALL_DIR}/include)
+ 
+    ExternalProject_Add(curl
+        SOURCE_DIR ${LIB_TOOL_PATH}/curl-7.81.0
+        CONFIGURE_COMMAND env
+            CC=${CMAKE_C_COMPILER}
+            AR=${CMAKE_AR}
+            RANLIB=${CMAKE_RANLIB}
+            CPPFLAGS=-I${OPENSSL_INSTALL_DIR}/include
+            LDFLAGS=-L${OPENSSL_INSTALL_DIR}/lib
+            ${LIB_TOOL_PATH}/curl-7.81.0/configure
+            --prefix=<INSTALL_DIR>
+            --host=${CURL_CONFIG_TARGET}
+            --with-ssl=${OPENSSL_INSTALL_DIR}
+            --enable-static
+            --disable-shared
+            --without-zlib
+            --disable-threaded-resolver
+        BUILD_COMMAND make
+        INSTALL_COMMAND make install
+        INSTALL_DIR ${CMAKE_BINARY_DIR}/curl
+        BUILD_ALWAYS 1 
+    )
+    # 获取 curl 安装路径
+    ExternalProject_Get_Property(curl INSTALL_DIR)
+    set(CURL_INSTALL_DIR ${INSTALL_DIR})
+    add_dependencies(curl openssl)
+    include_directories(${CURL_INSTALL_DIR}/include)
 
-# 设置堆栈不可执行、重定位只读和立即绑定
-set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now")
+    # 配置 libpcap 外部项目
+    ExternalProject_Add(pcap
+        SOURCE_DIR ${LIB_TOOL_PATH}/libpcap-1.9.1
+        CONFIGURE_COMMAND env
+            <SOURCE_DIR>/configure
+            --host=${PCAP_CONFIG_TARGET}
+            --prefix=<INSTALL_DIR>
+            --disable-static   
+            --enable-shared
+            CC=${CMAKE_C_COMPILER}
+        BUILD_COMMAND make
+        INSTALL_COMMAND make install
+        INSTALL_DIR ${CMAKE_BINARY_DIR}/pcap
+    )
+        # 获取 libpcap 安装路径
+    ExternalProject_Get_Property(pcap INSTALL_DIR)
+    set(PCAP_INSTALL_DIR ${INSTALL_DIR})
+    include_directories(${PCAP_INSTALL_DIR}/include)
 
-# 设置 空间随机化 堆栈保护#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign")
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -fPIE -fstack-protector-all -fsigned-char")
-# 添加格式溢出检查忽略选项
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -Wno-error=format-truncation -Wno-error=return-local-addr -Wno-error=format -Wno-error=stringop-overflow -Wno-error=unused-macros -Wno-error=format-overflow -fPIE -fstack-protector-all -fsigned-char")
-# 在现有的 CMAKE_C_FLAGS 基础上添加 -Wno-format-truncation
-Set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -Wno-stringop-overflow -Wno-format-overflow -Wno-format-truncation -fPIE -fstack-protector-all -fsigned-char")
-# 设置 strip 
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
-set(CMAKE_BUILD_TYPE "RELEASE")
+    # 配置 libwebsockets 外部项目
+    ExternalProject_Add(libwebsockets
+        SOURCE_DIR ${LIB_TOOL_PATH}/libwebsockets-4.3.1
+        CMAKE_ARGS
+            -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+            -DCMAKE_SYSTEM_NAME=Linux
+            -DLWS_WITH_SSL=ON
+            -DLWS_WITH_STATIC=ON
+            -DLWS_WITH_SHARED=ON
+            -DOPENSSL_ROOT_DIR=${OPENSSL_INSTALL_DIR}
+            -DOPENSSL_INCLUDE_DIR=${OPENSSL_INSTALL_DIR}/include
+            -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+            -DCMAKE_C_FLAGS=-I${OPENSSL_INSTALL_DIR}/include
+            -DCMAKE_EXE_LINKER_FLAGS=-L${OPENSSL_INSTALL_DIR}/lib
+        INSTALL_DIR ${CMAKE_BINARY_DIR}/websockets
+        BUILD_ALWAYS 1
+    )
+    ExternalProject_Get_Property(libwebsockets INSTALL_DIR)
+    set(WEBSOCKETS_INSTALL_DIR ${INSTALL_DIR})
+    add_dependencies(libwebsockets openssl)
 
+   
+    include_directories(${WEBSOCKETS_INSTALL_DIR}/include)
+
+  
+endif()
 
 #头文件路径
 include_directories(function)
@@ -65,27 +159,17 @@ include_directories(function/spdlog)
 
 
 #第三方库
-include_directories(third_part/curl/include)
-include_directories(third_part/openssl/include)
-include_directories(third_part/pcap/include)
-include_directories(third_part/websocket/include)
+
 include_directories(third_part/idpslog/include)
 include_directories(tier1_part/quecte/include)
 #硬件支持
 
 
-set(CMAKE_SKIP_BUILD_RPATH FALSE)
-set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 
 #依赖库的路径
 link_directories(${CMAKE_SOURCE_DIR}/lib)
-#link_directories(${CMAKE_SOURCE_DIR}/third_part/curl/lib)
-#link_directories(${CMAKE_SOURCE_DIR}/third_part/openssl/lib)
-#link_directories(${CMAKE_SOURCE_DIR}/third_part/pcap/lib)
-#link_directories(${CMAKE_SOURCE_DIR}/third_part/websocket/lib)
-
+link_directories(${LIBRARY_DIR})
 
 #auto find src
 aux_source_directory(${CMAKE_SOURCE_DIR}/function/common/src/			    				SOURCE_COMMON) 
@@ -149,21 +233,32 @@ add_executable(IDPS
 		)
 
 
- #预编译好的库（注释掉缺失的库）
-target_link_libraries( 
-	IDPS
-	-lspdlog
-	-lpthread
-	-lrt
-	-ldl
-	-lz
-	-lcurl
-	-lssl
-	-lcrypto
-	-lpcap
-	-lwebsockets
-	-lm
-	-lstdc++
-	-lidslog
-)
+if(USE_LIB)
+    set(PCAP ${PCAP_INSTALL_DIR}/lib/libpcap.a)
+    set(CURL ${CURL_INSTALL_DIR}/lib/libcurl.a)
+    set(SSL ${OPENSSL_INSTALL_DIR}/lib/libssl.a)
+    set(CRYPTO ${OPENSSL_INSTALL_DIR}/lib/libcrypto.a)
+    set(WEBSOCKETS ${WEBSOCKETS_INSTALL_DIR}/lib/libwebsockets.a)
+else()
+    set(PCAP -lpcap)
+    set(CURL -lcurl)
+    set(SSL -lssl)
+    set(CRYPTO -lcrypto)
+    set(WEBSOCKETS -lwebsockets) 
+endif()
 
+target_link_libraries(IDPS
+    ${WEBSOCKETS}
+    ${CURL}
+    ${SSL}
+    ${CRYPTO}
+    ${PCAP}
+    -lspdlog
+    -lpthread
+    -lrt
+    -ldl
+    -lz
+    -lm
+    -lstdc++
+    -lidslog
+)

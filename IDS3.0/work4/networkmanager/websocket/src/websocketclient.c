@@ -125,22 +125,22 @@ static void *ProcessMessageThread(void *args)
 				networkManager_callback(node->data);
 			}
 			// printf("接收数据处理完成\n");
-			// enumtype = wbsDispatchData(node->data);
-			// printf("事件类型：%d data:%s\n",enumtype, node->data);
-			// switch(enumtype)
-			// {
-			// case NORMAL:
-			// 	wbsNormalProcess(node->data);				
-			// 	break;
-			// case RPC:
-			// 	wbsRpcProcess(node->data);			
-			// 	break;
-			// case OTHERS:
-			// 	printf("handle other***\n");
-			// 	break;
-			// 	default:
-			// 	break;
-			// }
+			enumtype = wbsDispatchData(node->data);
+			printf("事件类型：%d data:%s\n",enumtype, node->data);
+			switch(enumtype)
+			{
+			case NORMAL:
+				wbsNormalProcess(node->data);				
+				break;
+			case RPC:
+				wbsRpcProcess(node->data);			
+				break;
+			case OTHERS:
+				printf("handle other***\n");
+				break;
+				default:
+				break;
+			}
 			if(node->data)
 				free(node->data);
 			free(node);

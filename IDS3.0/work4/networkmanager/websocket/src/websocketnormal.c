@@ -128,7 +128,7 @@ char* getTerminalInfomation(char** _output)
 
     char *s = cJSON_PrintUnformatted(root);
 	char *a = cJSON_Print(root);
-	printf("hardinfo:%s\n\n",a);
+	//printf("hardinfo:%s\n\n",a);
 	if(a)free(a);
     if(root)
         cJSON_Delete(root);
@@ -148,7 +148,6 @@ int statusProcessNormal(int _istatus,char* _iaction,long _iseqnumber){
 				websocketMangerMethodobj.sendInfoData(new_info);
 				if(info)free(info);
 				lstagerun = websocketstage2;
-				printf("login success\n");
 			}
 			if(strcmp(_iaction,"infoack") == 0){
 				lstagerun = websocketstage2;

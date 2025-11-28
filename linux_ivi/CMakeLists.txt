@@ -178,7 +178,7 @@ target_link_libraries(
 	-lcurl
 	-lssl
 	-lcrypto
-	-lpcap
+	 pcap  
 	-lwebsockets
 	-lm
 	-lstdc++

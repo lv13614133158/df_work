@@ -22,6 +22,107 @@ project(idps C CXX)
 # 设置包含和链接路径
 link_directories(${COMPILE_TOOL_PATH}/lib ${SDKTARGETSYSROOT}/usr/lib)
 #include_directories(${COMPILE_TOOL_PATH}/include ${SDKTARGETSYSROOT}/usr/include)
+
+include(ExternalProject)
+set(TARGET_ARCH "aarch64-linux-gnu")
+# 然后在各个库中使用统一的变量：
+set(OPENSSL_CONFIG_TARGET "linux-aarch64")
+set(CURL_CONFIG_TARGET ${TARGET_ARCH})
+set(PCAP_CONFIG_TARGET ${TARGET_ARCH})  
+
+set(OPENSSL_CC_PATH ${COMPILE_TOOL_PATH}/bin/arm-openwrt-linux-) # openssl编译使用环境
+set(LIB_TOOL_PATH "/home/nvidia/df/lib") # 依赖库源码地址
+set(LIBRARY_DIR "/home/nvidia/df/lib/lib") # 设置动态库库文件所在目录
+set(BUILD_LIB ON)    # 是否编译静态库
+set(USE_LIB ON)      # 是否使用静态库（ON）或系统动态库
+
+if(BUILD_LIB)
+    # 静态库模式 - 编译并链接生成的静态库
+    # 配置 OpenSSL 外部项目
+    ExternalProject_Add(openssl
+        SOURCE_DIR ${LIB_TOOL_PATH}/openssl-1.1.0j
+        CONFIGURE_COMMAND env
+            <SOURCE_DIR>/Configure 
+            ${OPENSSL_CONFIG_TARGET} 
+            --prefix=<INSTALL_DIR> 
+            no-asm
+            -DL_ENDIAN
+            --cross-compile-prefix=${OPENSSL_CC_PATH}
+        BUILD_COMMAND make
+        INSTALL_COMMAND make install
+        INSTALL_DIR ${CMAKE_BINARY_DIR}/openssl
+    )
+    # 获取 OpenSSL 安装路径
+    ExternalProject_Get_Property(openssl INSTALL_DIR)
+    set(OPENSSL_INSTALL_DIR ${INSTALL_DIR})
+
+ 
+    ExternalProject_Add(curl
+        SOURCE_DIR ${LIB_TOOL_PATH}/curl-7.81.0
+        CONFIGURE_COMMAND env
+            CC=${CMAKE_C_COMPILER}
+            AR=${CMAKE_AR}
+            RANLIB=${CMAKE_RANLIB}
+            CPPFLAGS=-I${OPENSSL_INSTALL_DIR}/include
+            LDFLAGS=-L${OPENSSL_INSTALL_DIR}/lib
+            ${LIB_TOOL_PATH}/curl-7.81.0/configure
+            --prefix=<INSTALL_DIR>
+            --host=${CURL_CONFIG_TARGET}
+            --with-ssl=${OPENSSL_INSTALL_DIR}
+            --enable-static
+            --disable-shared
+            --without-zlib
+            --disable-threaded-resolver
+        BUILD_COMMAND make
+        INSTALL_COMMAND make install
+        INSTALL_DIR ${CMAKE_BINARY_DIR}/curl
+        BUILD_ALWAYS 1 
+    )
+    # 获取 curl 安装路径
+    ExternalProject_Get_Property(curl INSTALL_DIR)
+    set(CURL_INSTALL_DIR ${INSTALL_DIR})
+    add_dependencies(curl openssl)
+
+
+    # 配置 libpcap 外部项目
+    ExternalProject_Add(libpcap
+        SOURCE_DIR ${LIB_TOOL_PATH}/libpcap-1.9.1
+        CONFIGURE_COMMAND env
+            <SOURCE_DIR>/configure
+            --host=${PCAP_CONFIG_TARGET}
+            --prefix=<INSTALL_DIR>
+            --disable-static   
+            --enable-shared
+            CC=${CMAKE_C_COMPILER}
+        BUILD_COMMAND make
+        INSTALL_COMMAND make install
+        INSTALL_DIR ${CMAKE_BINARY_DIR}/pcap
+    )
+        # 获取 libpcap 安装路径
+    ExternalProject_Get_Property(libpcap INSTALL_DIR)
+    set(PCAP_INSTALL_DIR ${INSTALL_DIR})
+
+       ExternalProject_Add(libwebsockets
+        SOURCE_DIR ${LIB_TOOL_PATH}/libwebsockets-4.3.1
+        CMAKE_ARGS env
+            -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR> 
+            -DCMAKE_SYSTEM_NAME=Linux 
+            -DLWS_WITH_SSL=ON 
+            -DLWS_WITH_STATIC=ON -DLWS_WITH_SHARED=ON 
+            -DOPENSSL_INCLUDE_DIR=${OPENSSL_INSTALL_DIR}/include 
+            -DOPENSSL_SSL_LIBRARY=${OPENSSL_INSTALL_DIR}/lib/libssl.so 
+            -DOPENSSL_CRYPTO_LIBRARY=${OPENSSL_INSTALL_DIR}/lib/libcrypto.so 
+            -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+    )
+    ExternalProject_Get_Property(libwebsockets INSTALL_DIR)
+    set(WEBSOCKETS_INSTALL_DIR ${INSTALL_DIR})
+    add_dependencies(libwebsockets openssl)
+
+  
+endif()
+
+
+
 # 设置编译时缓冲区溢出检查
 add_definitions(-D_FORTIFY_SOURCE=2)
 #add_compile_definitions(-D_FORTIFY_SOURCE=2)
@@ -101,10 +202,7 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 link_directories(${CMAKE_SOURCE_DIR}/tier1_part/tbox_info/lib)
 link_directories(${CMAKE_SOURCE_DIR}/tier1_part/lib)
-#link_directories(${CMAKE_SOURCE_DIR}/third_part/curl/lib)
-#link_directories(${CMAKE_SOURCE_DIR}/third_part/openssl/lib)
-#link_directories(${CMAKE_SOURCE_DIR}/third_part/pcap/lib)
-#link_directories(${CMAKE_SOURCE_DIR}/third_part/websocket/lib)
+
 
 
 #auto find src
@@ -168,19 +266,35 @@ add_executable(IDPS
 		${SOURCE_NETWORKFIREWALL}
 		)
 
-#预编译好的库
+
+
+
+set(PCAP -lpcap)
+set(CURL -lcurl)
+set(SSL -lssl)
+set(CRYPTO -lcrypto)
+set(WEBSOCKETS -lwebsockets) 
+if(USE_LIB)
+  
+    set(PCAP ${PCAP_INSTALL_DIR}/lib/libpcap.a)
+    #set(CURL ${CURL_INSTALL_DIR}/lib/libcurl.a)
+    #set(SSL ${OPENSSL_INSTALL_DIR}/lib/libssl.a)
+    #set(CRYPTO ${OPENSSL_INSTALL_DIR}/lib/libcrypto.a)
+    set(WEBSOCKETS ${WEBSOCKETS_INSTALL_DIR}/lib/libwebsockets.a)
+endif()
+
 target_link_libraries( # Specifies the target library.
 	IDPS
+	${SSL}
+    ${CRYPTO}
+	${CURL}
+	${WEBSOCKETS}
+    ${PCAP}
 	-lspdlog
 	-lpthread
 	-lrt
 	-ldl
 	-lz
-	-lcurl
-	-lssl
-	-lcrypto
-	-lpcap
-	-lwebsockets
 	-lnghttp2
 	-lssptbox
 	-ldfsdkapi
@@ -207,44 +321,4 @@ target_link_libraries( # Specifies the target library.
 
 	)
 
-add_executable(GPS 
-		${CMAKE_SOURCE_DIR}/demo.c
-	
-		)
-target_link_libraries( # Specifies the target library.
-	GPS
-	-lspdlog
-	-lpthread
-	-lrt
-	-ldl
-	-lz
-	-lcurl
-	-lssl
-	-lcrypto
-	-lpcap
-	-lwebsockets
-	-lnghttp2
-	-lssptbox
-	-ldfsdkapi
-	-lfdbus
-	-ldfsdkproto
-	-lprotobuf
-	-labsl_log_internal_check_op
-	-labsl_log_internal_message
-	-llog
-	-lprop2uci
-	-luci
-	-lubox
-	-ldf_utils
-	-ldfsdkproto
-	-ldf_log
-	-lql_sdk
-	-lql_sys_log
-	-lql_lib_ipc
-	-lql_lib_utils
-	-lteec
-	-lql-tee-service
-	-lm
-	-lstdc++
 
-	)

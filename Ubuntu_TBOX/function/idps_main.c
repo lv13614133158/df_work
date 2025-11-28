@@ -57,8 +57,18 @@ static int s_net_connect_fail_cnt = 0;
 
 #define IDSVERSION 		"IDPS-Version-"IDS_VERSION
 
+// 将 log_time[14] 转换为可读的时间字符串
+void log_time_to_string(uint8_t log_time[14], char* output, size_t output_size) {
+    // 格式: YYYY-MM-DD HH:MM:SS
+    snprintf(output, output_size, "%d%d%d%d-%d%d-%d%d %d%d:%d%d:%d%d",
+             log_time[0], log_time[1], log_time[2], log_time[3],  // 年
+             log_time[4], log_time[5],                            // 月
+             log_time[6], log_time[7],                            // 日
+             log_time[8], log_time[9],                            // 时
+             log_time[10], log_time[11],                          // 分
+             log_time[12], log_time[13]);                         // 秒
+}
 //三方日志
-
 void on_idslog_message_received(LOG_DATA *message)
 {
 
@@ -67,11 +77,15 @@ void on_idslog_message_received(LOG_DATA *message)
 	char spdlog[1024] = {0};
 	cJSON *cjson_data = cJSON_CreateObject();
 	if (!cjson_data) return;
-	
+	char log_time[64];
+	int  log_time_len;
+	log_time_to_string(message->log_time,log_time,&log_time_len);
+
 	cJSON_AddStringToObject(cjson_data, "source", "idslog");
 	cJSON_AddNumberToObject(cjson_data, "level", message->level);
 	cJSON_AddNumberToObject(cjson_data, "log type", message->log_type);
 	cJSON_AddStringToObject(cjson_data, "log tag", "tag");
+	cJSON_AddStringToObject(cjson_data, "log time",log_time );
 	memcpy(spdlog, message->log_date, message->data_len);
 	cJSON_AddStringToObject(cjson_data, "log_data",spdlog);
     on_json_idslog_message_received(cjson_data);
