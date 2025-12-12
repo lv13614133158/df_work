@@ -12,7 +12,7 @@ format_json() {
 
     tab_level=0
 
-    while IFS= read -r line; do
+     while IFS= read -r line || [[ -n "$line" ]]; do
         while IFS= read -rn1 char; do
             case "$char" in
                 "{")
