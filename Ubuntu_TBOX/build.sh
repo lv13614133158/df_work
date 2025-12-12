@@ -13,8 +13,8 @@ echo $path
 #清除ouput路径
 rm -rf $path/output
 
-rm -rf $path/build
-mkdir $path/build
+#rm -rf $path/build
+#mkdir -p $path/build
 cd $path/build
 
 cmake ..
@@ -28,11 +28,11 @@ mkdir $path/output/log
 mkdir -p $path/output/conf/config
 
 cp $path/build/IDPS $path/output/bin/
-cp $path/script/export $path/output/bin/export
+cp /home/nvidia/df/df_work/CA $path/output/CA
 cp $path/script/read_idpslog $path/output/bin/read_idpslog
 cp $path/script/IDPS_start.sh $path/output/bin/IDPS_start.sh
 cp $path/script/IDPS_stop.sh $path/output/bin/
-cp $path/lib/libwebsockets.so.19 $path/output/lib/
+cp $path/lib/libidslog $path/output/lib/
 
 cp $path/config/base_config.json $path/output/conf/config/
 cp $path/config/device_info.conf $path/output/conf/config/

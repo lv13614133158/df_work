@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-
-set(TOOLCHAIN_PATH /home/nvidia/df/MPU_SDK/aos/arm64/common/bin)
-set(SYSROOT_PATH /home/nvidia/df/MPU_SDK/aos/arm64/common/sysroot)
+set(PATH /home/nvidia/df)
+set(TOOLCHAIN_PATH ${PATH}/MPU_SDK/aos/arm64/common/bin)
+set(SYSROOT_PATH ${PATH}/MPU_SDK/aos/arm64/common/sysroot)
 
 # 设置工具链
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}/clang)

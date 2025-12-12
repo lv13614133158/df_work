@@ -12,5 +12,6 @@
 **/*.o
 **/*.ko
 **/*.mod.c
+**/CA/*
 *~
 local.properties

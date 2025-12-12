@@ -6,24 +6,20 @@ project(idps C CXX)
 include(ExternalProject)
 # 统一设置目标架构
 set(TARGET_ARCH "x86_64-linux-gnu")
-
 # 然后在各个库中使用统一的变量：
 set(OPENSSL_CONFIG_TARGET "linux-x86_64")
 set(CURL_CONFIG_TARGET ${TARGET_ARCH})
 set(PCAP_CONFIG_TARGET ${TARGET_ARCH})  
 
-#工具链路径
-set(STAGING_DIR )
-set(TOOLCHAIN_PATH )
+
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
-set(CMAKE_AR ar)
-set(CMAKE_RANLIB ranlib)
-set(OPENSSL_CC_PATH "") # openssl编译使用环境
+set(OPENSSL_CC_PATH ) # openssl编译使用环境
 set(LIB_TOOL_PATH "/home/nvidia/df/lib") # 依赖库源码地址
 set(LIBRARY_DIR "/home/nvidia/df/lib/lib") # 设置动态库库文件所在目录
 set(BUILD_LIB ON)    # 是否编译静态库
 set(USE_LIB ON)      # 是否使用静态库（ON）或系统动态库
+
 
 if(BUILD_LIB)
     # 静态库模式 - 编译并链接生成的静态库
@@ -113,11 +109,8 @@ if(BUILD_LIB)
     ExternalProject_Get_Property(libwebsockets INSTALL_DIR)
     set(WEBSOCKETS_INSTALL_DIR ${INSTALL_DIR})
     add_dependencies(libwebsockets openssl)
-
-   
     include_directories(${WEBSOCKETS_INSTALL_DIR}/include)
 
-  
 endif()
 
 #头文件路径

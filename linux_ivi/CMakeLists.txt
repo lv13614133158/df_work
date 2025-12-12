@@ -23,29 +23,6 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 project(idps C CXX)
 
-link_directories(${SDKTARGETSYSROOT}/usr/lib64)
-# 设置包含和链接路径
-link_directories(${COMPILE_TOOL_PATH}/lib ${SDKTARGETSYSROOT}/usr/lib)
-
-# 添加格式溢出检查忽略选项
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -Wno-error=format-truncation -Wno-error=return-local-addr -Wno-error=format -Wno-error=stringop-overflow -Wno-error=unused-macros -Wno-error=format-overflow -fPIE -fstack-protector-all -fsigned-char")
-
-# 设置编译时缓冲区溢出检查
-add_definitions(-D_FORTIFY_SOURCE=2)
-
-# 设置堆栈不可执行、重定位只读和立即绑定
-set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now")
-
-# 设置 空间随机化 堆栈保护#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign")
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -fPIE -fstack-protector-all -fsigned-char")
-# 添加格式溢出检查忽略选项
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -Wno-error=format-truncation -Wno-error=return-local-addr -Wno-error=format -Wno-error=stringop-overflow -Wno-error=unused-macros -Wno-error=format-overflow -fPIE -fstack-protector-all -fsigned-char")
-# 在现有的 CMAKE_C_FLAGS 基础上添加 -Wno-format-truncation
-Set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wno-error=unused-function -Wno-error=pointer-sign -Wno-stringop-overflow -Wno-format-overflow -Wno-format-truncation -fPIE -fstack-protector-all -fsigned-char")
-# 设置 strip 
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
-set(CMAKE_BUILD_TYPE "RELEASE")
 
 
 #头文件路径

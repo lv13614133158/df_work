@@ -34,7 +34,6 @@ static int readLocalJson(char* path, char* buf, int len)
 		printf("open file  %s\n",path);
 		return ret;
 	}
-	printf("111111111111111\n");
 	if(buf) //读取数据
 	{
 		ret = read(fd, buf, len);
@@ -49,7 +48,6 @@ static int readLocalJson(char* path, char* buf, int len)
     	fstat(fd, &stat_buf);
 		ret = stat_buf.st_size;
 	}
-	printf("222222222\n");
 	close(fd);
 	return ret;
 }

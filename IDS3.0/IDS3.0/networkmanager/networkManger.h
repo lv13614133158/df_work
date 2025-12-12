@@ -137,4 +137,5 @@ static int s_net_connect_fail_cnt = 0;
 int networkFunctionEnabled();
 int networkManager_init(networkManager_t *data);
 int networkManager_send(char *data);
+void register_networkManager_callback(void* callback);
 #endif

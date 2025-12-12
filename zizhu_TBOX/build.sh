@@ -31,8 +31,7 @@ cp $path/build/IDPS $path/output/bin/
 cp $path/script/IDPS_start.sh $path/output/bin/IDPS_start.sh
 cp $path/script/IDPS_stop.sh $path/output/bin/
 cp $path/lib/libwebsockets.so.19 $path/output/lib/
-#cp $path/tier1_part/tbox_info/lib/* $path/output/lib/
-#cp $path/tier1_part/lib/* $path/output/lib/libtbox_self
+
 cp $path/config/base_config.json $path/output/conf/config/
 cp $path/config/vsoc_model.json $path/output/conf/config/
 cp $path/config/device_info.conf $path/output/conf/config/

@@ -1,0 +1,599 @@
+
+register_key data
+
+2025-12-09 11:07:15.084 17585-17589 T/[IDS Post_Ret]:{
+    "code":0,
+    "data":{
+        "register_key":"VU1xSmZYNTliKXZSTkxrcChHV2ZpZ0ZBXk8tSTFeZkE=",
+        "sn":"T1000VEb22747437401917"
+    }
+}
+
+session_key data
+
+]:{
+    "code":0,
+    "data":{
+        "session_key":"R1VmKjg3dihyJGc3Rkwxd1l1SyR1QyhoSVVYdlQ0WmE=",
+        "timestamp":1765259844220,
+        "token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjUzNDYyNDQsImp0aSI6IjMiLCJpYXQiOjE3NjUyNTk4NDR9.5K_O0KpM58xtUviAP-_SZKDLncYN3x8nnHVG7ALKxo0"
+    }
+}
+
+cpu_usage 1060001
+
+2025-12-09 13:57:52.119 14817-14836 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"2306",
+    "timestamp":1765259913738,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010106000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"load_avg1\":\"1.72\",
+            \"load_avg5\":\"1.74\",
+            \"load_avg15\":\"1.93\",
+            \"cpu_num\":2,
+            \"cpu_load\":0.86000001430511475,
+            \"cpu_usage\":52,
+            \"ram_size\":174336,
+            \"ram_rate\":19,
+            \"rom_size\":806226944,
+            \"rom_rate\":19,
+            \"timestamp\":1765259912736
+        }
+    }",
+    "hmac":"rYtO2QTud4O03jZbOR4OJQgxKfs=",
+    "len":317
+}
+
+1.txt 10100
+
+2025-12-09 11:11:34.732 17614-17628 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"39",
+    "timestamp":1765249936219,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010101000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"path\":\"/data/1.txt\",
+            \"event_source\":\"[]\",
+            \"action\":4,
+            \"md5\":\"d41d8cd98f00b204e9800998ecf8427e\",
+            \"old_md5\":\"\",
+            \"sha1\":\"da39a3ee5e6b4b0d3255bfef95601890afd80709\",
+            \"sha256\":\"\",
+            \"size\":0,
+            \"uid\":0,
+            \"gid\":0,
+            \"mode\":\"-rw-r--r--\",
+            \"timestamp\":1765249936219
+        }
+    }",
+    "hmac":"CO4mO9LxwuslL1mmUmWUvsWP6CI=",
+    "len":347
+}
+
+sleep 10300
+
+2025-12-09 11:26:14.247 17614-17629 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"390",
+    "timestamp":1765250815734,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010103000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"pid\":12469,
+            \"ppid\":2141,
+            \"uid\":0,
+            \"gid\":0,
+            \"path\":\"sleep\",
+            \"hashcode\":\"\",
+            \"mode\":\"\",
+            \"md5\":\"\",
+            \"action\":2,
+            \"timestamp\":1765250815734
+        }
+    }",
+    "hmac":"40B+eK6GbeHnaRWf0iu9Snw8Yo4=",
+    "len":233
+}
+
+cpu_usage 1060002
+
+2025-12-09 13:58:49.173 14817-14833 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"3423",
+    "timestamp":1765259970792,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010106000222\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"load_avg1\":\"2.05\",
+            \"load_avg5\":\"1.83\",
+            \"load_avg15\":\"1.95\",
+            \"cpu_num\":2,
+            \"cpu_load\":1.0249999761581421,
+            \"cpu_usage\":52
+        }
+    }",
+    "hmac":"GoTUKksRjVlvfCM2df2sD3jXKMo=",
+    "len":223
+}
+
+ram_rate 1060003
+
+2025-12-09 13:58:47.173 14817-14834 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"3387",
+    "timestamp":1765259968792,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010106000322\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"ram_size\":173952,
+            \"ram_rate\":19
+        }
+    }",
+    "hmac":"8szDEGZffg9YhUuXkqNZ+5zztkY=",
+    "len":140
+}
+
+rom_rate 1060004
+
+2025-12-09 13:58:47.174 14817-14835 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"3388",
+    "timestamp":1765259968794,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010106000422\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"rom_size\":808492032,
+            \"rom_rate\":19
+        }
+    }",
+    "hmac":"/oGUumZDNolsRLJBRaIB9wMEVzY=",
+    "len":143
+}
+
+
+TCP_SYN_SCAN 10900
+
+2025-12-09 14:03:26.260 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"7374",
+    "timestamp":1765260247879,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_SYN_SCAN\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":0
+        }
+    }",
+    "hmac":"qW3AQBN8gdMgRzrjl+725fBqUcQ=",
+    "len":167
+}
+
+TCP_NULL_SCAN 10900
+
+2025-12-09 14:03:44.315 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"7555",
+    "timestamp":1765260265934,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_NULL_SCAN\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":0
+        }
+    }",
+    "hmac":"kwcmLm6iRa34PvRf+4hhLdlOIzA=",
+    "len":168
+}
+
+TCP_FIN_SCAN 10900
+
+2025-12-09 14:04:05.395 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"7736",
+    "timestamp":1765260287014,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_FIN_SCAN\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":0
+        }
+    }",
+    "hmac":"VuHtfsTu1AdH8Zs3kOY9pF/AT9Y=",
+    "len":167
+}
+
+TCP_ACK_SCAN 10900
+
+2025-12-09 14:04:29.517 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"7948",
+    "timestamp":1765260311136,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_ACK_SCAN\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":0
+        }
+    }",
+    "hmac":"1wauhW6b02T74XhgOdGb6MlTcLk=",
+    "len":167
+}
+
+TCP_FIN_RST_DOS 10900
+
+2025-12-09 14:04:44.511 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"8091",
+    "timestamp":1765260326130,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_FIN_RST_DOS\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":5000
+        }
+    }",
+    "hmac":"jwgsw3MGTdMqUYBFnT21Y2XrVyE=",
+    "len":173
+}
+
+TCP_ACK_FIN_DOS 10900
+
+2025-12-09 14:04:53.517 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"8178",
+    "timestamp":1765260335136,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_ACK_FIN_DOS\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":5000
+        }
+    }",
+    "hmac":"rGEVAlq71BhHRqA3he2GvT4GOjw=",
+    "len":173
+}
+
+TCP_SYN_ACK_FLOOD 10900
+
+2025-12-09 14:05:11.532 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"8333",
+    "timestamp":1765260353152,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_SYN_ACK_FLOOD\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":5000
+        }
+    }",
+    "hmac":"IXZRiizcrx9EOzSicgguMRmMbGQ=",
+    "len":175
+}
+
+TCP_ACK_RST_DOS 10900
+
+2025-12-09 14:05:29.524 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"8490",
+    "timestamp":1765260371144,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_ACK_RST_DOS\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":5000
+        }
+    }",
+    "hmac":"//0F70iIK3MhuCTc8Is6w9Np7wE=",
+    "len":173
+}
+
+TCP_ACK_PSH_FLOOD 10900
+
+2025-12-09 14:05:50.538 14817-14829 D/[Add Map]:{
+    "action":"event",
+    "seq_number":"8672",
+    "timestamp":1765260392157,
+    "body":"{
+        \"sn\":\"T1000VEb22747437401917\",
+        \"type\":\"0010109000122\",
+        \"latitude\":0,
+        \"longitude\":0,
+        \"version\":\"1.0.0\",
+        \"data\":{
+            \"event\":\"TCP_ACK_PSH_FLOOD\",
+            \"srcIp\":\"172.20.10.7\",
+            \"localPort\":5000
+        }
+    }",
+    "hmac":"LsEGK"
+}
+
+
+
+TCP_SYN_FLOOD 10900
+
+2025-12-09 14:06:11.541 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"8849",
+        "timestamp":1765260413161,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"TCP_SYN_FLOOD\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":5000
+            }
+        }",
+        "hmac":"zC6Q729MrCiCY74B+IMKROggc/8=",
+        "len":171
+    }
+
+TCP_XMAS_SCAN 10900
+
+2025-12-09 14:06:26.551 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"8966",
+        "timestamp":1765260428170,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"TCP_XMAS_SCAN\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":0
+            }
+        }",
+        "hmac":"ScPWewRyKtZtlrBw6Zeq6LrdmTI=",
+        "len":168
+    }
+
+UDP_SRC_PORT_ZERO 10900
+
+2025-12-09 14:06:46.596 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"9105",
+        "timestamp":1765260448215,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"UDP_SRC_PORT_ZERO\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":0
+            }
+        }",
+        "hmac":"LClBV5Rji6aP6ijVO/wqwjY8f9o=",
+        "len":172
+    }
+
+FRAGGLE_ATTACK 10900
+
+2025-12-09 14:07:06.628 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"9257",
+        "timestamp":1765260468247,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"FRAGGLE_ATTACK\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":0
+            }
+        }",
+        "hmac":"mULey+pIw+lm5E4JNLbpD3qqivU=",
+        "len":169
+    }
+
+UDP_PORT_FLOOD 10900
+
+2025-12-09 14:07:01.622 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"9222",
+        "timestamp":1765260463241,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"UDP_PORT_FLOOD\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":0
+            }
+        }",
+        "hmac":"VTlPkrKRBFFx83yKi3kZMkrxIiQ=",
+        "len":169
+    }
+
+TCP_LAND_ATTACK 10900
+
+2025-12-09 14:07:46.169 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"9616",
+        "timestamp":1765260507788,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"TCP_LAND_ATTACK\",
+                \"srcIp\":\"172.20.10.2\",
+                \"localPort\":0
+            }
+        }",
+        "hmac":"vnpkKo9ZZCvAQmzpL+VKuW3VBcI=",
+        "len":170
+    }
+
+ICMP_LARGE_PING 10900
+
+2025-12-09 14:08:32.528 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"9983",
+        "timestamp":1765260554147,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"ICMP_LARGE_PING\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":0
+            }
+        }",
+        "hmac":"Dw1njirAHRFmLXMgr0CCM7x7Ckk=",
+        "len":170
+    }
+
+TCP_SRC_PORT_ZERO 10900
+
+2025-12-09 14:08:45.610 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"10083",
+        "timestamp":1765260567229,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"TCP_SRC_PORT_ZERO\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":5000
+            }
+        }",
+        "hmac":"+9KxY0LizXe0K2LD9D6teOW6V2c=",
+        "len":175
+    }
+
+TCP_FIN_SYN_DOS 10900
+
+2025-12-09 14:08:50.655 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"10119",
+        "timestamp":1765260572274,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"TCP_FIN_SYN_DOS\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":5000
+            }
+        }",
+        "hmac":"SrpWsxK4dJ0HGSuPAxqlg5ZTMoY=",
+        "len":173
+    }
+
+UDP_PORT_SCAN 10900
+
+2025-12-09 14:09:06.669 14817-14829 D/[Add Map]:{
+        "action":"event",
+        "seq_number":"10249",
+        "timestamp":1765260588288,
+        "body":"{
+            \"sn\":\"T1000VEb22747437401917\",
+            \"type\":\"0010109000122\",
+            \"latitude\":0,
+            \"longitude\":0,
+            \"version\":\"1.0.0\",
+            \"data\":{
+                \"event\":\"UDP_PORT_SCAN\",
+                \"srcIp\":\"172.20.10.7\",
+                \"localPort\":0
+            }
+        }",
+        "hmac":"eDdvVFhFvd9tJf+1FZx1mhSuxEg=",
+        "len":168
+    }
+
